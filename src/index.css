@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+  min-height: 100%;
+  /* background: rgb(227, 242, 253); */
+  background: white;
+  /* background: linear-gradient(
+    0deg,
+    rgba(179, 229, 252, 1) 0%,
+    rgba(33, 150, 243, 1) 10%,
+    rgba(33, 150, 243, 1) 80%,
+    rgba(179, 229, 252, 1) 100%
+  ); */
+}
