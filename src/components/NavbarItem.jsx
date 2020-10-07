@@ -36,29 +36,29 @@ const NavbarItem = ({
   const classes = useStyles();
   const NavItemText = motion.custom(Typography);
   const GridItem = motion.custom(Grid);
-  let blob = useBlob(themeColor, 1, itemBlobs[blobNum], 1.3);
+  let blob = useBlob(theme.palette.primary.main, 1, itemBlobs[blobNum], 1.4);
 
   const { scrollY } = useViewportScroll();
   const transform = useTransform(
     scrollY,
-    [0, 100],
+    [0, 300],
     ["scale(1, 1)", "scale(0.5, 1)"]
   );
 
   const scaleHoverTap = {
     initial: {
       scale: 1,
-      textShadow: `1px 1px 1px ${useFade(theme.palette.primary.light, 0.2)}`,
+      textShadow: `2px 2px 1px ${useFade(theme.palette.primary.dark, 0.6)}`,
       letterSpacing: "0em",
     },
     hover: {
       scale: 1.1,
-      textShadow: `2px 2px 1px ${useFade(theme.palette.primary.dark, 0.4)}`,
+      textShadow: `2px 2px 4px ${useFade(theme.palette.primary.dark, 1)}`,
       letterSpacing: "0.05em",
     },
     tap: {
       scale: 0.9,
-      textShadow: `1px 1px 1px ${useFade(theme.palette.primary.dark, 0.2)}`,
+      textShadow: `1px 1px 1px ${useFade(theme.palette.primary.dark, 0.4)}`,
       letterSpacing: "0em",
     },
   };

@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   section: {
-    height: "100vh",
+    minHeight: "100vh",
   },
 }));
 

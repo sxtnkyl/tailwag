@@ -23,7 +23,7 @@ function App() {
       <c.Container maxWidth="xl" disableGutters>
         <Banner />
         <Navbar />
-        <Home />
+        <About />
         <ContactFooter />
       </c.Container>
     </c.ThemeProvider>

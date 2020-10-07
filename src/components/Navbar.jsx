@@ -28,17 +28,17 @@ const Navbar = () => {
   const { scrollY } = useViewportScroll();
   const background = useTransform(
     scrollY,
-    [0, 100],
+    [0, 700],
     [
       useFade(theme.palette.primary.light, 0),
       useFade(theme.palette.primary.light, 0.25),
     ]
   );
-  const height = useTransform(scrollY, [0, 100], ["40vh", "15vh"]);
-  const paddingTop = useTransform(scrollY, [0, 100], ["10px", "0px"]);
+  const height = useTransform(scrollY, [0, 300], ["40vh", "12vh"]);
+  const paddingTop = useTransform(scrollY, [0, 300], ["50%", "0px"]);
   const boxShadow = useTransform(
     scrollY,
-    [0, 100],
+    [0, 1200],
     [
       `0px 0px 0px 0px ${useFade(theme.palette.primary.dark, 0.5)}`,
       `0px 1px 4px 4px ${useFade(theme.palette.primary.dark, 0.5)}`,

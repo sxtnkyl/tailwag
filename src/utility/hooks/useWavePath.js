@@ -7,7 +7,7 @@ const useStyles = makeStyles({
   },
 });
 
-const useWavePath = (fill, opacity, pathObj) => {
+const useWavePath = (opacity, pathObj) => {
   const { viewBox, d } = pathObj;
   const classes = useStyles();
   return (

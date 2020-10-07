@@ -1,6 +1,6 @@
 import React from "react";
 
-import { makeStyles, Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import theme from "../theme/theme";
 import * as c from "@material-ui/core";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
@@ -25,17 +25,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//onhover: stroke-width, darken stroke, or scale
-//onhover: change shape(blobnum)?
-//https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
-
 const Logo = ({ blobNum, themeColor = theme.palette.secondary.main }) => {
   const classes = useStyles();
-  const GridItem = motion.custom(Grid);
-  let blob = useBlob(themeColor, 1, roundBlobs[blobNum], 1.3);
+  const GridItem = motion.custom(c.Grid);
+  let blob = useBlob(theme.palette.secondary.main, 1, roundBlobs[blobNum], 1.3);
 
   const { scrollY } = useViewportScroll();
-  const transform = useTransform(scrollY, [0, 100], ["scale(1)", "scale(0.8)"]);
+  const transform = useTransform(scrollY, [0, 300], ["scale(1)", "scale(0.8)"]);
 
   return (
     <GridItem item className={classes.navItem} style={{ transform }}>

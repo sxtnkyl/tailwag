@@ -5,47 +5,32 @@ import useFade from "../utility/hooks/useFade";
 //lightblue300-lb100
 //blue and red100
 
-const defaultTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: blue[500],
-      contrastText: "white",
-    },
-    secondary: {
-      main: red[500],
-    },
-    text: {
-      primary: "#064271",
-    },
-  },
-  shape: {
-    borderRadius: 2,
-  },
-});
-
 let theme = createMuiTheme({
   palette: {
-    primary: defaultTheme.palette.primary,
-    secondary: defaultTheme.palette.secondary,
-    textShadow: defaultTheme.palette.textShadow,
+    primary: { main: blue[600] },
+    secondary: { main: red[600] },
+    background: {
+      default: "#fff",
+    },
+    shadows: {
+      bottomShadow: `0px 2px 4px 4px ${useFade(blue[700], 0.5)}`,
+    },
   },
-  spacing: defaultTheme.spacing,
   typography: {
     fontFamily: ["Gochi Hand", "Roboto"].join(","),
+    //logo "tailwag"
     h2: {
       fontSize: "4.0rem",
       fontWeight: 900,
-      textShadow: `2px 2px 1px ${useFade(
-        defaultTheme.palette.primary.dark,
-        0.4
-      )}`,
-      color: red[50],
+      textShadow: `2px 2px 1px ${useFade(blue[700], 0.5)}`,
     },
-    h3: {
-      color: red[50],
-    },
-    h4: {
-      color: "#064271",
+    //navbarItem
+    h3: {},
+    //logo "dogtraining"
+    h4: {},
+    //section mission statements
+    h5: {
+      lineHeight: 2,
     },
   },
   overrides: {
@@ -53,6 +38,14 @@ let theme = createMuiTheme({
       root: { top: 0 },
       colorPrimary: {
         backgroundColor: "transparent",
+      },
+    },
+    MuiCardContent: {
+      root: {
+        height: "100% !important",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
       },
     },
     MuiPaper: {
