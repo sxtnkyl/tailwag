@@ -41,7 +41,7 @@ const NavbarItem = ({
   const { scrollY } = useViewportScroll();
   const transform = useTransform(
     scrollY,
-    [0, 300],
+    [0, 100],
     ["scale(1, 1)", "scale(0.5, 1)"]
   );
 
@@ -71,8 +71,8 @@ const NavbarItem = ({
         variant="h3"
         variants={scaleHoverTap}
         animate="initial"
-        whileHover="hover"
-        whileTap="tap"
+        // whileHover="hover"
+        // whileTap="tap"
       >
         {text.toUpperCase()}
       </NavItemText>

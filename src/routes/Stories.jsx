@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Gallery = () => {
+const Stories = () => {
   const classes = useStyles();
   return <div className={classes.section}>Gallery section</div>;
 };
 
-export default Gallery;
+export default Stories;

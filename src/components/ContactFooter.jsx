@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import theme from "../theme/theme";
 import useFade from "../utility/hooks/useFade";
 import * as c from "@material-ui/core";
 import WaveTopper from "./WaveTopper";
@@ -11,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     bottom: 0,
     boxShadow: `0px -1px 4px 4px ${useFade(theme.palette.primary.dark, 0.5)}`,
-    marginTop: theme.spacing(8),
   },
   infoContainer: {
     position: "absolute",
@@ -47,8 +45,7 @@ const Navbar = () => {
         className={classes.infoContainer}
         container
         direction="row"
-        spacing={4}
-      >
+        spacing={4}>
         {contactUs}
         {followUs}
       </c.Grid>

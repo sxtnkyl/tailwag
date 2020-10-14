@@ -1,16 +1,12 @@
 import React from "react";
 import TempImg from "../images/ollieSnoot.jpg";
 import { makeStyles } from "@material-ui/core";
-import useFade from "../utility/hooks/useFade";
 
 const useStyles = makeStyles((theme) => ({
   image: {
     height: "30vh",
     background: `url(${TempImg}) no-repeat center center`,
-    // backgroundSize: "cover",
     WebkitBackgroundSize: "cover",
-    // MozBackgroundSize: "cover",
-    // OBackgroundSize: "cover",
     borderBottomLeftRadius: "50% 20%",
     borderBottomRightRadius: "50% 20%",
   },

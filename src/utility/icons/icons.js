@@ -1,11 +1,17 @@
 import React from "react";
 //https://tablericons.com/
-import PlayDate from "./Play_Date.svg";
-import BoardingWithTraining from "./Boarding_with_Training.svg";
-import DayBoarding from "./Day_Boarding.svg";
-import GroupObedience from "./Group_Obedience.svg";
-import PlayAndTrain from "./Play_and_Train.svg";
-import PrivateInstruction from "./Private_Instruction.svg";
+import PlayDate from "./svgs/Play_Date.svg";
+import BoardingWithTraining from "./svgs/Boarding_with_Training.svg";
+import DayBoarding from "./svgs/Day_Boarding.svg";
+import GroupObedience from "./svgs/Group_Obedience.svg";
+import PlayAndTrain from "./svgs/Play_and_Train.svg";
+import PrivateInstruction from "./svgs/Private_Instruction.svg";
+import Pawpaw from "./svgs/pawpaw.svg";
+
+import ApproachAbout from "./svgs/approachAbout.svg";
+import AccoladesAbout from "./svgs/accoladesAbout.svg";
+import ServiceStatement from "./svgs/serviceStatement.svg";
+import ContactForm from "./svgs/contactForm.svg";
 
 const facebook = (
   <svg
@@ -18,8 +24,7 @@ const facebook = (
     stroke="#2c3e50"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" />
     <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
   </svg>
@@ -36,8 +41,7 @@ const instagram = (
     stroke="#2c3e50"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" />
     <rect x="4" y="4" width="16" height="16" rx="4" />
     <circle cx="12" cy="12" r="3" />
@@ -56,8 +60,7 @@ const phone = (
     stroke="#2c3e50"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" />
     <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
     <path d="M15 7a2 2 0 0 1 2 2" />
@@ -76,8 +79,7 @@ const penAndRuler = (
     stroke="currentColor"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" />
     <path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" />
     <line x1="14.5" y1="5.5" x2="18.5" y2="9.5" />
@@ -99,8 +101,7 @@ const checkCircle = (
     stroke="#2c3e50"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <circle cx="12" cy="12" r="9" />
     <path d="M9 12l2 2l4 -4" />
@@ -118,8 +119,7 @@ const xCircle = (
     stroke="#2c3e50"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <circle cx="12" cy="12" r="9" />
     <path d="M10 10l4 4m0 -4l-4 4" />
@@ -137,8 +137,7 @@ const infoCircle = (
     stroke="#2c3e50"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <circle cx="12" cy="12" r="9" />
     <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -157,8 +156,13 @@ const icons = {
   GroupObedience,
   PlayAndTrain,
   PrivateInstruction,
+  Pawpaw,
   checkCircle,
   xCircle,
   infoCircle,
+  ApproachAbout,
+  AccoladesAbout,
+  ServiceStatement,
+  ContactForm,
 };
 export default icons;

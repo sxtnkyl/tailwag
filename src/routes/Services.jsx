@@ -3,37 +3,29 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
-import WaveTopper from "../components/WaveTopper";
+import icons from "../utility/icons/icons";
 import ServiceCard from "../components/ServiceCard";
 import serviceData from "../utility/servicesData";
 
 const useStyles = makeStyles((theme) => ({
-  section: {},
+  section: {
+    paddingTop: "10vh",
+  },
   statementText: {
+    backgroundImage: `url(${icons.Pawpaw})`,
+    backgroundPosition: "90%",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
     paddingLeft: theme.spacing(24),
     paddingRight: theme.spacing(24),
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
-    fontFamily: "Roboto",
-  },
-  wordEmphasisBlue: {
-    fontFamily: "Gochi Hand",
-    display: "inline",
-    fontWeight: 700,
-    color: theme.palette.primary.main,
-  },
-  wordEmphasisBlack: {
-    fontFamily: "Gochi Hand",
-    display: "inline",
-    fontWeight: 400,
+    fontFamily: "Open Sans",
+    height: "30vh",
   },
   serviceLine: {
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  serviceName: {
-    padding: theme.spacing(4),
   },
 }));
 
@@ -41,42 +33,46 @@ const Services = () => {
   const classes = useStyles();
 
   const statementText = (
-    <c.Typography className={classes.statementText} variant="h5">
-      Here at{" "}
-      <c.Typography variant="h4" className={classes.wordEmphasisBlue}>
-        Tails Wag Dog Training
+    <section className={classes.statementText}>
+      <c.Typography variant="h6">
+        Here at{" "}
+        <c.Typography
+          component={"div"}
+          variant="h4"
+          style={theme.typography.wordEmphasisBlue}>
+          Tails Wag Dog Training
+        </c.Typography>
+        , we believe that proper training is crucial in building a strong and
+        respectful bond between you and your loyal, loving companion. We work
+        with dogs of all ages, as{" "}
+        <c.Typography
+          component={"div"}
+          variant="h4"
+          style={theme.typography.wordEmphasisBlack}>
+          no dog is too old to learn new tricks.
+        </c.Typography>{" "}
+        By using motivational, positive reinforcement training techniques Tails
+        Wag teaches pet owners the best way to effectively communicate with your
+        dog in their own language…canine! We strive to bring out the best of
+        each dog and owner and appreciate your suggestions or theories regarding
+        your dog's behavior. Our goal is to promote responsible dog ownership
+        and educate owners with the tools needed to effectively build{" "}
+        <c.Typography
+          component={"div"}
+          variant="h4"
+          style={theme.typography.wordEmphasisBlack}>
+          confidence
+        </c.Typography>{" "}
+        and{" "}
+        <c.Typography
+          component={"div"}
+          variant="h4"
+          style={theme.typography.wordEmphasisBlack}>
+          obedience
+        </c.Typography>
+        , while strengthening the bond between you and your dog.
       </c.Typography>
-      , we believe that proper training is crucial in building a strong and
-      respectful bond between you and your loyal, loving companion. We work with
-      dogs of all ages,{" "}
-      <c.Typography variant="h4" className={classes.wordEmphasisBlack}>
-        as no dog is too old to learn new tricks.
-      </c.Typography>{" "}
-      By using motivational, positive reinforcement training techniques Tails
-      Wag teaches pet owners the best way to effectively communicate with your
-      dog in their own language…canine! We strive to bring out the best of each
-      dog and owner and appreciate your suggestions or theories regarding your
-      dog's behavior. Our goal is to promote responsible dog ownership and
-      educate owners with the tools needed to effectively build{" "}
-      <c.Typography variant="h4" className={classes.wordEmphasisBlack}>
-        confidence
-      </c.Typography>{" "}
-      and{" "}
-      <c.Typography variant="h4" className={classes.wordEmphasisBlack}>
-        obedience
-      </c.Typography>
-      , while strengthening the bond between you and your dog.
-    </c.Typography>
-  );
-
-  const servicesStatement = (
-    <>
-      <div style={{ height: "10vh" }} />
-      <WaveTopper opacity="none" layers={1} />
-
-      {statementText}
-      <WaveTopper inverted={false} opacity="none" layers={1} />
-    </>
+    </section>
   );
 
   //give service array, map cards
@@ -86,10 +82,9 @@ const Services = () => {
         container
         direction="column"
         className={classes.serviceLine}
-        id="serviceLineContainer"
-      >
+        id="serviceLineContainer">
         <c.Grid item>
-          <c.Typography variant="h2" className={classes.serviceName}>
+          <c.Typography variant="h3" style={{ padding: theme.spacing(4) }}>
             {lineName}~
           </c.Typography>
         </c.Grid>
@@ -99,8 +94,7 @@ const Services = () => {
           direction="row"
           justify="space-evenly"
           style={{ minHeight: "50vh" }}
-          id="cardsContainer"
-        >
+          id="cardsContainer">
           {lineObj.map((obj) => (
             <ServiceCard lineObj={obj} key={obj.title} />
           ))}
@@ -111,7 +105,7 @@ const Services = () => {
 
   return (
     <div className={classes.section}>
-      {servicesStatement}
+      {statementText}
       <ServiceLine lineName="Training" lineObj={serviceData.training} />
       <ServiceLine lineName="Boarding" lineObj={serviceData.boarding} />
       <ServiceLine

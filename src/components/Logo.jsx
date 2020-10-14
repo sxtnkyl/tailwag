@@ -20,6 +20,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  iconbg: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: '100%',
+    background: theme.palette.secondary.main,
+    borderRadius: '50%'
+  },
   botText: {
     fontFamily: "Roboto",
   },
@@ -31,7 +40,7 @@ const Logo = ({ blobNum, themeColor = theme.palette.secondary.main }) => {
   let blob = useBlob(theme.palette.secondary.main, 1, roundBlobs[blobNum], 1.3);
 
   const { scrollY } = useViewportScroll();
-  const transform = useTransform(scrollY, [0, 300], ["scale(1)", "scale(0.8)"]);
+  const transform = useTransform(scrollY, [0, 100], ["scale(1)", "scale(0.8)"]);
 
   return (
     <GridItem item className={classes.navItem} style={{ transform }}>

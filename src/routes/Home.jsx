@@ -21,6 +21,7 @@ const Home = () => {
       <div
         style={{ height: "50vh", background: theme.palette.primary.light }}
       />
+      {missionStatement}
       <WaveTopper inverted={false} opacity="none" layers={1} />
     </div>
   );

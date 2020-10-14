@@ -1,4 +1,3 @@
-import React from "react";
 import icons from "./icons/icons";
 //JSON data for tiles
 //private instruction > board(daylong) w/ training > board(daylong) no training > play date >  play and train > group obedience > service dog training
@@ -39,7 +38,7 @@ const serviceData = {
       rate: 120,
       interval: "day",
       description:
-        "Board Training requires 1 Private Instruction lesson prior to scheduling. Your dog will stay in our home, and be trained throughout the day where household manners can be addressed in a home environment rather than a kennel. At the end of the scheduled stay, you will receive a turnover session to show what your dog has learned and how to reinforce good behavior while correcting mistakes. You will be sent home with a written assessment specific to your dog with homework assignments for success in your home.",
+        "Board Training requires 1 Private Instruction lesson prior to scheduling. Your dog will stay in our home, and be trained throughout the day where household manners can be addressed in a home environment rather than a kennel. At the end of the scheduled stay, you will receive a turnover session to show what your dog has learned and how to reinforce good behavior while correcting mistakes.",
       caption: "",
       chips: [
         {

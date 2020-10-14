@@ -1,3 +1,9 @@
 navbar > add resize bounding rect listener
 
 theme.palette.text.primary
+
+org association for about accolade 2018-2019
+
+React does not recognize the `whileTap` -line69 navbaritem
+
+revert React.StrictMode in index.js before prod

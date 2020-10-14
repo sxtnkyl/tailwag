@@ -6,28 +6,24 @@ import useFade from "../utility/hooks/useFade";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    height: "500px",
+    minHeight: "300px",
+    display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
     filter: `drop-shadow(2px 2px 4px ${useFade(
       theme.palette.primary.dark,
       0.8
     )})`,
-    borderBottomLeftRadius: theme.spacing(8),
-    borderTopRightRadius: theme.spacing(8),
+    borderBottomLeftRadius: theme.spacing(16),
+    borderTopRightRadius: theme.spacing(16),
     borderRadius: theme.spacing(2),
     overflow: "visible",
+    padding: theme.spacing(4),
   },
   iconContainer: {
-    height: "300px",
-    width: "300px",
-    background:
-      "linear-gradient(30deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 100%)",
-    borderRadius: theme.spacing(2),
-    transform: "translate(-20%, 100px) scale(1)",
-  },
-  icon: {
-    width: "300px",
-    height: "300px",
-    transform: "translate(0)",
+    // background:
+    //   "linear-gradient(30deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 1) 100%)",
+    borderRadius: "50%",
   },
 }));
 
@@ -38,17 +34,12 @@ const ServiceCard = ({ lineObj }) => {
   return (
     <c.Grid item xs={10} xl={5}>
       <c.Card className={classes.card}>
-        <c.Grid container style={{ height: "100%" }}>
-          <c.Grid item xs={4}>
-            <div className={classes.iconContainer}>
-              <c.CardMedia image={lineObj.icon} className={classes.icon} />
-            </div>
-          </c.Grid>
-          <c.Grid item xs>
-            <c.CardContent>
+          <c.Grid container>
+
+            <c.Grid item xs container direction="column" justify="flex-start" style={{paddingRight: theme.spacing(2)}}>
               <c.Typography
                 variant="h4"
-                style={{ alignSelf: "center", fontWeight: 700 }}
+                style={{ fontWeight: 700, paddingBottom: theme.spacing(2) }}
               >
                 {lineObj.title}
               </c.Typography>
@@ -56,7 +47,6 @@ const ServiceCard = ({ lineObj }) => {
                 variant="h5"
                 style={{
                   color: theme.palette.primary.main,
-                  alignSelf: "center",
                 }}
               >
                 {lineObj.rate} / {lineObj.interval}
@@ -64,19 +54,24 @@ const ServiceCard = ({ lineObj }) => {
               <c.Typography variant="subtitle1">
                 {lineObj.description}
               </c.Typography>
-              <c.CardActions style={{ justifyContent: "flex-end" }}>
-                {lineObj.chips.map((chip) => (
-                  <c.Chip
-                    key={chip.title}
-                    variant="outlined"
-                    label={chip.title}
-                    icon={chip.icon}
-                  />
-                ))}
-              </c.CardActions>
-            </c.CardContent>
+            </c.Grid>
+
+            <c.Grid item xs={3}>
+              <img src={lineObj.icon} alt={lineObj.title} className={classes.iconContainer} />
+            </c.Grid>
+
           </c.Grid>
-        </c.Grid>
+          
+          <c.CardActions style={{ justifyContent: "flex-end" }}>
+          {lineObj.chips.map((chip) => (
+            <c.Chip
+              key={chip.title}
+              variant="outlined"
+              label={chip.title}
+              icon={chip.icon}
+            />
+          ))}
+        </c.CardActions>
       </c.Card>
     </c.Grid>
   );

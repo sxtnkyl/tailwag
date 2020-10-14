@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     width: "100%",
     overflow: "hidden",
-    lineHeight: 0,
     zIndex: 1,
   },
   relativeContainer: {
@@ -21,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "block",
     width: "100%",
-    height: "20vh",
   },
   path: {
     // fill: theme.palette.primary.light,
