@@ -2,18 +2,21 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core";
 import theme from "../theme/theme";
-import useFade from "../utility/hooks/useFade";
 import { Typography, Grid } from "@material-ui/core";
+
+import { BrowserRouter as Link } from "react-router-dom";
 
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 import { itemBlobs } from "../utility/blobPaths";
 import useBlob from "../utility/hooks/useBlob";
+import useFade from "../utility/hooks/useFade";
 
 const useStyles = makeStyles((theme) => ({
   navItem: {
     display: "grid",
     overflow: "hidden",
+    height: "100%",
   },
   textdiv: {
     zIndex: 15,
@@ -65,7 +68,6 @@ const NavbarItem = ({
 
   return (
     <GridItem item className={classes.navItem} style={{ transform }}>
-      {blob}
       <NavItemText
         className={classes.textdiv}
         variant="h3"
@@ -76,6 +78,7 @@ const NavbarItem = ({
       >
         {text.toUpperCase()}
       </NavItemText>
+      {blob}
     </GridItem>
   );
 };

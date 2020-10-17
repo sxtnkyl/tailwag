@@ -90,16 +90,15 @@ const accolades = [
 const About = () => {
   const classes = useStyles();
   return (
-    <div className={classes.section}>
+    <div className={classes.section} id="About">
       <c.Grid container className={classes.approachContainer}>
         <c.Grid item xs container justify="center" alignItems="center">
           <c.Typography variant="h6" style={{ fontFamily: "Open Sans" }}>
             "
             <c.Typography
-            component={'div'}
+              component={"div"}
               variant="h4"
-              style={theme.typography.wordEmphasisBlue}
-            >
+              style={theme.typography.wordEmphasisBlue}>
               Tails Wag Dog Training, Inc.
             </c.Typography>{" "}
             has been family owned and operated since 1998, serving hundreds of
@@ -108,10 +107,9 @@ const About = () => {
             variety of temperments and breed specific traits. I firmly believe
             that with the proper patience and understanding,{" "}
             <c.Typography
-            component={'div'}
+              component={"div"}
               variant="h4"
-              style={theme.typography.wordEmphasisBlack}
-            >
+              style={theme.typography.wordEmphasisBlack}>
               every dog
             </c.Typography>{" "}
             is capable of achieving a life of confidence and respect. I have the
@@ -120,10 +118,9 @@ const About = () => {
             help pet owners in their quest for a happy, well trained dog,
             experience is invaluable and I have plenty of it-{" "}
             <c.Typography
-            component={'div'}
+              component={"div"}
               variant="h4"
-              style={theme.typography.wordEmphasisBlack}
-            >
+              style={theme.typography.wordEmphasisBlack}>
               so let's get started!
             </c.Typography>
             "
@@ -144,8 +141,7 @@ const About = () => {
         <c.Grid container item xs direction="column" justify="center">
           <c.Typography
             variant="h3"
-            style={{ paddingBottom: theme.spacing(2) }}
-          >
+            style={{ paddingBottom: theme.spacing(2) }}>
             Dedicated Expertise- Proven Results.
           </c.Typography>
           <c.Typography variant="h6" style={{ fontFamily: "Open Sans" }}>
@@ -158,8 +154,7 @@ const About = () => {
             justify="space-around"
             alignContent="space-around"
             spacing={4}
-            style={{ marginTop: theme.spacing(4) }}
-          >
+            style={{ marginTop: theme.spacing(4) }}>
             {accolades.map((a, index) => (
               <AccoladeCard key={index} accolade={a} />
             ))}

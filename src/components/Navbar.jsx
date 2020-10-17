@@ -8,6 +8,8 @@ import NavbarItem from "./NavbarItem";
 import Logo from "./Logo";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   atTop: {
     width: "100%",
@@ -46,21 +48,33 @@ const Navbar = () => {
     ]
   );
 
+  const NavItemList = () => (
+    <NavGrid
+      container
+      justify="space-evenly"
+      style={{ height: "100%", flexWrap: "inherit" }}>
+      <Link to="/services">
+        <NavbarItem blobNum={0} text="Services" />
+      </Link>
+      <Link to="/">
+        <NavbarItem blobNum={7} text="About" />
+      </Link>
+      <Logo blobNum={0} themeColor={theme.palette.primary.main} />
+      <Link to="/stories">
+        <NavbarItem blobNum={2} text="Stories" />
+      </Link>
+      <Link to="/contact">
+        <NavbarItem blobNum={4} text="Contact" />
+      </Link>
+    </NavGrid>
+  );
+
   return (
     <TopBar
       position="sticky"
       className={classes.atTop}
       style={{ background, height, paddingTop, paddingBottom, boxShadow }}>
-      <NavGrid
-        container
-        justify="space-evenly"
-        style={{ height: "100%", flexWrap: "inherit" }}>
-        <NavbarItem blobNum={0} text="Services" />
-        <NavbarItem blobNum={7} text="About" />
-        <Logo blobNum={0} themeColor={theme.palette.primary.main} />
-        <NavbarItem blobNum={2} text="Stories" />
-        <NavbarItem blobNum={4} text="Contact" />
-      </NavGrid>
+      <NavItemList />
     </TopBar>
   );
 };

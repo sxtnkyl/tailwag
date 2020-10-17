@@ -61,6 +61,11 @@ let theme = createMuiTheme({
         backgroundColor: "transparent",
       },
     },
+    MuiBackdrop: {
+      root: {
+        zIndex: 0,
+      },
+    },
     MuiCardContent: {
       root: {
         // height: "100% !important",

@@ -104,7 +104,7 @@ const Services = () => {
   };
 
   return (
-    <div className={classes.section}>
+    <div className={classes.section} id="Services">
       {statementText}
       <ServiceLine lineName="Training" lineObj={serviceData.training} />
       <ServiceLine lineName="Boarding" lineObj={serviceData.boarding} />

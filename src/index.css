@@ -22,3 +22,8 @@ code {
     rgba(179, 229, 252, 1) 100%
   ); */
 }
+
+a {
+  color: white;
+  text-decoration: none;
+}
