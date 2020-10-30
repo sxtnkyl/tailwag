@@ -33,7 +33,7 @@ const Navbar = () => {
     [0, 100],
     [
       useFade(theme.palette.primary.light, 0),
-      useFade(theme.palette.primary.light, 0.25),
+      useFade(theme.palette.primary.light, 1),
     ]
   );
   const height = useTransform(scrollY, [0, 100], ["40vh", "11vh"]);

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useInvertedScale } from "framer-motion";
-import { closeSpring } from "./animations";
+import { closeSpring } from "../../../utility/animations";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     height: "420px",
     width: "100vw",
-    transform: "translateZ(0)",
+    background: "burlywood",
   },
 }));
 

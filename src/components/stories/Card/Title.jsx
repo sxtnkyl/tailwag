@@ -1,18 +1,18 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core";
 import { motion, useInvertedScale } from "framer-motion";
-import { closeSpring, openSpring } from "./animations";
+import { closeSpring, openSpring } from "../../../utility/animations";
 
 const useStyles = makeStyles((theme) => ({
   titleContainer: {
     position: "absolute",
     top: "0",
     left: "0",
-    maxWidth: "300px",
+    backgroundColor: "purple",
   },
 }));
 
-export const Title = ({ title, category, isSelected }) => {
+export const Title = ({ ownerName, dogName, isSelected }) => {
   const classes = useStyles();
   const inverted = useInvertedScale();
   const x = isSelected ? 30 : 15;
@@ -26,8 +26,8 @@ export const Title = ({ title, category, isSelected }) => {
       transition={isSelected ? openSpring : closeSpring}
       transformTemplate={scaleTranslate}
       style={{ ...inverted, originX: 0, originY: 0 }}>
-      <span className="category">{category}</span>
-      <h2>{title}</h2>
+      <motion.span className="dogName">dog's name: {dogName}</motion.span>
+      {ownerName}
     </motion.div>
   );
 };

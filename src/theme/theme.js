@@ -63,7 +63,7 @@ let theme = createMuiTheme({
     },
     MuiBackdrop: {
       root: {
-        zIndex: 0,
+        zIndex: 1,
       },
     },
     MuiCardContent: {

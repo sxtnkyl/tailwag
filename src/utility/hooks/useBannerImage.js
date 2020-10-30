@@ -1,23 +1,46 @@
 import { useState, useEffect, useRef } from "react";
 
+import ServicePic from "../../images/beagle.jpg";
+import HomePic from "../../images/ollieSnoot.jpg";
+import StoriesPic from "../../images/croppedCollie.jpg";
+import ContactPic from "../../images/chanceSnoot.jpg";
+import ErrorPic from "../../images/croppedGerman.jpg";
+
 const images = [
-  { id: "Home", src: "../../images/Home.jpg", description: "aussie" },
-  { id: "About", src: "../../images/About.jpg", description: "beagle" },
-  { id: "Contact", src: "../../images/Contact.jpg", description: "black_dog" },
-  { id: "Gallery", src: "../../images/Gallery.jpg", description: "brown_dog" },
   {
-    id: "Services",
-    src: "../../images/Services.jpg",
-    description: "white_dog",
+    id: "services",
+    // src: "../../images/beagle.jpg",
+    src: ServicePic,
+    description: "snoozy_Beagle",
+  },
+  {
+    id: "",
+    src: HomePic,
+    description: "ollie_Sexton",
+  },
+  {
+    id: "stories",
+    src: StoriesPic,
+    description: "black_and_brown_dog",
+  },
+  {
+    id: "contact",
+    src: ContactPic,
+    description: "chance_Thomas",
+  },
+  {
+    id: "404",
+    src: ErrorPic,
+    description: "white_lab",
   },
 ];
 
 const useBannerImage = (route) => {
   //matches route(str) to image of images folder
-  let match = images.find(({ id }) => {
+  let image = images.find(({ id }) => {
     return id === route;
   });
-  return match;
+  return image;
 };
 
 export default useBannerImage;

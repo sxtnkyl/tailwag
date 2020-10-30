@@ -4,6 +4,10 @@ import * as c from "@material-ui/core";
 import theme from "./theme/theme";
 
 import { Route, Switch } from "react-router";
+import {
+  AnimatedRoutes,
+  RouteTransition,
+} from "./components/animatedRoutes/RouteTransition";
 import { BrowserRouter as Router, Link, useLocation } from "react-router-dom";
 
 //App structure navbar>banner>pageTitle > current route > contact footer
@@ -26,15 +30,21 @@ function App() {
   return (
     <c.ThemeProvider theme={theme}>
       <c.Container maxWidth="xl" disableGutters>
-        <Banner />
+        <Banner location={location} />
         <Navbar />
         <PageTitle location={location} />
-        <Switch>
-          <Route exact path="/" component={About} />
-          <Route path="/services" component={Services} />
+        <AnimatedRoutes exitBeforeEnter>
+          <RouteTransition exact path="/" slide={30}>
+            <About />
+          </RouteTransition>
+          <RouteTransition path="/services" slide={30}>
+            <Services />
+          </RouteTransition>
           <Route path="/stories" component={Stories} />
-          <Route path="/contact" component={Contact} />
-        </Switch>
+          <RouteTransition path="/contact" slide={30}>
+            <Contact />
+          </RouteTransition>
+        </AnimatedRoutes>
         <ContactFooter />
       </c.Container>
     </c.ThemeProvider>

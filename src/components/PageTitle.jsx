@@ -42,9 +42,9 @@ const useStyles = makeStyles((theme) => ({
 const PageTitle = ({ location }) => {
   const classes = useStyles();
 
-  const currentPageTitle = location.pathname
-    .substring(1, location.pathname.length)
-    .toUpperCase();
+  const currentPageTitle = location.pathname.includes("stories")
+    ? "STORIES"
+    : location.pathname.substring(1, location.pathname.length).toUpperCase();
 
   const title = (
     <div className={classes.title}>

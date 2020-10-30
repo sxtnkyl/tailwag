@@ -1,56 +1,74 @@
 //masonry tiles > open to testimonials
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import * as c from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import { Card } from "../components/stories/Card/Card";
+import { ListCard } from "../components/stories/Card/ListCard";
+import { OpenCard } from "../components/stories/Card/OpenCard";
+
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  useLocation,
+  useRouteMatch,
+  withRouter,
+} from "react-router-dom";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import storiesData from "../utility/storiesData";
-import { motion } from "framer-motion";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   section: {
     minHeight: "100vh",
+    paddingTop: "10vh",
   },
-  cardList: {
-    height: "100%",
-    width: "100%",
+  listContainer: {
+    backgroundColor: theme.palette.primary.light,
     display: "flex",
     flexWrap: "wrap",
     alignContent: "flex-start",
+    padding: theme.spacing(8),
   },
 }));
 
-const Stories = ({ match, history }) => {
+const Stories = ({ match, location, history }) => {
   const classes = useStyles();
 
-  const CardList = () => (
-    <Router>
-      <Route path={[`${match.url}/:id`, `${match.url}`]} component={List} />
-    </Router>
-  );
-
-  const List = ({ match, history }) => {
-    return (
-      <c.Grid className={classes.cardList}>
+  const List = ({ match, history }) => (
+    <AnimateSharedLayout type="crossfade">
+      <div className={classes.listContainer}>
         {storiesData.map((card) => (
-          <Card
+          <ListCard
             key={card.id}
             isSelected={match.params.id === card.id}
-            history={history}
             match={match}
+            history={history}
             {...card}
           />
         ))}
-        <Link to="/stories">
-          <c.Backdrop open={match.path === "/stories/:id"} />
-        </Link>
-      </c.Grid>
-    );
-  };
+      </div>
+      <AnimatePresence>
+        {match.params.id && <OpenCard paramsId={match.params.id} />}
+      </AnimatePresence>
+    </AnimateSharedLayout>
+  );
 
   return (
     <div className={classes.section} id="Stories">
-      <CardList />
+      {/* {testButtons}
+      <AnimateSharedLayout type="crossfade">
+        {selected !== null ? (
+          <ExpandedMasonryCard
+            selected={selected}
+            updateSelected={updateSelected}
+          />
+        ) : (
+          <MasonryGrid updateSelected={updateSelected} />
+        )}
+      </AnimateSharedLayout> */}
+      <Router>
+        <Route path={["/stories/:id", "/stories"]} component={List} />
+      </Router>
     </div>
   );
 };
