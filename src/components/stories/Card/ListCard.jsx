@@ -10,9 +10,6 @@ import { Title } from "./Title";
 import { Image } from "./Image";
 
 import { openSpring, closeSpring } from "../../../utility/animations";
-import { useScrollConstraints } from "../utils/useScrollConstraints";
-import { useWheelScroll } from "../utils/useWheelScroll";
-import { useInvertedBorderRadius } from "../utils/useInvertedBorderRadius";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -68,9 +65,11 @@ export const ListCard = memo(
 
     return (
       <div className={classes.card}>
-        <motion.div
+        <MotionCard
           className={classes.cardContent}
-          layoutId={`card-container-${id}`}>
+          layoutId={`card-container-${id}`}
+          animate={{ opacity: isSelected ? 0 : 1, y: !isSelected && 0 }}
+          transition={isSelected ? openSpring : closeSpring}>
           {/* <Image
             id={id}
             isSelected={isSelected}
@@ -84,7 +83,7 @@ export const ListCard = memo(
             isSelected={isSelected}
             layoutId={`title-container-${id}`}
           /> */}
-        </motion.div>
+        </MotionCard>
         {!isSelected && (
           <Link to={`/stories/${id}`} className={classes.cardOpenLink} />
         )}

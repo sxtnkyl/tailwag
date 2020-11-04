@@ -5,7 +5,7 @@ import {
   motion,
   useMotionValue,
 } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import * as c from "@material-ui/core";
 import { makeStyles, Card, Backdrop } from "@material-ui/core";
@@ -70,21 +70,40 @@ export const OpenCard = memo(
 
     const MotionCard = motion.custom(Card);
     const MotionBackdrop = motion.custom(Backdrop);
+    const history = useHistory();
+    const dismissDistance = 150;
 
     const y = useMotionValue(0);
     const inverted = useInvertedBorderRadius(20);
+    const cardRef = useRef(null);
+    const constraints = useScrollConstraints(cardRef, true);
+
+    function checkSwipeToDismiss() {
+      y.get() > dismissDistance && history.push("/stories");
+    }
+
+    const containerRef = useRef(null);
+    useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, true);
 
     return (
       <motion.div
+        ref={containerRef}
         className={classes.backdrop}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.2, when: "delayChildren" }}
         style={{ pointerEvents: "auto" }}>
         <motion.div
+          ref={cardRef}
           className={classes.openCardContent}
           layoutId={`card-container-${id}`}
-          style={{ ...inverted, y }}>
+          style={{ ...inverted, y }}
+          animate={{ opacity: 1 }}
+          transition={openSpring}
+          drag={"y"}
+          dragConstraints={constraints}
+          onDrag={checkSwipeToDismiss}>
           {/* <Image
             id={id}
             isSelected={isSelected}

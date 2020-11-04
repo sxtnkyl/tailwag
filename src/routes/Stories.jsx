@@ -6,15 +6,8 @@ import { makeStyles } from "@material-ui/core";
 import { ListCard } from "../components/stories/Card/ListCard";
 import { OpenCard } from "../components/stories/Card/OpenCard";
 
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  useLocation,
-  useRouteMatch,
-  withRouter,
-} from "react-router-dom";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import storiesData from "../utility/storiesData";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,17 +48,6 @@ const Stories = ({ match, location, history }) => {
 
   return (
     <div className={classes.section} id="Stories">
-      {/* {testButtons}
-      <AnimateSharedLayout type="crossfade">
-        {selected !== null ? (
-          <ExpandedMasonryCard
-            selected={selected}
-            updateSelected={updateSelected}
-          />
-        ) : (
-          <MasonryGrid updateSelected={updateSelected} />
-        )}
-      </AnimateSharedLayout> */}
       <Router>
         <Route path={["/stories/:id", "/stories"]} component={List} />
       </Router>
