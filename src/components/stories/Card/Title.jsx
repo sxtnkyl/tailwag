@@ -6,8 +6,8 @@ import { closeSpring, openSpring } from "../../../utility/animations";
 const useStyles = makeStyles((theme) => ({
   titleContainer: {
     position: "absolute",
-    top: "0",
-    left: "0",
+    bottom: "20",
+    right: "20",
     backgroundColor: "purple",
   },
 }));

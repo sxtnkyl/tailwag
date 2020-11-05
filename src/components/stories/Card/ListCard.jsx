@@ -1,19 +1,15 @@
 import React, { memo, useRef } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, useInvertedScale } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import * as c from "@material-ui/core";
-import { makeStyles, Card, Backdrop } from "@material-ui/core";
+import { makeStyles, Card } from "@material-ui/core";
 
-import { ContentPlaceholder } from "./ContentPlaceholder";
-import { Title } from "./Title";
-import { Image } from "./Image";
-
-import { openSpring, closeSpring } from "../../../utility/animations";
+import useFade from "../../../utility/hooks/useFade";
+import germanShep from "../../../images/croppedGerman.jpg";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    border: "1px solid red",
     position: "relative",
     height: theme.spacing(50),
     padding: "20px",
@@ -34,9 +30,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     margin: "0 auto",
-    borderRadius: theme.spacing(4),
-    border: "1px solid yellow",
-    backgroundColor: "pink",
+    background:
+      "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 30%)",
+    borderRadius: theme.spacing(2),
+    boxShadow: `2px 2px 4px ${useFade(theme.palette.primary.dark, 0.8)}`,
+    display: "flex",
+    flexDirection: "column",
   },
   cardOpenLink: {
     position: "absolute",
@@ -45,6 +44,18 @@ const useStyles = makeStyles((theme) => ({
     right: "0",
     bottom: "0",
   },
+  cardImageContainer: {
+    margin: theme.spacing(2),
+    borderRadius: theme.spacing(2),
+    borderBottomLeftRadius: theme.spacing(12),
+    overflow: "hidden",
+  },
+  image: {
+    objectFit: "cover",
+    height: "100%",
+    width: "100%",
+  },
+  title: { margin: theme.spacing(2) },
 }));
 
 export const ListCard = memo(
@@ -59,30 +70,57 @@ export const ListCard = memo(
     history,
   }) => {
     const classes = useStyles();
+    const y = useMotionValue(0);
 
     const MotionCard = motion.custom(Card);
-    const MotionBackdrop = motion.custom(Backdrop);
+    const MotionTitle = motion.custom(c.Typography);
+
+    const Image = () => {
+      const inverted = useInvertedScale();
+      const scaleTranslate = ({ x, y, scaleX, scaleY }) =>
+        `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;
+
+      return (
+        <motion.div
+          className={classes.cardImageContainer}
+          layoutId={`image-container-${id}`}
+          transformTemplate={scaleTranslate}
+          animate={{ height: "75%" }}
+          style={{ ...inverted }}>
+          <motion.img
+            className={classes.image}
+            layoutId={`image-${id}`}
+            src={germanShep}
+            alt=""
+            // initial={false}
+            // animate={
+            //   isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
+            // }
+            // transition={closeSpring}
+          />
+        </motion.div>
+      );
+    };
+
+    const Title = () => {
+      return (
+        <MotionTitle
+          className={classes.title}
+          layoutId={`title-container-${id}`}
+          style={{ paddingLeft: 0 }}>
+          {dogName} and {ownerName}
+        </MotionTitle>
+      );
+    };
 
     return (
       <div className={classes.card}>
         <MotionCard
           className={classes.cardContent}
           layoutId={`card-container-${id}`}
-          animate={{ opacity: isSelected ? 0 : 1, y: !isSelected && 0 }}
-          transition={isSelected ? openSpring : closeSpring}>
-          {/* <Image
-            id={id}
-            isSelected={isSelected}
-            pointOfInterest={pointOfInterest}
-            backgroundColor={backgroundColor}
-            layoutId={`card-image-container-${id}`}
-          />
-          <Title
-            ownerName={ownerName}
-            dogName={dogName}
-            isSelected={isSelected}
-            layoutId={`title-container-${id}`}
-          /> */}
+          animate={{ y: 0, opacity: 1 }}>
+          <Image />
+          <Title />
         </MotionCard>
         {!isSelected && (
           <Link to={`/stories/${id}`} className={classes.cardOpenLink} />

@@ -9,6 +9,7 @@ import { OpenCard } from "../components/stories/Card/OpenCard";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import storiesData from "../utility/storiesData";
+import { openSpring, closeSpring } from "../utility/animations";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -16,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "10vh",
   },
   listContainer: {
-    backgroundColor: theme.palette.primary.light,
     display: "flex",
     flexWrap: "wrap",
     alignContent: "flex-start",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const Stories = ({ match, location, history }) => {
   const classes = useStyles();
 
-  const List = ({ match, history }) => (
+  const List = ({ match }) => (
     <AnimateSharedLayout type="crossfade">
       <div className={classes.listContainer}>
         {storiesData.map((card) => (
@@ -35,7 +35,6 @@ const Stories = ({ match, location, history }) => {
             key={card.id}
             isSelected={match.params.id === card.id}
             match={match}
-            history={history}
             {...card}
           />
         ))}

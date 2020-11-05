@@ -129,6 +129,26 @@ const storiesData = [
     testimonial:
       "Alexandra is an excellent trainer who has a great deal of expertise and her energy & enthusiasm makes class fun.  In our intermediate class, each owner had different challenges in working with their dog and Alexandra knew how to instruct each individual to get the same great results for everyone.",
   },
+  {
+    id: "n",
+    dogName: "Pizza",
+    ownerName: "Joyce Hansen",
+    pointOfInterest: 80,
+    backgroundColor: "#324A98",
+    //backgroundImg
+    testimonial:
+      "Alexandra is an excellent trainer who has a great deal of expertise and her energy & enthusiasm makes class fun.  In our intermediate class, each owner had different challenges in working with their dog and Alexandra knew how to instruct each individual to get the same great results for everyone.",
+  },
+  {
+    id: "o",
+    dogName: "Pizza",
+    ownerName: "Joyce Hansen",
+    pointOfInterest: 80,
+    backgroundColor: "#324A98",
+    //backgroundImg
+    testimonial:
+      "Alexandra is an excellent trainer who has a great deal of expertise and her energy & enthusiasm makes class fun.  In our intermediate class, each owner had different challenges in working with their dog and Alexandra knew how to instruct each individual to get the same great results for everyone.",
+  },
 ];
 
 export default storiesData;

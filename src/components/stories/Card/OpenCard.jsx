@@ -1,25 +1,17 @@
 import React, { memo, useRef } from "react";
-import {
-  AnimateSharedLayout,
-  AnimatePresence,
-  motion,
-  useMotionValue,
-} from "framer-motion";
+import { motion, useMotionValue, useInvertedScale } from "framer-motion";
 import { Link, useHistory } from "react-router-dom";
 
 import * as c from "@material-ui/core";
-import { makeStyles, Card, Backdrop } from "@material-ui/core";
+import { makeStyles, Card } from "@material-ui/core";
 
-import { ContentPlaceholder } from "./ContentPlaceholder";
-import { Title } from "./Title";
-import { Image } from "./Image";
-
-import { openSpring, closeSpring } from "../../../utility/animations";
 import { useScrollConstraints } from "../utils/useScrollConstraints";
 import { useWheelScroll } from "../utils/useWheelScroll";
 import { useInvertedBorderRadius } from "../utils/useInvertedBorderRadius";
 
 import storiesData from "../../../utility/storiesData";
+import useFade from "../../../utility/hooks/useFade";
+import germanShep from "../../../images/croppedGerman.jpg";
 
 const useStyles = makeStyles((theme) => ({
   openCardContent: {
@@ -27,9 +19,11 @@ const useStyles = makeStyles((theme) => ({
     height: "80vh",
     width: "50%",
     maxWidth: "700px",
-    border: "1px solid yellow",
-    backgroundColor: "pink",
+    backgroundColor: theme.palette.primary.light,
     zIndex: 2,
+    background:
+      "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 80%)",
+    boxShadow: `2px 2px 4px ${useFade(theme.palette.primary.dark, 0.8)}`,
   },
   backdrop: {
     zIndex: 1,
@@ -54,6 +48,18 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     transform: "translateX(-50%)",
   },
+  cardImageContainer: {
+    margin: theme.spacing(2),
+    borderRadius: theme.spacing(2),
+    borderBottomLeftRadius: theme.spacing(16),
+    overflow: "hidden",
+  },
+  image: {
+    objectFit: "cover",
+    height: "100%",
+    width: "100%",
+  },
+  title: { margin: theme.spacing(2) },
 }));
 
 export const OpenCard = memo(
@@ -69,7 +75,8 @@ export const OpenCard = memo(
     } = storiesData.find((item) => item.id === paramsId);
 
     const MotionCard = motion.custom(Card);
-    const MotionBackdrop = motion.custom(Backdrop);
+    const MotionTitle = motion.custom(c.Typography);
+
     const history = useHistory();
     const dismissDistance = 150;
 
@@ -85,6 +92,45 @@ export const OpenCard = memo(
     const containerRef = useRef(null);
     useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, true);
 
+    const Image = () => {
+      const inverted = useInvertedScale();
+      const scaleTranslate = ({ x, y, scaleX, scaleY }) =>
+        `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;
+
+      return (
+        <motion.div
+          className={classes.cardImageContainer}
+          layoutId={`image-container-${id}`}
+          transformTemplate={scaleTranslate}
+          animate={{ height: "50%" }}
+          style={{ ...inverted }}>
+          <motion.img
+            className={classes.image}
+            layoutId={`image-${id}`}
+            src={germanShep}
+            alt=""
+            // initial={false}
+            // animate={
+            //   isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
+            // }
+            // transition={closeSpring}
+          />
+        </motion.div>
+      );
+    };
+
+    const Title = () => {
+      const inverted = useInvertedScale();
+      return (
+        <MotionTitle
+          className={classes.title}
+          layoutId={`title-container-${id}`}
+          style={{ paddingLeft: 40, ...inverted }}>
+          {dogName} and {ownerName}
+        </MotionTitle>
+      );
+    };
+
     return (
       <motion.div
         ref={containerRef}
@@ -92,33 +138,20 @@ export const OpenCard = memo(
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.2, when: "delayChildren" }}
         style={{ pointerEvents: "auto" }}>
-        <motion.div
+        <MotionCard
           ref={cardRef}
           className={classes.openCardContent}
           layoutId={`card-container-${id}`}
           style={{ ...inverted, y }}
           animate={{ opacity: 1 }}
-          transition={openSpring}
           drag={"y"}
           dragConstraints={constraints}
           onDrag={checkSwipeToDismiss}>
-          {/* <Image
-            id={id}
-            isSelected={isSelected}
-            pointOfInterest={pointOfInterest}
-            backgroundColor={backgroundColor}
-            layoutId={`card-image-container-${id}`}
-          />
-          <Title
-            ownerName={ownerName}
-            dogName={dogName}
-            isSelected={isSelected}
-            layoutId={`title-container-${id}`}
-          /> */}
+          <Image />
+          <Title />
           {/* <ContentPlaceholder /> */}
-        </motion.div>
+        </MotionCard>
         <Link to="/stories" className={classes.backdropLink} />
       </motion.div>
     );

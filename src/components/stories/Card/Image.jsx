@@ -3,15 +3,19 @@ import { motion, useInvertedScale } from "framer-motion";
 import { closeSpring } from "../../../utility/animations";
 import { makeStyles } from "@material-ui/core";
 
+import germanShep from "../../../images/croppedGerman.jpg";
+
 const useStyles = makeStyles((theme) => ({
   cardImageContainer: {
-    position: "absolute",
-    top: "0",
-    left: "0",
+    margin: theme.spacing(2),
+    borderRadius: theme.spacing(2),
+    borderBottomLeftRadius: theme.spacing(16),
     overflow: "hidden",
-    height: "420px",
-    width: "100vw",
-    background: "burlywood",
+  },
+  image: {
+    objectFit: "cover",
+    height: "100%",
+    width: "100%",
   },
 }));
 
@@ -20,6 +24,7 @@ export const Image = ({
   isSelected,
   pointOfInterest = 0,
   backgroundColor,
+  paramsId = null,
 }) => {
   const classes = useStyles();
   const inverted = useInvertedScale();
@@ -27,16 +32,16 @@ export const Image = ({
   return (
     <motion.div
       className={classes.cardImageContainer}
-      style={{ ...inverted, backgroundColor, originX: 0, originY: 0 }}>
+      animate={{ height: paramsId === null ? "75%" : "50%" }}>
       <motion.img
-        className="card-image"
-        src={`images/${id}.jpg`}
+        className={classes.image}
+        src={germanShep}
         alt=""
-        initial={false}
-        animate={
-          isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
-        }
-        transition={closeSpring}
+        // initial={false}
+        // animate={
+        //   isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
+        // }
+        // transition={closeSpring}
       />
     </motion.div>
   );
