@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     height: "25vh",
     position: "relative",
     bottom: 0,
-    boxShadow: `0px -1px 4px 4px ${useFade(theme.palette.primary.dark, 0.5)}`,
+    boxShadow: `0px -1px 4px 4px ${useFade(theme.palette.primary.dark, 0.2)}`,
   },
   infoContainer: {
     position: "absolute",

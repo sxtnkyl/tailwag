@@ -2,8 +2,9 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { blue, red } from "@material-ui/core/colors";
 import useFade from "../utility/hooks/useFade";
 
-//lightblue300-lb100
-//blue and red100
+//page topPadding (under PageTitle) > 10vh
+//default margin for lg screens > theme.spacing(24)
+//text/PictureCard > text gets padding theme.spacing(6) in between
 
 let theme = createMuiTheme({
   palette: {
@@ -13,36 +14,55 @@ let theme = createMuiTheme({
       default: "#fff",
     },
     shadows: {
+      loweredFilterShadow: `drop-shadow(2px 2px 4px ${useFade(
+        blue[800],
+        0.4
+      )})`,
+      raisedFilterShadow: `drop-shadow(2px 2px 4px ${useFade(blue[600], 0.8)})`,
       bottomShadow: `0px 2px 4px 4px ${useFade(blue[700], 0.5)}`,
+      iconGradient:
+        "linear-gradient(330deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 1) 100%)",
     },
   },
   typography: {
-    fontFamily: ["Gochi Hand", "Roboto", "Open Sans"].join(","),
+    fontFamily: ["Gochi Hand", "Verdana", "Roboto", "Open Sans"].join(","),
     h1: {
+      //banner
       fontSize: "8rem",
       fontWeight: 700,
       textShadow: `2px 2px 1px ${useFade(blue[900], 0.5)}`,
       color: blue[50],
     },
-    //logo "tailwag"
     h2: {
+      //logo "tailwag"
       fontSize: "4.0rem",
-      fontWeight: 900,
+      fontWeight: 800,
       textShadow: `2px 2px 1px ${useFade(blue[700], 0.5)}`,
     },
-    //navbarItem
-    h3: {},
-    //logo:"dogtraining", ServiceCard/PictureCard: title,
-    h4: { fontWeight: 500 },
-    //ServiceCard: rate, PictureCard: caption
-    h5: {
-      lineHeight: 2,
-      fontWeight: 500,
+    h3: {
+      //navbarItem, page section titles "Dedicated Expertise"
+      fontWeight: 600,
+      letterSpacing: "4px",
     },
-    //section mission statements,
+    h4: {
+      //logo:"dogtraining", ServiceCard/PictureCard: title, emphasisBlack
+      fontWeight: 600,
+    },
+    h5: {
+      //ServiceCard: rate, PictureCard: caption, section mission statements
+      lineHeight: 1.5,
+      wordSpacing: "4px",
+    },
     h6: {},
-    //ServiceCard: descrip
-    subtitle1: { fontFamily: "Open Sans", fontWeight: 600 },
+    body1: {
+      //accoladesCard
+      letterSpacing: "1px",
+    },
+    subtitle1: {
+      //ServiceCard: descrip
+      fontFamily: "Open Sans",
+      fontWeight: 600,
+    },
     wordEmphasisBlue: {
       fontFamily: "Gochi Hand",
       display: "inline",
@@ -52,6 +72,28 @@ let theme = createMuiTheme({
     wordEmphasisBlack: {
       fontFamily: "Gochi Hand",
       display: "inline",
+    },
+  },
+  mixins: {
+    formats: {
+      centeredFlex: {
+        justifyContent: "center",
+        alignItems: "center",
+        alignContent: "center",
+        flexDirection: "column",
+      },
+      absoluteFull: {
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+      },
+      relative100: {
+        position: "relative",
+        height: "100%",
+        width: "100%",
+      },
     },
   },
   overrides: {

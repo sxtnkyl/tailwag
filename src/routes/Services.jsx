@@ -16,12 +16,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "90%",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    paddingLeft: theme.spacing(24),
-    paddingRight: theme.spacing(24),
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-    fontFamily: "Open Sans",
-    height: "30vh",
+    margin: theme.spacing(24),
+    minHeight: "30vh",
   },
   serviceLine: {
     paddingLeft: theme.spacing(8),
@@ -34,7 +30,7 @@ const Services = () => {
 
   const statementText = (
     <section className={classes.statementText}>
-      <c.Typography variant="h6">
+      <c.Typography variant="h5">
         Here at{" "}
         <c.Typography
           component={"div"}

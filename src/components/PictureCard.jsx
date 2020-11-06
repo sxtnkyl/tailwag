@@ -10,10 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: "80vh",
     background:
       "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 100%)",
-    filter: `drop-shadow(2px 2px 4px ${useFade(
-      theme.palette.primary.dark,
-      0.8
-    )})`,
+    filter: theme.palette.shadows.raisedFilterShadow,
     borderBottomLeftRadius: theme.spacing(16),
     borderTopRightRadius: theme.spacing(16),
     borderRadius: theme.spacing(2),

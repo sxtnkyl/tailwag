@@ -4,6 +4,8 @@ import React from "react";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
 import { makeStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
+
 import PictureCard from "../components/PictureCard";
 import AccoladeCard from "../components/AccoladeCard";
 import Izzy from "../images/izzy.jpg";
@@ -17,11 +19,9 @@ const useStyles = makeStyles((theme) => ({
   approachContainer: {
     minHeight: "100vh",
     backgroundImage: `url(${icons.ApproachAbout})`,
-    backgroundPosition: "",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    paddingLeft: theme.spacing(8),
-    paddingRight: theme.spacing(8),
+    padding: `${theme.spacing(24)}px ${theme.spacing(12)}px`,
   },
   accoladesContainer: {
     minHeight: "100vh",
@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "right",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    paddingLeft: theme.spacing(8),
-    paddingRight: theme.spacing(8),
+    padding: `${theme.spacing(24)}px ${theme.spacing(12)}px`,
+    marginBottom: "20vh",
   },
   accoladesText: {
     paddingTop: "5%",
@@ -43,6 +43,12 @@ const accolades = [
     text:
       "1st place- United Schutzhund Clubs of America’s SE Regional Conformation Championship, G1 rating- Working Dog Association’s SE Regional Conformation Championship",
     link: "https://www.atlantamagazine.com/",
+  },
+  {
+    title: "2018-2019 Canine behaviorist expert speaker",
+    text:
+      "expert insight on children and dog safety, responsible dog ownership, and service dogs for the disabled",
+    link: "",
   },
   {
     title: "1999-2001 President of the Greater Atlanta Schutzhund Association",
@@ -75,12 +81,6 @@ const accolades = [
     link: "https://www.servicedogcertifications.org/ada-service-dog-laws/",
   },
   {
-    title: "2018-2019 Canine behaviorist expert speaker",
-    text:
-      "expert insight on children and dog safety, responsible dog ownership, and service dogs for the disabled",
-    link: "",
-  },
-  {
     title: "2009 Voted “Best Dog Trainer in Atlanta” by Atlanta Magazine",
     text: "an Atlanta staple for in-depth service journalism",
     link: "https://www.atlantamagazine.com/",
@@ -92,9 +92,15 @@ const About = () => {
   return (
     <div className={classes.section} id="About">
       <c.Grid container className={classes.approachContainer}>
-        <c.Grid item xs container justify="center" alignItems="center">
-          <c.Typography variant="h6" style={{ fontFamily: "Open Sans" }}>
-            "
+        <c.Grid
+          item
+          xs
+          container
+          style={{
+            paddingRight: theme.spacing(6),
+            ...theme.mixins.formats.centeredFlex,
+          }}>
+          <c.Typography variant="h5">
             <c.Typography
               component={"div"}
               variant="h4"
@@ -116,15 +122,18 @@ const About = () => {
             ability to work with difficult to read dogs, and have a successful
             rehabilitation rate with rescues from a shaded past. In order to
             help pet owners in their quest for a happy, well trained dog,
-            experience is invaluable and I have plenty of it-{" "}
+            experience is invaluable and I have plenty of it...
+          </c.Typography>
+          <Link
+            to={`/contact`}
+            style={{ color: "black", padding: theme.spacing(4) }}>
             <c.Typography
               component={"div"}
               variant="h4"
               style={theme.typography.wordEmphasisBlack}>
-              so let's get started!
+              ...so let's get started!
             </c.Typography>
-            "
-          </c.Typography>
+          </Link>
         </c.Grid>
         <PictureCard
           pic={Izzy}
@@ -138,13 +147,21 @@ const About = () => {
           title="Rocco- the German Shepherd"
           caption="(award winning goodboy)"
         />
-        <c.Grid container item xs direction="column" justify="center">
+        <c.Grid
+          container
+          item
+          xs
+          style={{
+            ...theme.mixins.formats.centeredFlex,
+            paddingLeft: theme.spacing(6),
+          }}>
+          <c.Typography variant="h3">Dedicated Expertise-</c.Typography>
           <c.Typography
             variant="h3"
             style={{ paddingBottom: theme.spacing(2) }}>
-            Dedicated Expertise- Proven Results.
+            Proven Results.
           </c.Typography>
-          <c.Typography variant="h6" style={{ fontFamily: "Open Sans" }}>
+          <c.Typography variant="h5" style={{ textAlign: "center" }}>
             From winning medals to community involvement, Tails Wag is dedicated
             in strengthening the bond with our four-legged friends. Here are
             some my notable accomplishments.

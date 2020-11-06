@@ -1,8 +1,9 @@
 //map locator > connection statement > contact form
 // https://www.youtube.com/watch?v=-mFXqOaqgZk&ab_channel=BillLuo
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { motion } from "framer-motion";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
@@ -17,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${icons.ContactForm})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+    padding: `${theme.spacing(24)}px ${theme.spacing(12)}px`,
   },
-  container: {},
   card: {
     height: "80vh",
     background:
@@ -59,15 +60,50 @@ const defaultValues = {
 
 const Contact = () => {
   const classes = useStyles();
+  const MotionSubmit = motion.custom(c.Button);
+
   const { handleSubmit, control } = useForm({ defaultValues });
+  const [submitted, setSubmitted] = useState(true);
+  const [sending, setSending] = useState(false);
+  useEffect(() => {
+    //signals successful submit for 30 seconds
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 10000);
+  }, [submitted]);
+
+  const submitActions = async (e, data) => {
+    let url = "some aws sms endpoint";
+    const formData = data;
+    setSending(true);
+    e.preventDefault();
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Origin: "some future domain",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setSending(false);
+        setSubmitted(true);
+      })
+      .catch((error) => {
+        console.error("frontend Error:", error);
+      });
+  };
 
   const form = (
     <form
-      onSubmit={handleSubmit((data) => console.log(data))}
+      onSubmit={handleSubmit((data) => submitActions(data))}
       className={classes.form}>
       <c.Card className={classes.card}>
         <div className={classes.formSection}>
-          <c.CardContent id="formGroup">
+          <c.CardContent id="formGroup-Client">
             <c.Typography
               variant="h4"
               style={{ paddingBottom: theme.spacing(2) }}>
@@ -132,7 +168,7 @@ const Contact = () => {
             </c.Grid>
           </c.CardContent>
 
-          <c.CardContent id="formGroup">
+          <c.CardContent id="formGroup-Doggy">
             <c.Typography
               variant="h4"
               style={{ paddingBottom: theme.spacing(2) }}>
@@ -253,7 +289,7 @@ const Contact = () => {
             </c.Grid>
           </c.CardContent>
 
-          <c.CardContent id="formGroup">
+          <c.CardContent id="formGroup-Additional">
             <c.Typography
               variant="h4"
               style={{ paddingBottom: theme.spacing(2) }}>
@@ -277,14 +313,20 @@ const Contact = () => {
             </c.Grid>
           </c.CardContent>
           <c.CardContent id="submitButton">
-            <c.Button
+            <MotionSubmit
+              whileHover={{ fontWeight: 700 }}
               type="submit"
               variant="outlined"
-              style={{ alignSelf: "flex-end", height: "50px", width: "100px" }}
+              disabled={sending}
+              style={{
+                alignSelf: "flex-end",
+                height: "50px",
+                width: "100px",
+              }}
               endIcon={<Pawpaw />}
               color="primary">
               SUBMIT
-            </c.Button>
+            </MotionSubmit>
           </c.CardContent>
         </div>
       </c.Card>
@@ -294,19 +336,19 @@ const Contact = () => {
   return (
     <div className={classes.section}>
       <c.Grid container className={classes.container}>
-        <c.Grid container item xs justify="center">
+        <c.Grid id="form-container" container item xs justify="center">
           {form}
         </c.Grid>
         <c.Grid
-          id="findMe"
+          id="text-container"
           item
           xs
           container
-          justify="center"
-          alignContent="center"
-          alignItems="center"
-          direction="column"
-          style={{ paddingRight: theme.spacing(4) }}>
+          style={{
+            paddingRight: theme.spacing(6),
+            ...theme.mixins.formats.centeredFlex,
+            textAlign: "center",
+          }}>
           <c.Grid
             item
             style={{
@@ -314,7 +356,7 @@ const Contact = () => {
               paddingRight: theme.spacing(16),
               paddingBottom: theme.spacing(8),
             }}>
-            <c.Typography variant="h6" style={{ fontFamily: "Open Sans" }}>
+            <c.Typography variant="h5">
               I find simple phone calls are the best path to productive
               connections with future clients, where we can discuss your dog and
               get to know each other a bit more. Feel free to call at your
@@ -331,14 +373,14 @@ const Contact = () => {
             <c.Grid item>
               <c.Typography
                 component={"div"}
-                variant="h4"
+                variant="h3"
                 style={theme.typography.wordEmphasisBlue}>
                 Give us a call!
               </c.Typography>
             </c.Grid>
             <c.Grid item>
               <c.Typography
-                variant="h4"
+                variant="h3"
                 style={theme.typography.wordEmphasisBlack}>
                 (404) 272-0985
               </c.Typography>

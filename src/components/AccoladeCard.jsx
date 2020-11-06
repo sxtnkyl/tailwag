@@ -2,22 +2,19 @@ import React from "react";
 import * as c from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import theme from "../theme/theme";
-import useFade from "../utility/hooks/useFade";
 import icons from "../utility/icons/icons";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    filter: `drop-shadow(2px 2px 4px ${useFade(
-      theme.palette.primary.dark,
-      0.8
-    )})`,
+    filter: theme.palette.shadows.loweredFilterShadow,
     padding: theme.spacing(2),
     borderTopRightRadius: theme.spacing(6),
     borderBottomLeftRadius: theme.spacing(4),
     display: "flex",
     flexDirection: "column",
     overflow: "visible",
-    minHeight: "80px"
+    minHeight: "80px",
   },
   infoIcon: {
     position: "absolute",
@@ -26,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
     height: "44px",
     width: "44px",
     borderRadius: "50%",
-    background:
-      "linear-gradient(330deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 1) 100%)",
+    background: theme.palette.shadows.iconGradient,
     padding: "0px",
   },
 }));
@@ -37,9 +33,16 @@ const AccoladeCard = (props) => {
   const classes = useStyles();
   const { title, text, link } = props.accolade;
 
+  const MotionCard = motion.custom(c.Card);
+
   return (
     <c.Grid item xs={5}>
-      <c.Card className={classes.card}>
+      <MotionCard
+        className={classes.card}
+        whileHover={{
+          y: -10,
+          filter: theme.palette.shadows.raisedFilterShadow,
+        }}>
         <c.Typography variant="body1" style={theme.typography.wordEmphasisBlue}>
           {title}
         </c.Typography>
@@ -50,11 +53,10 @@ const AccoladeCard = (props) => {
           className={classes.infoIcon}
           href={link}
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           {icons.checkCircle}
         </c.IconButton>
-      </c.Card>
+      </MotionCard>
     </c.Grid>
   );
 };

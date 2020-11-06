@@ -103,12 +103,13 @@ export const ListCard = memo(
     };
 
     const Title = () => {
+      const inverted = useInvertedScale();
       return (
         <MotionTitle
           className={classes.title}
           layoutId={`title-container-${id}`}
-          style={{ paddingLeft: 0 }}>
-          {dogName} and {ownerName}
+          animate={{ x: 0 }}>
+          ~ {dogName} and {ownerName}
         </MotionTitle>
       );
     };

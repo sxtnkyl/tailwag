@@ -22,8 +22,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.light,
     zIndex: 2,
     background:
-      "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 80%)",
+      "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 50%)",
     boxShadow: `2px 2px 4px ${useFade(theme.palette.primary.dark, 0.8)}`,
+    display: "flex",
+    flexDirection: "column",
   },
   backdrop: {
     zIndex: 1,
@@ -59,7 +61,16 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
-  title: { margin: theme.spacing(2) },
+  title: {
+    margin: theme.spacing(2),
+  },
+  contentContainer: {
+    maxHeight: "50%",
+    padding: "32px 64px",
+    maxWidth: "700px",
+    overflow: "auto",
+    margin: "auto",
+  },
 }));
 
 export const OpenCard = memo(
@@ -75,7 +86,7 @@ export const OpenCard = memo(
     } = storiesData.find((item) => item.id === paramsId);
 
     const MotionCard = motion.custom(Card);
-    const MotionTitle = motion.custom(c.Typography);
+    const MotionTypography = motion.custom(c.Typography);
 
     const history = useHistory();
     const dismissDistance = 150;
@@ -102,32 +113,28 @@ export const OpenCard = memo(
           className={classes.cardImageContainer}
           layoutId={`image-container-${id}`}
           transformTemplate={scaleTranslate}
-          animate={{ height: "50%" }}
+          animate={{ height: "40%" }}
           style={{ ...inverted }}>
           <motion.img
             className={classes.image}
             layoutId={`image-${id}`}
             src={germanShep}
             alt=""
-            // initial={false}
-            // animate={
-            //   isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
-            // }
-            // transition={closeSpring}
+            // slight zoom on image?
           />
         </motion.div>
       );
     };
 
+    //add drag props
     const Title = () => {
-      const inverted = useInvertedScale();
       return (
-        <MotionTitle
+        <MotionTypography
           className={classes.title}
           layoutId={`title-container-${id}`}
-          style={{ paddingLeft: 40, ...inverted }}>
-          {dogName} and {ownerName}
-        </MotionTitle>
+          animate={{ x: 64 }}>
+          ~ {dogName} and {ownerName}
+        </MotionTypography>
       );
     };
 
@@ -144,13 +151,24 @@ export const OpenCard = memo(
           className={classes.openCardContent}
           layoutId={`card-container-${id}`}
           style={{ ...inverted, y }}
-          animate={{ opacity: 1 }}
           drag={"y"}
           dragConstraints={constraints}
           onDrag={checkSwipeToDismiss}>
           <Image />
+          <MotionTypography
+            variant="subtitle1"
+            className={classes.contentContainer}
+            animate>
+            " {testimonial} "
+          </MotionTypography>
+          <c.Divider
+            variant="middle"
+            style={{
+              marginLeft: "64px",
+              marginRight: "64px",
+            }}
+          />
           <Title />
-          {/* <ContentPlaceholder /> */}
         </MotionCard>
         <Link to="/stories" className={classes.backdropLink} />
       </motion.div>

@@ -16,7 +16,6 @@ import Banner from "./components/Banner";
 import PageTitle from "./components/PageTitle";
 import ContactFooter from "./components/ContactFooter";
 
-import Home from "./routes/Home";
 import Services from "./routes/Services";
 import About from "./routes/About";
 import Stories from "./routes/Stories";
@@ -41,6 +40,10 @@ function App() {
             <Services />
           </RouteTransition>
           <Route path="/stories" component={Stories} />
+          {/* <RouteTransition path="/stories" slide={30}>
+            <Stories /> 
+            ////compatability issue with card drag, listCard gets left under OpenCard
+          </RouteTransition> */}
           <RouteTransition path="/contact" slide={30}>
             <Contact />
           </RouteTransition>

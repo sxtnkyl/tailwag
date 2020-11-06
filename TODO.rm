@@ -1,13 +1,17 @@
 navbar > add resize bounding rect listener
 
-theme.palette.text.primary
+motion on banner/pageTitle
 
 org association for about accolade 2018-2019
 
-React does not recognize the `whileTap` -line69 navbaritem
+navbaritem motion
 
 revert React.StrictMode in index.js before prod
 
-link "lets get started to contact page
+motion on "lets get started"
 
-consistent side padding
+update stories data with images/names
+
+nav click resets scroll to top
+
+add y drag to openCard name
