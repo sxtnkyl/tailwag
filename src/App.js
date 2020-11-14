@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import * as c from "@material-ui/core";
 import theme from "./theme/theme";
@@ -22,16 +22,14 @@ import Stories from "./routes/Stories";
 import Contact from "./routes/Contact";
 
 function App() {
-  //pass in route
-  // const image = useBannerImage();
   const location = useLocation();
 
   return (
     <c.ThemeProvider theme={theme}>
       <c.Container maxWidth="xl" disableGutters>
-        <Banner location={location} />
+        {/* <Banner location={location} />
         <Navbar />
-        <PageTitle location={location} />
+        <PageTitle location={location} /> */}
         <AnimatedRoutes exitBeforeEnter>
           <RouteTransition exact path="/" slide={30}>
             <About />
@@ -39,11 +37,9 @@ function App() {
           <RouteTransition path="/services" slide={30}>
             <Services />
           </RouteTransition>
-          <Route path="/stories" component={Stories} />
-          {/* <RouteTransition path="/stories" slide={30}>
-            <Stories /> 
-            ////compatability issue with card drag, listCard gets left under OpenCard
-          </RouteTransition> */}
+          <RouteTransition path="/stories" slide={30}>
+            <Stories />
+          </RouteTransition>
           <RouteTransition path="/contact" slide={30}>
             <Contact />
           </RouteTransition>

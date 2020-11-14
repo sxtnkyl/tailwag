@@ -2,6 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import TestPic from "../images/ollieSnoot.jpg";
 import useBannerImage from "../utility/hooks/useBannerImage";
+import theme from "../theme/theme";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottomLeftRadius: "50% 20%",
     borderBottomRightRadius: "50% 20%",
     boxShadow: theme.palette.shadows.bottomShadow,
+    backgroundColor: theme.palette.primary.light,
   },
 }));
 
@@ -27,9 +31,24 @@ const Banner = ({ location }) => {
 
   const image = useBannerImage(currentRoute);
 
+  const SnootBanner = ({ image }) => (
+    <AnimatePresence>
+      <motion.img
+        className={classes.image}
+        src={image.src}
+        alt={image.description}
+        initial={{ opacity: 0.5 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0.5 }}
+      />
+    </AnimatePresence>
+  );
+
   return (
-    <div className={classes.container}>
-      <img className={classes.image} src={image.src} alt={image.description} />
+    <div
+      className={classes.container}
+      style={{ ...theme.mixins.formats.centeredFlex }}>
+      <SnootBanner image={image} />
       <div className={classes.banner} />
     </div>
   );

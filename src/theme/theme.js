@@ -3,8 +3,8 @@ import { blue, red } from "@material-ui/core/colors";
 import useFade from "../utility/hooks/useFade";
 
 //page topPadding (under PageTitle) > 10vh
-//default margin for lg screens > theme.spacing(24)
-//text/PictureCard > text gets padding theme.spacing(6) in between
+//default margin for lg screens > theme.spacing(12)
+//text/PictureCard > text gets padding theme.spacing(6) in between, (8) below
 
 let theme = createMuiTheme({
   palette: {
@@ -22,6 +22,7 @@ let theme = createMuiTheme({
       bottomShadow: `0px 2px 4px 4px ${useFade(blue[700], 0.5)}`,
       iconGradient:
         "linear-gradient(330deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 1) 100%)",
+      pawShadow: `drop-shadow(2px 2px 4px ${useFade(blue[800], 0.8)})`,
     },
   },
   typography: {
@@ -81,6 +82,12 @@ let theme = createMuiTheme({
         alignItems: "center",
         alignContent: "center",
         flexDirection: "column",
+      },
+      spaceAroundFlexRow: {
+        justifyContent: "space-around",
+        alignItems: "space-around",
+        alignContent: "center",
+        flexDirection: "row",
       },
       absoluteFull: {
         position: "absolute",

@@ -6,13 +6,16 @@ import theme from "../theme/theme";
 import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+import StaggerContainer from "../utility/hooks/useStaggerChildren";
+import FadeIn from "../utility/hooks/useFadeIn";
+import JumpInText from "../components/JumpInText";
 import PictureCard from "../components/PictureCard";
 import AccoladeCard from "../components/AccoladeCard";
 import Izzy from "../images/izzy.jpg";
 import Rocco from "../images/RoccoAward.jpg";
 
 const useStyles = makeStyles((theme) => ({
-  section: {
+  page: {
     minHeight: "100vh",
     paddingTop: "10vh",
   },
@@ -21,19 +24,49 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${icons.ApproachAbout})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    padding: `${theme.spacing(24)}px ${theme.spacing(12)}px`,
+    padding: theme.spacing(12),
+    [theme.breakpoints.down("md")]: {
+      padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+      textAlign: "center",
+    },
+    "& #historyText": {
+      paddingRight: theme.spacing(6),
+      ...theme.mixins.formats.centeredFlex,
+      [theme.breakpoints.down("md")]: {
+        padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+      },
+    },
   },
-  accoladesContainer: {
+  expertiseContainer: {
     minHeight: "100vh",
     backgroundImage: `url(${icons.AccoladesAbout})`,
     backgroundPosition: "right",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    padding: `${theme.spacing(24)}px ${theme.spacing(12)}px`,
-    marginBottom: "20vh",
+    padding: theme.spacing(12),
+    [theme.breakpoints.down("md")]: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+    },
+    "& #expertiseText": {
+      paddingLeft: theme.spacing(6),
+      ...theme.mixins.formats.centeredFlex,
+      [theme.breakpoints.down("md")]: {
+        padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+      },
+    },
   },
-  accoladesText: {
-    paddingTop: "5%",
+  accoladesContainer: {
+    minHeight: "100vh",
+    backgroundImage: `url(${icons.ApproachAbout})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    padding: theme.spacing(12),
+    marginBottom: "20vh",
+    [theme.breakpoints.down("md")]: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+    },
   },
 }));
 
@@ -90,94 +123,88 @@ const accolades = [
 const About = () => {
   const classes = useStyles();
   return (
-    <div className={classes.section} id="About">
-      <c.Grid container className={classes.approachContainer}>
-        <c.Grid
-          item
-          xs
-          container
-          style={{
-            paddingRight: theme.spacing(6),
-            ...theme.mixins.formats.centeredFlex,
-          }}>
-          <c.Typography variant="h5">
-            <c.Typography
-              component={"div"}
-              variant="h4"
-              style={theme.typography.wordEmphasisBlue}>
-              Tails Wag Dog Training, Inc.
-            </c.Typography>{" "}
-            has been family owned and operated since 1998, serving hundreds of
-            satisfied clients. With experience training over 120 different
-            breeds of dogs, I have the tools and experience to work with a
-            variety of temperments and breed specific traits. I firmly believe
-            that with the proper patience and understanding,{" "}
-            <c.Typography
-              component={"div"}
-              variant="h4"
-              style={theme.typography.wordEmphasisBlack}>
-              every dog
-            </c.Typography>{" "}
-            is capable of achieving a life of confidence and respect. I have the
-            ability to work with difficult to read dogs, and have a successful
-            rehabilitation rate with rescues from a shaded past. In order to
-            help pet owners in their quest for a happy, well trained dog,
-            experience is invaluable and I have plenty of it...
-          </c.Typography>
-          <Link
-            to={`/contact`}
-            style={{ color: "black", padding: theme.spacing(4) }}>
-            <c.Typography
-              component={"div"}
-              variant="h4"
-              style={theme.typography.wordEmphasisBlack}>
-              ...so let's get started!
+    <div className={classes.page} id="About">
+      <section className={classes.approachContainer}>
+        <c.Grid container>
+          <c.Grid item xs container id="historyText">
+            <c.Typography variant="h5">
+              <c.Typography
+                component={"div"}
+                variant="h4"
+                style={theme.typography.wordEmphasisBlue}>
+                Tails Wag Dog Training, Inc.
+              </c.Typography>{" "}
+              has been family owned and operated since 1998, serving hundreds of
+              satisfied clients. With experience training over 120 different
+              breeds of dogs, I have the tools and experience to work with a
+              variety of temperments and breed specific traits. I firmly believe
+              that with the proper patience and understanding,{" "}
+              <c.Typography
+                component={"div"}
+                variant="h4"
+                style={theme.typography.wordEmphasisBlack}>
+                every dog
+              </c.Typography>{" "}
+              is capable of achieving a life of confidence and respect. I have
+              the ability to work with difficult to read dogs, and have a
+              successful rehabilitation rate with rescues from a shaded past. In
+              order to help pet owners in their quest for a happy, well trained
+              dog, experience is invaluable and I have plenty of it...
             </c.Typography>
-          </Link>
+            <Link
+              to={`/contact`}
+              style={{ color: "black", padding: theme.spacing(4) }}>
+              <JumpInText
+                textString="...so let's get started!"
+                typography="h4"
+                delay={3000}
+              />
+            </Link>
+          </c.Grid>
+          <FadeIn slide={50}>
+            <PictureCard
+              pic={Izzy}
+              title="Alexandra Wright"
+              caption="Dog Whisperer"
+            />
+          </FadeIn>
         </c.Grid>
-        <PictureCard
-          pic={Izzy}
-          title="Alexandra Wright"
-          caption="Dog Whisperer"
-        />
-      </c.Grid>
-      <c.Grid container className={classes.accoladesContainer}>
-        <PictureCard
-          pic={Rocco}
-          title="Rocco- the German Shepherd"
-          caption="(award winning goodboy)"
-        />
-        <c.Grid
-          container
-          item
-          xs
-          style={{
-            ...theme.mixins.formats.centeredFlex,
-            paddingLeft: theme.spacing(6),
-          }}>
-          <c.Typography variant="h3">Dedicated Expertise-</c.Typography>
-          <c.Typography
-            variant="h3"
-            style={{ paddingBottom: theme.spacing(2) }}>
-            Proven Results.
-          </c.Typography>
-          <c.Typography variant="h5" style={{ textAlign: "center" }}>
-            From winning medals to community involvement, Tails Wag is dedicated
-            in strengthening the bond with our four-legged friends. Here are
-            some my notable accomplishments.
-          </c.Typography>
-          <c.Grid
-            container
-            justify="space-around"
-            alignContent="space-around"
-            spacing={4}
-            style={{ marginTop: theme.spacing(4) }}>
-            {accolades.map((a, index) => (
-              <AccoladeCard key={index} accolade={a} />
-            ))}
+      </section>
+      <section className={classes.expertiseContainer}>
+        <c.Grid container>
+          <FadeIn slide={-50}>
+            <PictureCard
+              pic={Rocco}
+              title="Rocco- the German Shepherd"
+              caption="(award winning goodboy)"
+            />
+          </FadeIn>
+          <c.Grid container item xs id="expertiseText">
+            <c.Typography variant="h3">Dedicated Expertise-</c.Typography>
+            <c.Typography
+              variant="h3"
+              style={{ paddingBottom: theme.spacing(4) }}>
+              Proven Results.
+            </c.Typography>
+            <c.Typography variant="h5" style={{ textAlign: "center" }}>
+              From winning medals to community involvement, Tails Wag is
+              dedicated in strengthening the bond with our four-legged friends.
+              Here are some my notable accomplishments.
+            </c.Typography>
           </c.Grid>
         </c.Grid>
-      </c.Grid>
+      </section>
+      <section className={classes.accoladesContainer}>
+        <StaggerContainer
+          delay={500}
+          triggerPoint={0.25}
+          styles={theme.mixins.formats.spaceAroundFlexRow}
+          spacing={4}>
+          {accolades.map((a, index) => (
+            <AccoladeCard key={index} accolade={a} />
+          ))}
+        </StaggerContainer>
+      </section>
     </div>
   );
 };

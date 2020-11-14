@@ -1,17 +1,67 @@
-navbar > add resize bounding rect listener
-
-motion on banner/pageTitle
-
-org association for about accolade 2018-2019
-
-navbaritem motion
-
 revert React.StrictMode in index.js before prod
-
-motion on "lets get started"
+org association for about accolade 2018-2019
 
 update stories data with images/names
 
-nav click resets scroll to top
+RESPONSIVNESS ADJUSTMENTS
+//SET ALL TO CHANGE ON MD
+//screensize observer for MD.DOWN > wrapper with Banner/Navbar/PageTitle
+//collapsed nav at top, right > tailwag logo, left > paw for hamburger open icon
 
-add y drag to openCard name
+-NAVBAR
+//blobs as bullet points to pages
+//height > 50vh
+//no logo
+
+-PAGE TITLE
+//typography to h2 size
+//height > 20vh
+
+-ABOUT
+x//section padding > 32px 8px, text-align > center
+x//remove paddingRight on text grids
+
+-PICTURE CARDS
+x//card > height > 50, remove topRightRadius, bottomLeftRadius > theme.spacing(8)
+x//content > remove paddingRight, paddingTop > 0px
+x//imageContainer > bottomLeftRadius > theme.spacing(8)
+
+-ACCOLADE CARDS
+x//xs > 10
+x//padding > theme.spacing(2)
+x//icon > right > -5px
+
+-SERVICES
+x//section padding > 32px 8px, text-align > center
+x//service line > cardsContainer > justify center/padding 32/16
+
+-SERVICE CARDS
+x//md > icon flexBasis: 0%, height/width on lg
+x//service line name > remove padding
+x//card > height > 50, remove topRightRadius, bottomLeftRadius > theme.spacing(8), paddingBottom > 8px
+x//titlePriceDescripContainer > justify-center, remove paddingRight
+x//chip margin
+
+-STORIES
+//section padding > 32px 8px, text-align > center
+
+-LIST CARDS
+//padding > 8px
+
+-OPEN CARDS
+//width > remove
+//imageContainer > bottomLeftRadius > theme.spacing(8)
+//contentContainer > padding > 32px 32px
+
+-CONTACT
+x//move text before contact form > column-reverse
+x//page > remove padding/change to 8px, marginBottom 10vh
+x//classes.formsection > padding to 8px, remove topRightRadius, bottomLeftRadius > theme.spacing(8)
+x//formSection > remove horizontal padding
+//id=form-Groupst(formSection > CardContent) > paddingLeft > 0px, flexDirection > column, 
+//remove spacing on each form section grouping
+
+-CONTACT FOOTER
+//height: 25vh
+//remove divider
+//svgContainer > remove margin

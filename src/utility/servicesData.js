@@ -17,7 +17,7 @@ const serviceData = {
   training: [
     {
       title: "Private Instruction",
-      icon: icons.PrivateInstruction,
+      icon: icons.clipboardCheck,
       rate: 95,
       interval: "hour",
       description:
@@ -34,7 +34,7 @@ const serviceData = {
     },
     {
       title: "Board and Training",
-      icon: icons.BoardingWithTraining,
+      icon: icons.penAndRuler,
       rate: 120,
       interval: "day",
       description:
@@ -53,7 +53,7 @@ const serviceData = {
   boarding: [
     {
       title: "Day Boarding",
-      icon: icons.DayBoarding,
+      icon: icons.justSun,
       rate: 60,
       interval: "day",
       description:
@@ -63,7 +63,7 @@ const serviceData = {
     },
     {
       title: "Night Boarding",
-      icon: icons.DayBoarding,
+      icon: icons.moonAndStars,
       rate: 60,
       interval: "night",
       description:
@@ -75,7 +75,7 @@ const serviceData = {
   returningClients: [
     {
       title: "Play Dates",
-      icon: icons.PlayDate,
+      icon: icons.tennisBall,
       rate: 35,
       interval: "day",
       description:
@@ -87,7 +87,7 @@ const serviceData = {
     },
     {
       title: "Play and Train",
-      icon: icons.PlayAndTrain,
+      icon: icons.groupTrain,
       rate: 75,
       interval: "day",
       description:

@@ -8,6 +8,7 @@ import { OpenCard } from "../components/stories/Card/OpenCard";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import FadeIn from "../utility/hooks/useFadeIn";
 import storiesData from "../utility/storiesData";
 import theme from "../theme/theme";
 import icons from "../utility/icons/icons";
@@ -25,12 +26,16 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(24),
     marginBottom: 0,
     minHeight: "30vh",
+    [theme.breakpoints.down("md")]: {
+      margin: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+      textAlign: "center",
+    },
   },
   listContainer: {
     display: "flex",
     flexWrap: "wrap",
     alignContent: "flex-start",
-    padding: `${theme.spacing(24)}px ${theme.spacing(12)}px`,
+    padding: theme.spacing(12),
     marginBottom: "20vh",
   },
 }));
@@ -40,25 +45,27 @@ const Stories = ({ match, location, history }) => {
 
   const statementText = (
     <section className={classes.statementText}>
-      <c.Typography variant="h5">
-        <c.Typography
-          component={"div"}
-          variant="h4"
-          style={theme.typography.wordEmphasisBlue}>
-          Tails Wag Dog Training{" "}
+      <FadeIn slide={50}>
+        <c.Typography variant="h5">
+          <c.Typography
+            component={"div"}
+            variant="h4"
+            style={theme.typography.wordEmphasisBlue}>
+            Tails Wag Dog Training{" "}
+          </c.Typography>
+          has served hundreds of happy clients over the years and takes great
+          pride in creating{" "}
+          <c.Typography
+            component={"div"}
+            variant="h4"
+            style={theme.typography.wordEmphasisBlack}>
+            positive, long term relationships.
+          </c.Typography>{" "}
+          By spending more time with you and your canine partner, we develop a
+          greater understanding for how to remedy underlying issues. Here's what
+          some of our satisfied customers have to say!
         </c.Typography>
-        has served hundreds of happy clients over the years and takes great
-        pride in creating these{" "}
-        <c.Typography
-          component={"div"}
-          variant="h4"
-          style={theme.typography.wordEmphasisBlack}>
-          positive, long term relationships.
-        </c.Typography>{" "}
-        By spending more time with you and your canine partner, we develop a
-        greater understanding for how to remedy underlying issues. Here's what
-        some of our satisfied customers have to say!
-      </c.Typography>
+      </FadeIn>
     </section>
   );
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { makeStyles, AppBar, Grid } from "@material-ui/core";
 import useFade from "../utility/hooks/useFade";
@@ -8,7 +8,7 @@ import NavbarItem from "./NavbarItem";
 import Logo from "./Logo";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   atTop: {

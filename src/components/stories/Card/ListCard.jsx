@@ -12,19 +12,19 @@ const useStyles = makeStyles((theme) => ({
   card: {
     position: "relative",
     height: theme.spacing(50),
-    padding: "20px",
-    flex: "0 0 40%",
-    maxWidth: "40%",
-    // "&:nth-child((NUMofCARDS)n + (cardPosition))
-    //30 30 40, 40 20 40, 40 30 30
-    "&:nth-child(9n + 1), &:nth-child(9n + 2), &:nth-child(9n + 8), &:nth-child(9n + 9)": {
-      flex: "0 0 30%",
-      maxWidth: "30%",
-    },
-    "&:nth-child(9n + 5)": {
-      flex: "0 0 20%",
-      maxWidth: "20%",
-    },
+    // padding: "20px",
+    // flex: "0 0 40%",
+    // maxWidth: "40%",
+    // // "&:nth-child((NUMofCARDS)n + (cardPosition))
+    // //30 30 40, 40 20 40, 40 30 30
+    // "&:nth-child(9n + 1), &:nth-child(9n + 2), &:nth-child(9n + 8), &:nth-child(9n + 9)": {
+    //   flex: "0 0 30%",
+    //   maxWidth: "30%",
+    // },
+    // "&:nth-child(9n + 5)": {
+    //   flex: "0 0 20%",
+    //   maxWidth: "20%",
+    // },
   },
   cardContent: {
     width: "100%",
@@ -70,7 +70,6 @@ export const ListCard = memo(
     history,
   }) => {
     const classes = useStyles();
-    const y = useMotionValue(0);
 
     const MotionCard = motion.custom(Card);
     const MotionTitle = motion.custom(c.Typography);
@@ -92,23 +91,18 @@ export const ListCard = memo(
             layoutId={`image-${id}`}
             src={germanShep}
             alt=""
-            // initial={false}
-            // animate={
-            //   isSelected ? { x: -20, y: -20 } : { x: -pointOfInterest, y: 0 }
-            // }
-            // transition={closeSpring}
           />
         </motion.div>
       );
     };
 
     const Title = () => {
-      const inverted = useInvertedScale();
       return (
         <MotionTitle
           className={classes.title}
-          layoutId={`title-container-${id}`}
-          animate={{ x: 0 }}>
+          key="title"
+          // layoutId={`title-container-${id}`}
+          animate="true">
           ~ {dogName} and {ownerName}
         </MotionTitle>
       );
@@ -116,13 +110,13 @@ export const ListCard = memo(
 
     return (
       <div className={classes.card}>
-        <MotionCard
+        <motion.div
           className={classes.cardContent}
           layoutId={`card-container-${id}`}
-          animate={{ y: 0, opacity: 1 }}>
+          animate={{ y: 0, opacity: isSelected ? 0 : 1 }}>
           <Image />
           <Title />
-        </MotionCard>
+        </motion.div>
         {!isSelected && (
           <Link to={`/stories/${id}`} className={classes.cardOpenLink} />
         )}

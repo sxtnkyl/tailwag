@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import { ReactComponent as Paw } from "../utility/icons/svgs/pawpaw.svg";
 import WaveTopper from "../components/WaveTopper";
-import useFade from "../utility/hooks/useFade";
+import { motion, AnimatePresence } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,17 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
   pawLeft: {
     transform: "scale(0.5) rotate(-30deg)",
-    filter: `drop-shadow(2px 2px 4px ${useFade(
-      theme.palette.primary.dark,
-      0.8
-    )})`,
+    filter: theme.palette.shadows.pawShadow,
   },
   pawRight: {
     transform: "scale(0.5) rotate(30deg)",
-    filter: `drop-shadow(2px 2px 4px ${useFade(
-      theme.palette.primary.dark,
-      0.8
-    )})`,
+    filter: theme.palette.shadows.pawShadow,
   },
 }));
 
@@ -46,20 +40,26 @@ const PageTitle = ({ location }) => {
     ? "STORIES"
     : location.pathname.substring(1, location.pathname.length).toUpperCase();
 
-  const title = (
-    <div className={classes.title}>
-      <c.Button disabled startIcon={<Paw />} className={classes.pawLeft} />
-      <c.Typography variant="h1">
-        {currentPageTitle.length > 0 ? currentPageTitle : "WELCOME"}
-      </c.Typography>
-      <c.Button disabled startIcon={<Paw />} className={classes.pawRight} />
-    </div>
+  const titleText = currentPageTitle.length > 0 ? currentPageTitle : "WELCOME";
+
+  const TitleSlide = ({ titleText }) => (
+    <AnimatePresence>
+      <motion.div
+        className={classes.title}
+        initial={{ opacity: 0, x: 200 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}>
+        <c.Button disabled startIcon={<Paw />} className={classes.pawLeft} />
+        <c.Typography variant="h1">{titleText}</c.Typography>
+        <c.Button disabled startIcon={<Paw />} className={classes.pawRight} />
+      </motion.div>
+    </AnimatePresence>
   );
 
   return (
     <div className={classes.container}>
       <WaveTopper layers={1} inverted={false} />
-      {title}
+      <TitleSlide titleText={titleText} />
       <WaveTopper position="absolute" layers={1} />
     </div>
   );

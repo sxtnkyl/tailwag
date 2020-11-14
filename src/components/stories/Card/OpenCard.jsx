@@ -3,7 +3,7 @@ import { motion, useMotionValue, useInvertedScale } from "framer-motion";
 import { Link, useHistory } from "react-router-dom";
 
 import * as c from "@material-ui/core";
-import { makeStyles, Card } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 import { useScrollConstraints } from "../utils/useScrollConstraints";
 import { useWheelScroll } from "../utils/useWheelScroll";
@@ -70,6 +70,19 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "700px",
     overflow: "auto",
     margin: "auto",
+    marginRight: theme.spacing(1),
+    "&::-webkit-scrollbar": {
+      width: theme.spacing(1),
+      opacity: "0.5",
+    },
+    "&::-webkit-scrollbar-track": {
+      width: theme.spacing(2),
+      backgroundColor: theme.palette.primary.main,
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.palette.primary.dark,
+      borderRadius: theme.shape.borderRadius,
+    },
   },
 }));
 
@@ -85,7 +98,7 @@ export const OpenCard = memo(
       testimonial,
     } = storiesData.find((item) => item.id === paramsId);
 
-    const MotionCard = motion.custom(Card);
+    const MotionCard = motion.custom(c.Card);
     const MotionTypography = motion.custom(c.Typography);
 
     const history = useHistory();
@@ -120,19 +133,17 @@ export const OpenCard = memo(
             layoutId={`image-${id}`}
             src={germanShep}
             alt=""
-            // slight zoom on image?
           />
         </motion.div>
       );
     };
 
-    //add drag props
     const Title = () => {
       return (
         <MotionTypography
           className={classes.title}
-          layoutId={`title-container-${id}`}
-          animate={{ x: 64 }}>
+          key="title"
+          animate={{ x: 64, y }}>
           ~ {dogName} and {ownerName}
         </MotionTypography>
       );
@@ -142,7 +153,7 @@ export const OpenCard = memo(
       <motion.div
         ref={containerRef}
         className={classes.backdrop}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         style={{ pointerEvents: "auto" }}>
@@ -158,7 +169,7 @@ export const OpenCard = memo(
           <MotionTypography
             variant="subtitle1"
             className={classes.contentContainer}
-            animate>
+            animate="true">
             " {testimonial} "
           </MotionTypography>
           <c.Divider

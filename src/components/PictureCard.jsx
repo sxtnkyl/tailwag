@@ -14,17 +14,29 @@ const useStyles = makeStyles((theme) => ({
     borderBottomLeftRadius: theme.spacing(16),
     borderTopRightRadius: theme.spacing(16),
     borderRadius: theme.spacing(2),
+    [theme.breakpoints.down("md")]: {
+      height: "50%",
+      borderBottomLeftRadius: theme.spacing(8),
+      borderTopRightRadius: theme.spacing(2),
+    },
   },
   media: {
     height: "75%",
     margin: theme.spacing(2),
     borderRadius: theme.spacing(2),
     borderBottomLeftRadius: theme.spacing(16),
+    [theme.breakpoints.down("md")]: {
+      borderBottomLeftRadius: theme.spacing(8),
+    },
   },
   content: {
     height: "auto",
     alignItems: "flex-end",
     paddingRight: theme.spacing(4),
+    [theme.breakpoints.down("md")]: {
+      paddingRight: theme.spacing(2),
+      paddingTop: theme.spacing(0),
+    },
   },
 }));
 
