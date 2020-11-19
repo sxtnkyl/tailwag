@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
   page: {
     minHeight: "100vh",
     paddingTop: "10vh",
+    "& .MuiGrid-container": {
+      [theme.breakpoints.down("md")]: {
+        justifyContent: "center",
+        textAlign: "center",
+      },
+    },
   },
   approachContainer: {
     minHeight: "100vh",
@@ -27,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(12),
     [theme.breakpoints.down("md")]: {
       padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
-      textAlign: "center",
     },
     "& #historyText": {
       paddingRight: theme.spacing(6),
@@ -46,10 +51,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(12),
     [theme.breakpoints.down("md")]: {
       padding: theme.spacing(2),
-      textAlign: "center",
+      "& .MuiGrid-container": { flexDirection: "column-reverse" },
     },
     "& #expertiseText": {
       paddingLeft: theme.spacing(6),
+      textAlign: "center",
       ...theme.mixins.formats.centeredFlex,
       [theme.breakpoints.down("md")]: {
         padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
@@ -65,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "20vh",
     [theme.breakpoints.down("md")]: {
       padding: theme.spacing(2),
-      textAlign: "center",
     },
   },
 }));

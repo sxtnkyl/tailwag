@@ -14,28 +14,14 @@ import useFade from "../../../utility/hooks/useFade";
 import germanShep from "../../../images/croppedGerman.jpg";
 
 const useStyles = makeStyles((theme) => ({
-  openCardContent: {
-    marginTop: "12vh",
-    height: "80vh",
-    width: "50%",
-    maxWidth: "700px",
-    backgroundColor: theme.palette.primary.light,
-    zIndex: 2,
-    background:
-      "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 50%)",
-    boxShadow: `2px 2px 4px ${useFade(theme.palette.primary.dark, 0.8)}`,
-    display: "flex",
-    flexDirection: "column",
-  },
   backdrop: {
     zIndex: 1,
     position: "fixed",
     top: 0,
+    left: 0,
     bottom: 0,
     background: "rgba(0, 0, 0, 0.3)",
     width: "100%",
-    left: "50%",
-    transform: "translateX(-50%)",
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
@@ -45,16 +31,34 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     bottom: 0,
     right: 0,
+    left: 0,
     zIndex: 1,
     width: "100%",
-    left: "50%",
-    transform: "translateX(-50%)",
+  },
+  openCardContent: {
+    marginTop: "12vh",
+    height: "80vh",
+    width: "50vw",
+    maxWidth: "700px",
+    backgroundColor: theme.palette.primary.light,
+    zIndex: 2,
+    background:
+      "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 50%)",
+    boxShadow: `2px 2px 4px ${useFade(theme.palette.primary.dark, 0.8)}`,
+    display: "flex",
+    flexDirection: "column",
+    [theme.breakpoints.down("md")]: {
+      width: "90vw",
+    },
   },
   cardImageContainer: {
     margin: theme.spacing(2),
     borderRadius: theme.spacing(2),
     borderBottomLeftRadius: theme.spacing(16),
     overflow: "hidden",
+    [theme.breakpoints.down("md")]: {
+      borderBottomLeftRadius: theme.spacing(8),
+    },
   },
   image: {
     objectFit: "cover",
@@ -71,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     margin: "auto",
     marginRight: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      padding: "32px",
+    },
     "&::-webkit-scrollbar": {
       width: theme.spacing(1),
       opacity: "0.5",
@@ -89,14 +96,9 @@ const useStyles = makeStyles((theme) => ({
 export const OpenCard = memo(
   ({ paramsId }) => {
     const classes = useStyles();
-    const {
-      id,
-      dogName,
-      ownerName,
-      pointOfInterest,
-      backgroundColor,
-      testimonial,
-    } = storiesData.find((item) => item.id === paramsId);
+    const { id, dogName, ownerName, testimonial } = storiesData.find(
+      (item) => item.id === paramsId
+    );
 
     const MotionCard = motion.custom(c.Card);
     const MotionTypography = motion.custom(c.Typography);
@@ -143,7 +145,7 @@ export const OpenCard = memo(
         <MotionTypography
           className={classes.title}
           key="title"
-          animate={{ x: 64, y }}>
+          animate={{ x: 32, y }}>
           ~ {dogName} and {ownerName}
         </MotionTypography>
       );

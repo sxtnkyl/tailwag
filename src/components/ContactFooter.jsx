@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     bottom: 0,
     boxShadow: `0px -1px 4px 4px ${useFade(theme.palette.primary.dark, 0.2)}`,
+    [theme.breakpoints.down("md")]: {
+      height: "25vh",
+    },
   },
   infoContainer: {
     position: "absolute",
@@ -23,12 +26,18 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     zIndex: 10,
     padding: `${theme.spacing(2)}px ${theme.spacing(8)}px`,
+    [theme.breakpoints.down("md")]: {
+      padding: `${theme.spacing(2)}px ${theme.spacing(2)}px`,
+    },
   },
   svgContainer: {
     height: "44px",
     width: "44px",
     margin: "22px",
     cursor: "pointer",
+    [theme.breakpoints.down("md")]: {
+      margin: "0px",
+    },
   },
   svg: {
     height: "100%",
@@ -36,6 +45,13 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.light,
     filter: theme.palette.shadows.pawShadow,
     borderRadius: theme.spacing(1),
+  },
+  divider: {
+    height: "3px",
+    backgroundColor: "black",
+    [theme.breakpoints.down("md")]: {
+      height: "0px",
+    },
   },
 }));
 
@@ -46,7 +62,7 @@ const Navbar = () => {
   const contactUs = (
     <c.Grid item style={{ textAlign: "center" }}>
       <c.Typography variant="h4">CONTACT US</c.Typography>
-      <c.Divider style={{ height: "3px", backgroundColor: "black" }} />
+      <c.Divider className={classes.divider} />
       <c.Grid container justify="space-around">
         <MotionItem
           item
@@ -85,7 +101,7 @@ const Navbar = () => {
   const followUs = (
     <c.Grid item style={{ textAlign: "center" }}>
       <c.Typography variant="h4">FOLLOW US</c.Typography>
-      <c.Divider style={{ height: "3px", backgroundColor: "black" }} />
+      <c.Divider className={classes.divider} />
       <c.Grid container justify="space-around">
         <MotionItem
           item

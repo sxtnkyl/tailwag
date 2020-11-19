@@ -1,12 +1,12 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core";
-import theme from "../theme/theme";
+import theme from "../../../theme/theme";
 import * as c from "@material-ui/core";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
-import { roundBlobs } from "../utility/blobPaths";
-import useBlob from "../utility/hooks/useBlob";
+import { roundBlobs } from "../../../utility/blobPaths";
+import useBlob from "../../../utility/hooks/useBlob";
 
 const useStyles = makeStyles((theme) => ({
   navItem: {
@@ -24,13 +24,21 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 0,
     left: 0,
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     background: theme.palette.secondary.main,
-    borderRadius: '50%'
+    borderRadius: "50%",
+  },
+  topText: {
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "2.2rem",
+    },
   },
   botText: {
     fontFamily: "Roboto",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "1.75rem",
+    },
   },
 }));
 

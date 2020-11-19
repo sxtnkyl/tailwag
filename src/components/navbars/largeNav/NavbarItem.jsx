@@ -1,16 +1,14 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core";
-import theme from "../theme/theme";
+import theme from "../../../theme/theme";
 import { Typography, Grid } from "@material-ui/core";
-
-import { BrowserRouter as Link } from "react-router-dom";
 
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
-import { itemBlobs } from "../utility/blobPaths";
-import useBlob from "../utility/hooks/useBlob";
-import useFade from "../utility/hooks/useFade";
+import { itemBlobs } from "../../../utility/blobPaths";
+import useBlob from "../../../utility/hooks/useBlob";
+import useFade from "../../../utility/hooks/useFade";
 
 const useStyles = makeStyles((theme) => ({
   navItem: {
@@ -24,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     placeItems: "center",
     cursor: "pointer",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "2.2rem",
+    },
   },
 }));
 
@@ -68,7 +69,7 @@ const NavbarItem = ({
 
   return (
     <GridItem item className={classes.navItem} style={{ transform }}>
-      {/* <NavItemText
+      <NavItemText
         className={classes.textdiv}
         variant="h3"
         variants={scaleHoverTap}
@@ -76,7 +77,7 @@ const NavbarItem = ({
         whileHover="hover"
         whileTap="tap">
         {text.toUpperCase()}
-      </NavItemText> */}
+      </NavItemText>
       {blob}
     </GridItem>
   );

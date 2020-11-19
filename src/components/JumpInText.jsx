@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as c from "@material-ui/core";
-import { AnimateSharedLayout, motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import useInView from "../utility/hooks/useInView";
 
 const FadeIn = ({
@@ -11,7 +11,6 @@ const FadeIn = ({
   childrenDelay = 0.3,
 }) => {
   const stringArr = textString.split(/(\s+)/);
-  console.log(stringArr);
   const MotionLetter = motion.custom(c.Typography);
   //ref onto container
   const containerRef = useRef();
@@ -49,15 +48,8 @@ const FadeIn = ({
     },
   };
 
-  const loadingCircleTransition = {
-    // duration: 0.5,
-    // ease: "easeInOut",
-    // yoyo: Infinity,
-  };
-
   const controls = useAnimation();
   useEffect(() => {
-    console.log(inView);
     inView === true &&
       setTimeout(() => {
         controls.start("end");
@@ -71,13 +63,12 @@ const FadeIn = ({
       variants={loadingContainerVariants}
       initial="start"
       animate={controls}>
-      {stringArr.map((letter) => (
+      {stringArr.map((letter, index) => (
         <MotionLetter
           style={{ opacity: 0, paddingRight: "8px" }}
           variant={typography}
           variants={loadingCircleVariants}
-          // transition={loadingCircleTransition}
-        >
+          key={index}>
           {letter}
         </MotionLetter>
       ))}

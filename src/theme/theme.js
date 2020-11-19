@@ -117,7 +117,6 @@ let theme = createMuiTheme({
     },
     MuiCardContent: {
       root: {
-        // height: "100% !important",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",

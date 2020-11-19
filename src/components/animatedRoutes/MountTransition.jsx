@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion, useAnimation } from "framer-motion";
 
 ///keyframes > scrollToTop > opacity/slide
 //useViewportScroll
 
-export const MountTransition = ({
-  children,
-  scale = 1,
-  slide = 0,
-  slideUp = 0,
-}) => {
+export const MountTransition = ({ children, slide = 0, slideUp = 0 }) => {
   const controls = useAnimation();
   const sequence = async () => {
     await controls.start({ opacity: 1, x: 0, y: 0 });

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
-import { ReactComponent as Paw } from "../utility/icons/svgs/pawpaw.svg";
-import WaveTopper from "../components/WaveTopper";
+import { ReactComponent as Paw } from "../../../utility/icons/svgs/pawpaw.svg";
+import WaveTopper from "../../../components/WaveTopper";
 import { motion, AnimatePresence } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    "& h1": {
+      [theme.breakpoints.down("lg")]: {
+        fontSize: "5rem",
+      },
+      [theme.breakpoints.down("md")]: {
+        fontSize: "3.5rem",
+      },
+    },
   },
   pawLeft: {
     transform: "scale(0.5) rotate(-30deg)",

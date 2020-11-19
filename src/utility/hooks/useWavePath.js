@@ -16,9 +16,8 @@ const useWavePath = (opacity, pathObj) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox={viewBox}
       width="100%"
-      preserveAspectRatio="none"
-    >
-      <path fill={fill} fillOpacity={opacity} d={d}></path>
+      preserveAspectRatio="none">
+      <path fillOpacity={opacity} d={d}></path>
     </svg>
   );
 };

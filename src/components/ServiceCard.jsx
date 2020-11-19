@@ -67,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//hover effect: skew opaque cards under card
 const ServiceCard = ({ lineObj }) => {
   const classes = useStyles();
   const MotionCard = motion.custom(c.Card);

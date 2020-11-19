@@ -1,8 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import TestPic from "../images/ollieSnoot.jpg";
-import useBannerImage from "../utility/hooks/useBannerImage";
-import theme from "../theme/theme";
+import useBannerImage from "../../utility/hooks/useBannerImage";
+import theme from "../../theme/theme";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: "30vh",
     borderBottomLeftRadius: "50% 20%",
     borderBottomRightRadius: "50% 20%",
+    overflow: "hidden",
   },
   image: {
     height: "100%",
@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 const Banner = ({ location }) => {
   const classes = useStyles();
   let currentRoute = location.pathname.substring(1, location.pathname.length);
-  //check if stories- can have subpaths- return stories
   if (currentRoute.includes("stories")) currentRoute = "stories";
 
   const image = useBannerImage(currentRoute);
@@ -34,12 +33,13 @@ const Banner = ({ location }) => {
   const SnootBanner = ({ image }) => (
     <AnimatePresence>
       <motion.img
+        key="banner"
         className={classes.image}
         src={image.src}
         alt={image.description}
-        initial={{ opacity: 0.5 }}
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0.5 }}
+        exit={{ opacity: 0 }}
       />
     </AnimatePresence>
   );

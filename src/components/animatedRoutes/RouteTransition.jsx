@@ -24,7 +24,6 @@ export const AnimatedRoutes = ({
   initial = false,
 }) => {
   const history = useHistory();
-  // console.log(history);
   return (
     <AnimatePresence exitBeforeEnter={exitBeforeEnter} initial={initial}>
       <Router history={history} key={history.pathname}>

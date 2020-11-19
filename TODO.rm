@@ -3,6 +3,8 @@ org association for about accolade 2018-2019
 
 update stories data with images/names
 
+contact- submitted indicator/debounce disable submit
+
 RESPONSIVNESS ADJUSTMENTS
 //SET ALL TO CHANGE ON MD
 //screensize observer for MD.DOWN > wrapper with Banner/Navbar/PageTitle
@@ -14,8 +16,8 @@ RESPONSIVNESS ADJUSTMENTS
 //no logo
 
 -PAGE TITLE
-//typography to h2 size
-//height > 20vh
+x//typography to h2 size
+x//height > 20vh
 
 -ABOUT
 x//section padding > 32px 8px, text-align > center
@@ -43,25 +45,29 @@ x//titlePriceDescripContainer > justify-center, remove paddingRight
 x//chip margin
 
 -STORIES
-//section padding > 32px 8px, text-align > center
+x//section padding > 32px 8px, text-align > center
 
 -LIST CARDS
-//padding > 8px
+x//padding > 8px
+x//breakpoints for flex sizes
 
 -OPEN CARDS
-//width > remove
-//imageContainer > bottomLeftRadius > theme.spacing(8)
-//contentContainer > padding > 32px 32px
+x//width > remove
+x//imageContainer > bottomLeftRadius > theme.spacing(8)
+x//contentContainer > padding > 32px 32px
+x//title shift left
 
 -CONTACT
 x//move text before contact form > column-reverse
 x//page > remove padding/change to 8px, marginBottom 10vh
 x//classes.formsection > padding to 8px, remove topRightRadius, bottomLeftRadius > theme.spacing(8)
 x//formSection > remove horizontal padding
-//id=form-Groupst(formSection > CardContent) > paddingLeft > 0px, flexDirection > column, 
-//remove spacing on each form section grouping
+x//id=form-Groupst(formSection > CardContent) > paddingLeft > 0px, flexDirection > column, 
+x//remove spacing on each form section grouping
+//fix overflow of multi-select displays
 
 -CONTACT FOOTER
-//height: 25vh
-//remove divider
-//svgContainer > remove margin
+x//height: 25vh
+x//divider height > 0px
+x//infoContainer >  padding 2
+x//svgContainer > remove margin

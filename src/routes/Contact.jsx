@@ -1,6 +1,3 @@
-//map locator > connection statement > contact form
-// https://www.youtube.com/watch?v=-mFXqOaqgZk&ab_channel=BillLuo
-
 import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -59,6 +56,12 @@ const useStyles = makeStyles((theme) => ({
       borderBottomLeftRadius: theme.spacing(8),
       borderTopRightRadius: theme.spacing(2),
       padding: `${theme.spacing(2)}px ${theme.spacing(0)}px`,
+      "& .MuiCardContent-root": {
+        paddingLeft: "0px",
+      },
+      "& .MuiGrid-item": {
+        padding: "0px 8px",
+      },
     },
   },
   card: {
@@ -141,8 +144,8 @@ const Contact = () => {
         <div className={classes.formSection}>
           <c.CardContent id="formGroup-Client">
             <c.Typography variant="h4">Client Info</c.Typography>
-            <c.Grid container spacing={4}>
-              <c.Grid item xs>
+            <c.Grid container spacing={2}>
+              <c.Grid item xs={12} lg={6}>
                 <Controller
                   as={
                     <c.TextField
@@ -155,7 +158,7 @@ const Contact = () => {
                   control={control}
                 />
               </c.Grid>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={6}>
                 <Controller
                   as={
                     <c.TextField
@@ -168,10 +171,8 @@ const Contact = () => {
                   control={control}
                 />
               </c.Grid>
-            </c.Grid>
 
-            <c.Grid container spacing={4}>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={6}>
                 <Controller
                   as={
                     <c.TextField
@@ -184,7 +185,7 @@ const Contact = () => {
                   control={control}
                 />
               </c.Grid>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={6}>
                 <Controller
                   as={
                     <c.TextField
@@ -202,8 +203,8 @@ const Contact = () => {
 
           <c.CardContent id="formGroup-Doggy">
             <c.Typography variant="h4">Doggy Details</c.Typography>
-            <c.Grid container spacing={4}>
-              <c.Grid item xs>
+            <c.Grid container spacing={2}>
+              <c.Grid item xs={12} lg={4}>
                 <Controller
                   as={
                     <c.TextField
@@ -216,7 +217,7 @@ const Contact = () => {
                   control={control}
                 />
               </c.Grid>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={4}>
                 <Controller
                   as={
                     <c.TextField
@@ -229,7 +230,7 @@ const Contact = () => {
                   control={control}
                 />
               </c.Grid>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={4}>
                 <Controller
                   as={
                     <c.TextField
@@ -242,10 +243,7 @@ const Contact = () => {
                   control={control}
                 />
               </c.Grid>
-            </c.Grid>
-
-            <c.Grid container spacing={4}>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={6}>
                 <c.FormControl variant="outlined" size="small">
                   <c.InputLabel htmlFor="dogGender">
                     My Dog's Gender Is...
@@ -262,7 +260,7 @@ const Contact = () => {
                   />
                 </c.FormControl>
               </c.Grid>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={6}>
                 <c.FormControl variant="outlined" size="small">
                   <c.InputLabel htmlFor="Spayed/Nuetered">
                     My Dog Is Spayed/Neutered...
@@ -281,9 +279,8 @@ const Contact = () => {
                   />
                 </c.FormControl>
               </c.Grid>
-            </c.Grid>
-            <c.Grid container spacing={4}>
-              <c.Grid item xs>
+
+              <c.Grid item xs={12} lg={6}>
                 <c.FormControl variant="outlined" size="small">
                   <c.InputLabel htmlFor="suggestedIssues">
                     I'm interested in these services...
@@ -317,7 +314,7 @@ const Contact = () => {
                   />
                 </c.FormControl>
               </c.Grid>
-              <c.Grid item xs>
+              <c.Grid item xs={12} lg={6}>
                 <c.FormControl variant="outlined" size="small">
                   <c.InputLabel htmlFor="suggestedIssues">
                     My Dog Needs Help With...

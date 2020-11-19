@@ -1,25 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { makeStyles, AppBar, Grid } from "@material-ui/core";
-import useFade from "../utility/hooks/useFade";
-import theme from "../theme/theme";
+import useFade from "../../../utility/hooks/useFade";
+import theme from "../../../theme/theme";
 
 import NavbarItem from "./NavbarItem";
 import Logo from "./Logo";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   atTop: {
     width: "100%",
     position: "-webkit-sticky",
+    overflow: "hidden",
   },
+  navGrid: {},
 }));
-
-//sticky bar
-//on transition: bg to lightblue, bottom shadow, scale down blobs
-//https://codesandbox.io/s/framer-motion-blur-scrolling-animation-example-vg32l?file=/src/Navigation.jsx
 
 const Navbar = () => {
   const classes = useStyles();

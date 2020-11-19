@@ -1,5 +1,3 @@
-import { useState, useEffect, useRef } from "react";
-
 import ServicePic from "../../images/beagle.jpg";
 import HomePic from "../../images/ollieSnoot.jpg";
 import StoriesPic from "../../images/croppedCollie.jpg";
@@ -9,7 +7,6 @@ import ErrorPic from "../../images/croppedGerman.jpg";
 const images = [
   {
     id: "services",
-    // src: "../../images/beagle.jpg",
     src: ServicePic,
     description: "snoozy_Beagle",
   },

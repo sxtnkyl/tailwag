@@ -1,9 +1,9 @@
-import React, { memo, useRef } from "react";
-import { motion, useMotionValue, useInvertedScale } from "framer-motion";
+import React, { memo } from "react";
+import { motion, useInvertedScale } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import * as c from "@material-ui/core";
-import { makeStyles, Card } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 import useFade from "../../../utility/hooks/useFade";
 import germanShep from "../../../images/croppedGerman.jpg";
@@ -12,19 +12,29 @@ const useStyles = makeStyles((theme) => ({
   card: {
     position: "relative",
     height: theme.spacing(50),
-    // padding: "20px",
-    // flex: "0 0 40%",
-    // maxWidth: "40%",
-    // // "&:nth-child((NUMofCARDS)n + (cardPosition))
-    // //30 30 40, 40 20 40, 40 30 30
-    // "&:nth-child(9n + 1), &:nth-child(9n + 2), &:nth-child(9n + 8), &:nth-child(9n + 9)": {
-    //   flex: "0 0 30%",
-    //   maxWidth: "30%",
-    // },
-    // "&:nth-child(9n + 5)": {
-    //   flex: "0 0 20%",
-    //   maxWidth: "20%",
-    // },
+    padding: "20px",
+    [theme.breakpoints.down("md")]: {
+      flex: "0 0 100%",
+      maxWidth: "100%",
+    },
+    [theme.breakpoints.up("md")]: {
+      flex: "0 0 50%",
+      maxWidth: "50%",
+    },
+    // "&:nth-child((NUMofCARDS)n + (cardPosition))
+    //30 30 40, 40 20 40, 40 30 30
+    [theme.breakpoints.up("lg")]: {
+      flex: "0 0 40%",
+      maxWidth: "40%",
+      "&:nth-child(9n + 1), &:nth-child(9n + 2), &:nth-child(9n + 8), &:nth-child(9n + 9)": {
+        flex: "0 0 30%",
+        maxWidth: "30%",
+      },
+      "&:nth-child(9n + 5)": {
+        flex: "0 0 20%",
+        maxWidth: "20%",
+      },
+    },
   },
   cardContent: {
     width: "100%",
@@ -59,19 +69,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const ListCard = memo(
-  ({
-    id,
-    dogName,
-    ownerName,
-    pointOfInterest,
-    backgroundColor,
-    testimonial,
-    isSelected,
-    history,
-  }) => {
+  ({ id, dogName, ownerName, isSelected }) => {
     const classes = useStyles();
 
-    const MotionCard = motion.custom(Card);
     const MotionTitle = motion.custom(c.Typography);
 
     const Image = () => {
@@ -98,11 +98,7 @@ export const ListCard = memo(
 
     const Title = () => {
       return (
-        <MotionTitle
-          className={classes.title}
-          key="title"
-          // layoutId={`title-container-${id}`}
-          animate="true">
+        <MotionTitle className={classes.title} key="title" animate="true">
           ~ {dogName} and {ownerName}
         </MotionTitle>
       );

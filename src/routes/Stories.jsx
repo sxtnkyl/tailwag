@@ -1,5 +1,5 @@
 //masonry tiles > open to testimonials
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import * as c from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "flex-start",
     padding: theme.spacing(12),
     marginBottom: "20vh",
+    [theme.breakpoints.down("md")]: {
+      padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+    },
   },
 }));
 

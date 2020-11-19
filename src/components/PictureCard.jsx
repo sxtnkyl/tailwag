@@ -1,7 +1,6 @@
 import React from "react";
 import * as c from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import useFade from "../utility/hooks/useFade";
 
 const useStyles = makeStyles((theme) => ({
   conatiner: {},
@@ -40,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//hover effect: skew opaque cards under card
 const PictureCard = ({
   pic,
   title = "Title Placeholder",
