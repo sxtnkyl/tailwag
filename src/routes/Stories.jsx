@@ -14,9 +14,12 @@ import theme from "../theme/theme";
 import icons from "../utility/icons/icons";
 
 const useStyles = makeStyles((theme) => ({
-  section: {
+  page: {
     minHeight: "100vh",
     paddingTop: "10vh",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "3vh",
+    },
   },
   statementText: {
     backgroundImage: `url(${icons.Pawpaw})`,
@@ -91,7 +94,7 @@ const Stories = ({ match, location, history }) => {
   );
 
   return (
-    <div className={classes.section} id="Stories">
+    <div className={classes.page} id="Stories">
       {statementText}
       <Router>
         <Route path={["/stories/:id", "/stories"]} component={List} />

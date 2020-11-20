@@ -134,7 +134,7 @@ export const OpenCard = memo(
             className={classes.image}
             layoutId={`image-${id}`}
             src={germanShep}
-            alt=""
+            alt="dog-photo"
           />
         </motion.div>
       );
@@ -146,7 +146,7 @@ export const OpenCard = memo(
           className={classes.title}
           key="title"
           animate={{ x: 32, y }}>
-          ~ {dogName} and {ownerName}
+          ~ {ownerName}
         </MotionTypography>
       );
     };

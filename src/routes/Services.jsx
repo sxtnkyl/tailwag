@@ -10,8 +10,11 @@ import ServiceCard from "../components/ServiceCard";
 import serviceData from "../utility/servicesData";
 
 const useStyles = makeStyles((theme) => ({
-  section: {
+  page: {
     paddingTop: "10vh",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "3vh",
+    },
   },
   statementText: {
     backgroundImage: `url(${icons.Pawpaw})`,
@@ -128,7 +131,7 @@ const Services = () => {
   };
 
   return (
-    <div className={classes.section} id="Services">
+    <div className={classes.page} id="Services">
       {statementText}
       <ServiceLine lineName="Training" lineObj={serviceData.training} />
       <ServiceLine lineName="Boarding" lineObj={serviceData.boarding} />

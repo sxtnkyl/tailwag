@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useDomEvent, MotionValue } from "framer-motion";
+import { useDomEvent } from "framer-motion";
 import { spring } from "popmotion";
 import { mix } from "@popmotion/popcorn";
 import { debounce } from "lodash";

@@ -31,7 +31,6 @@ const StaggerContainer = ({
 
   const controls = useAnimation();
   useEffect(() => {
-    console.log(inView);
     inView === true &&
       setTimeout(() => {
         controls.start("end");

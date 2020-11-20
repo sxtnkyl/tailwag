@@ -32,7 +32,7 @@ let theme = createMuiTheme({
       fontSize: "8rem",
       fontWeight: 700,
       textShadow: `2px 2px 1px ${useFade(blue[900], 0.5)}`,
-      color: blue[50],
+      color: "white",
     },
     h2: {
       //logo "tailwag"

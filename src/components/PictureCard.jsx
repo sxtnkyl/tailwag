@@ -49,7 +49,12 @@ const PictureCard = ({
   return (
     <c.Grid item xs container justify="center" alignItems="center">
       <c.Card className={classes.card}>
-        <c.CardMedia className={classes.media} component="img" image={pic} />
+        <c.CardMedia
+          className={classes.media}
+          component="img"
+          alt="picture-card"
+          image={pic}
+        />
         <c.CardContent className={classes.content}>
           <c.Typography variant="h4">{title}</c.Typography>
           <c.Typography variant="h5">{caption}</c.Typography>

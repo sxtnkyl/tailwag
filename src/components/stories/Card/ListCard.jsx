@@ -90,7 +90,8 @@ export const ListCard = memo(
             className={classes.image}
             layoutId={`image-${id}`}
             src={germanShep}
-            alt=""
+            alt="dog-photo"
+            loading="lazy"
           />
         </motion.div>
       );
@@ -99,7 +100,7 @@ export const ListCard = memo(
     const Title = () => {
       return (
         <MotionTitle className={classes.title} key="title" animate="true">
-          ~ {dogName} and {ownerName}
+          ~ {ownerName}
         </MotionTitle>
       );
     };

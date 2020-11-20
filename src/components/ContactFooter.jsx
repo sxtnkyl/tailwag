@@ -71,8 +71,14 @@ const Navbar = () => {
             y: -5,
             filter: theme.palette.shadows.raisedFilterShadow,
           }}>
-          <Link to="/contact">
-            <c.SvgIcon className={classes.svg} viewBox="0 0 44 44">
+          <Link
+            to="/contact"
+            alt="conatct-page link"
+            aria-label="contact-page link">
+            <c.SvgIcon
+              className={classes.svg}
+              viewBox="0 0 44 44"
+              titleAccess="contact link">
               {icons.email}
             </c.SvgIcon>
           </Link>
@@ -88,8 +94,12 @@ const Navbar = () => {
             href="tel:+1-404-272-0985"
             target="_blank"
             rel="noopener noreferrer"
-            alt="link to phone call">
-            <c.SvgIcon className={classes.svg} viewBox="0 0 44 44">
+            alt="link to phone call"
+            aria-label="phone link">
+            <c.SvgIcon
+              className={classes.svg}
+              viewBox="0 0 44 44"
+              titleAccess="phone link">
               {icons.phone}
             </c.SvgIcon>
           </c.Link>
@@ -114,8 +124,12 @@ const Navbar = () => {
             href="https://www.facebook.com/TailsWagDogTraining/"
             target="_blank"
             rel="noopener noreferrer"
-            alt="facebook link">
-            <c.SvgIcon className={classes.svg} viewBox="0 0 44 44">
+            alt="facebook link"
+            aria-label="facebook link">
+            <c.SvgIcon
+              className={classes.svg}
+              viewBox="0 0 44 44"
+              titleAccess="facebook link">
               {icons.facebook}
             </c.SvgIcon>
           </c.Link>
@@ -131,8 +145,12 @@ const Navbar = () => {
             href="https://www.instagram.com/tailswagdogtraining/"
             target="_blank"
             rel="noopener noreferrer"
-            alt="instagram link">
-            <c.SvgIcon className={classes.svg} viewBox="0 0 44 44">
+            alt="instagram link"
+            aria-label="instagram link">
+            <c.SvgIcon
+              className={classes.svg}
+              viewBox="0 0 44 44"
+              titleAccess="instagram link">
               {icons.instagram}
             </c.SvgIcon>
           </c.Link>

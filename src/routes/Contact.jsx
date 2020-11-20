@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     padding: theme.spacing(12),
     [theme.breakpoints.down("md")]: {
+      marginTop: "3vh",
       padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
       textAlign: "center",
       marginBottom: "10vh",
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(6),
       paddingBottom: theme.spacing(8),
       [theme.breakpoints.down("md")]: {
-        padding: theme.spacing(0),
+        padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
       },
     },
   },
@@ -92,9 +93,9 @@ const defaultValues = {
   dogBreed: "",
   dogAge: "",
   spayedNuetered: "",
-  additionalDetails: "",
+  requestedServices: [],
   commonIssues: [],
-  services: [],
+  additionalDetails: "",
 };
 
 const Contact = () => {
@@ -149,6 +150,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="firstName"
                       label="First Name"
                       variant="outlined"
                       size="small"
@@ -162,6 +164,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="lastName"
                       label="Last Name"
                       variant="outlined"
                       size="small"
@@ -176,6 +179,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="email"
                       label="Email"
                       variant="outlined"
                       size="small"
@@ -189,6 +193,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="phoneNumber"
                       label="Phone Number"
                       variant="outlined"
                       size="small"
@@ -208,6 +213,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="dogName"
                       label="Dog's Name"
                       variant="outlined"
                       size="small"
@@ -221,6 +227,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="dogAge"
                       label="My Dog's Age Is..."
                       variant="outlined"
                       size="small"
@@ -234,6 +241,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="dogBreed"
                       label="My Dog's Breed Is..."
                       variant="outlined"
                       size="small"
@@ -282,7 +290,7 @@ const Contact = () => {
 
               <c.Grid item xs={12} lg={6}>
                 <c.FormControl variant="outlined" size="small">
-                  <c.InputLabel htmlFor="suggestedIssues">
+                  <c.InputLabel htmlFor="services">
                     I'm interested in these services...
                   </c.InputLabel>
                   <Controller
@@ -309,14 +317,14 @@ const Contact = () => {
                         </c.MenuItem>
                       </c.Select>
                     }
-                    name="commonIssues"
+                    name="requestedServices"
                     control={control}
                   />
                 </c.FormControl>
               </c.Grid>
               <c.Grid item xs={12} lg={6}>
                 <c.FormControl variant="outlined" size="small">
-                  <c.InputLabel htmlFor="suggestedIssues">
+                  <c.InputLabel htmlFor="commonIssues">
                     My Dog Needs Help With...
                   </c.InputLabel>
                   <Controller
@@ -355,6 +363,7 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="additionalInfo"
                       placeholder="Tell us about your dog, or how we can help!"
                       variant="outlined"
                       size="small"
@@ -392,7 +401,9 @@ const Contact = () => {
     <div className={classes.page}>
       <c.Grid container className={classes.container}>
         <c.Grid id="form-container" container item xs justify="center">
-          <FadeIn slide={-50}>{form}</FadeIn>
+          <FadeIn slide={-50} triggerPoint={0.1}>
+            {form}
+          </FadeIn>
         </c.Grid>
         <c.Grid
           id="text-container"
@@ -415,7 +426,7 @@ const Contact = () => {
                 component={"div"}
                 variant="h3"
                 style={theme.typography.wordEmphasisBlue}>
-                Give us a call!
+                Click to give us a call!
               </c.Typography>
             </c.Grid>
             <c.Grid item>

@@ -1,5 +1,5 @@
 import ServicePic from "../../images/beagle.jpg";
-import HomePic from "../../images/ollieSnoot.jpg";
+import HomePic from "../../images/ollieSnoot.webp";
 import StoriesPic from "../../images/croppedCollie.jpg";
 import ContactPic from "../../images/chanceSnoot.jpg";
 import ErrorPic from "../../images/croppedGerman.jpg";

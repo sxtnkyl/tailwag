@@ -1,6 +1,8 @@
 import React from "react";
 import Banner from "../Banner";
 import Navbar from "./Navbar";
+
+import theme from "../../../theme/theme";
 import * as c from "@material-ui/core";
 import { ReactComponent as Paw } from "../../../utility/icons/svgs/pawpaw.svg";
 import { useLocation } from "react-router-dom";
@@ -74,6 +76,13 @@ const SmallNav = () => {
   const MotionIcon = motion.custom(c.SvgIcon);
   const [isOpen, toggleOpen] = useCycle(false, true);
 
+  const currentPageTitle = location.pathname.includes("stories")
+    ? "STORIES"
+    : location.pathname.substring(1, location.pathname.length).toUpperCase();
+
+  const titleText =
+    currentPageTitle.length > 0 ? currentPageTitle : "Tails Wag Dog Training";
+
   const topBar = (
     <motion.nav
       className={classes.topBar}
@@ -83,7 +92,11 @@ const SmallNav = () => {
       <MotionIcon onClick={() => toggleOpen()} className={classes.pawLeft}>
         <Paw />
       </MotionIcon>
-      <c.Typography variant="h5">TailsWag Dog Training</c.Typography>
+      <c.Typography
+        style={{ letterSpacing: "1px", fontWeight: 500 }}
+        variant="h4">
+        ~ {titleText}
+      </c.Typography>
       <motion.div className={classes.background} variants={bar}>
         <Banner location={location} />
         <Navbar />

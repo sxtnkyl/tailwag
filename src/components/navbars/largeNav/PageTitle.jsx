@@ -34,10 +34,12 @@ const useStyles = makeStyles((theme) => ({
   pawLeft: {
     transform: "scale(0.5) rotate(-30deg)",
     filter: theme.palette.shadows.pawShadow,
+    fontSize: "20rem",
   },
   pawRight: {
     transform: "scale(0.5) rotate(30deg)",
     filter: theme.palette.shadows.pawShadow,
+    fontSize: "20rem",
   },
 }));
 
@@ -57,9 +59,13 @@ const PageTitle = ({ location }) => {
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -200 }}>
-        <c.Button disabled startIcon={<Paw />} className={classes.pawLeft} />
+        <c.SvgIcon className={classes.pawLeft}>
+          <Paw />
+        </c.SvgIcon>
         <c.Typography variant="h1">{titleText}</c.Typography>
-        <c.Button disabled startIcon={<Paw />} className={classes.pawRight} />
+        <c.SvgIcon className={classes.pawRight}>
+          <Paw />
+        </c.SvgIcon>
       </motion.div>
     </AnimatePresence>
   );

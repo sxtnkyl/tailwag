@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   page: {
     minHeight: "100vh",
     paddingTop: "10vh",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "3vh",
+    },
     "& .MuiGrid-container": {
       [theme.breakpoints.down("md")]: {
         justifyContent: "center",

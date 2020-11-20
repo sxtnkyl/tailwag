@@ -76,6 +76,7 @@ const AccoladeCard = (props) => {
           {text}
         </c.Typography>
         <c.IconButton
+          aria-label={title}
           className={classes.infoIcon}
           href={link}
           target="_blank"
