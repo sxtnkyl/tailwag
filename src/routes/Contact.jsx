@@ -16,24 +16,35 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${icons.ContactForm})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    padding: theme.spacing(12),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       marginTop: "3vh",
-      padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
       textAlign: "center",
       marginBottom: "10vh",
     },
+    "& .MuiGrid-container": {
+      [theme.breakpoints.down("lg")]: {
+        justifyContent: "center",
+      },
+    },
   },
   container: {
+    minHeight: "88vh",
+    padding: theme.spacing(12),
+    [theme.breakpoints.down("lg")]: {
+      padding: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
+    },
     [theme.breakpoints.down("md")]: {
-      flexDirection: "column-reverse",
+      padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
     },
     "& #textArea": {
       paddingLeft: theme.spacing(6),
-      paddingBottom: theme.spacing(8),
       [theme.breakpoints.down("md")]: {
+        order: -1,
         padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
       },
+    },
+    "& #textAreaContent": {
+      paddingBottom: theme.spacing(4),
     },
   },
   form: {
@@ -112,35 +123,31 @@ const Contact = () => {
     }, 10000);
   }, [submitted]);
 
-  const submitActions = async (e, data) => {
+  const submitActions = async (data) => {
     let url = "some aws sms endpoint";
-    const formData = data;
     setSending(true);
-    e.preventDefault();
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Origin: "some future domain",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        setSending(false);
-        setSubmitted(true);
-      })
-      .catch((error) => {
-        console.error("frontend Error:", error);
-      });
+    console.log(data);
+    // fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Origin: "some future domain",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Success:", data);
+    //     setSending(false);
+    //     setSubmitted(true);
+    //   })
+    //   .catch((error) => {
+    //     console.error("frontend Error:", error);
+    //   });
   };
 
   const form = (
-    <form
-      onSubmit={handleSubmit((data) => submitActions(data))}
-      className={classes.form}>
+    <form onSubmit={handleSubmit(submitActions)} className={classes.form}>
       <c.Card className={classes.card}>
         <div className={classes.formSection}>
           <c.CardContent id="formGroup-Client">
@@ -277,7 +284,8 @@ const Contact = () => {
                     as={
                       <c.Select
                         label="My Dog Is Spayed/Neutered..."
-                        name="spayedNeutered">
+                        name="spayedNeutered"
+                      >
                         <c.MenuItem value="yes">Yes</c.MenuItem>
                         <c.MenuItem value="no">No</c.MenuItem>
                       </c.Select>
@@ -297,7 +305,8 @@ const Contact = () => {
                     as={
                       <c.Select
                         label="I'm interested in these services..."
-                        multiple={true}>
+                        multiple={true}
+                      >
                         <c.MenuItem value={[]}></c.MenuItem>
                         <c.MenuItem value="privateInstruction">
                           Private Instruction
@@ -331,7 +340,8 @@ const Contact = () => {
                     as={
                       <c.Select
                         label="My Dog Needs Help With..."
-                        multiple={true}>
+                        multiple={true}
+                      >
                         <c.MenuItem value={[]}></c.MenuItem>
                         <c.MenuItem value="puppyTraining">
                           Puppy Training
@@ -364,7 +374,7 @@ const Contact = () => {
                   as={
                     <c.TextField
                       id="additionalInfo"
-                      placeholder="Tell us about your dog, or how we can help!"
+                      label="Tell us about your dog, or how we can help!"
                       variant="outlined"
                       size="small"
                       multiline
@@ -388,7 +398,8 @@ const Contact = () => {
                 width: "100px",
               }}
               endIcon={<Pawpaw />}
-              color="primary">
+              color="primary"
+            >
               SUBMIT
             </MotionSubmit>
           </c.CardContent>
@@ -400,52 +411,51 @@ const Contact = () => {
   return (
     <div className={classes.page}>
       <c.Grid container className={classes.container}>
-        <c.Grid id="form-container" container item xs justify="center">
+        <c.Grid id="form-container" container item md={10} lg={7}>
           <FadeIn slide={-50} triggerPoint={0.1}>
             {form}
           </FadeIn>
         </c.Grid>
         <c.Grid
-          id="text-container"
           item
-          xs
           container
-          style={theme.mixins.formats.centeredFlex}>
-          <c.Grid item id="textArea">
-            <c.Typography variant="h5">
-              I find simple phone calls are the best path to productive
-              connections with future clients, where we can discuss your dog and
-              get to know each other a bit more. Feel free to call at your
-              convenience on my cell phone below, or fill out our contact form
-              to get a quick response.
+          md={12}
+          lg={5}
+          justify="center"
+          alignContent="center"
+          alignItems="center"
+          id="textArea"
+        >
+          <c.Typography variant="h5" id="textAreaContent">
+            I find simple phone calls are the best path to productive
+            connections with future clients, where we can discuss your dog and
+            get to know each other a bit more. Feel free to call at your
+            convenience on my cell phone below, or fill out our contact form to
+            get a quick response.
+          </c.Typography>
+          <c.Typography
+            component={"div"}
+            variant="h3"
+            style={theme.typography.wordEmphasisBlue}
+          >
+            Click to give us a call!
+          </c.Typography>
+          <FadeIn slide={50} delay={1.25}>
+            <c.Typography
+              component={"div"}
+              variant="h3"
+              style={theme.typography.wordEmphasisBlack}
+            >
+              <c.Link
+                href="tel:+1-404-272-0985"
+                target="_blank"
+                rel="noopener noreferrer"
+                alt="link to phone call"
+              >
+                (404) 272-0985
+              </c.Link>
             </c.Typography>
-          </c.Grid>
-          <c.Grid container item style={theme.mixins.formats.centeredFlex}>
-            <c.Grid item>
-              <c.Typography
-                component={"div"}
-                variant="h3"
-                style={theme.typography.wordEmphasisBlue}>
-                Click to give us a call!
-              </c.Typography>
-            </c.Grid>
-            <c.Grid item>
-              <FadeIn slide={50} delay={1.25}>
-                <c.Typography
-                  component={"div"}
-                  variant="h3"
-                  style={theme.typography.wordEmphasisBlack}>
-                  <c.Link
-                    href="tel:+1-404-272-0985"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    alt="link to phone call">
-                    (404) 272-0985
-                  </c.Link>
-                </c.Typography>
-              </FadeIn>
-            </c.Grid>
-          </c.Grid>
+          </FadeIn>
         </c.Grid>
       </c.Grid>
     </div>

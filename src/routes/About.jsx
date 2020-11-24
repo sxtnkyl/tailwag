@@ -18,52 +18,75 @@ const useStyles = makeStyles((theme) => ({
   page: {
     minHeight: "100vh",
     paddingTop: "10vh",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       paddingTop: "3vh",
     },
     "& .MuiGrid-container": {
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("lg")]: {
         justifyContent: "center",
+      },
+      [theme.breakpoints.down("md")]: {
         textAlign: "center",
       },
     },
   },
   approachContainer: {
-    minHeight: "100vh",
+    minHeight: "88vh",
     backgroundImage: `url(${icons.ApproachAbout})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
     padding: theme.spacing(12),
+    [theme.breakpoints.down("lg")]: {
+      padding: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
+    },
     [theme.breakpoints.down("md")]: {
       padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
     },
     "& #historyText": {
       paddingRight: theme.spacing(6),
-      ...theme.mixins.formats.centeredFlex,
       [theme.breakpoints.down("md")]: {
         padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
       },
+      "& #getStarted": {
+        color: "black", padding: theme.spacing(4),
+        [theme.breakpoints.down("lg")]: {
+          padding: theme.spacing(1)
+        },
+      }
     },
   },
   expertiseContainer: {
-    minHeight: "100vh",
+    minHeight: "88vh",
     backgroundImage: `url(${icons.AccoladesAbout})`,
     backgroundPosition: "right",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
     padding: theme.spacing(12),
+    [theme.breakpoints.down("lg")]: {
+      padding: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
+    },
     [theme.breakpoints.down("md")]: {
-      padding: theme.spacing(2),
-      "& .MuiGrid-container": { flexDirection: "column-reverse" },
+      padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
     },
     "& #expertiseText": {
       paddingLeft: theme.spacing(6),
-      textAlign: "center",
-      ...theme.mixins.formats.centeredFlex,
       [theme.breakpoints.down("md")]: {
         padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+        order: -1
       },
     },
+    "& #provenResults": {
+      paddingBottom: theme.spacing(4),
+      [theme.breakpoints.down("md")]: {
+        paddingBottom: theme.spacing(0),
+      },
+    },
+    "& #expertiseStatement": {
+      textAlign: "center",
+      [theme.breakpoints.down("md")]: {
+        paddingTop: theme.spacing(4),
+      },
+    }
   },
   accoladesContainer: {
     minHeight: "100vh",
@@ -72,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "contain",
     padding: theme.spacing(12),
     marginBottom: "20vh",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       padding: theme.spacing(2),
     },
   },
@@ -132,26 +155,25 @@ const About = () => {
   const classes = useStyles();
   return (
     <div className={classes.page} id="About">
-      <section className={classes.approachContainer}>
-        <c.Grid container>
-          <c.Grid item xs container id="historyText">
-            <c.Typography variant="h5">
-              <c.Typography
-                component={"div"}
-                variant="h4"
-                style={theme.typography.wordEmphasisBlue}>
-                Tails Wag Dog Training, Inc.
+      <c.Grid container className={classes.approachContainer}>
+        <c.Grid item md={12} lg={6} container justify="center" alignContent="center" alignItems="center" id="historyText">
+          <c.Typography variant="h5" id="historyContent">
+            <c.Typography
+              component={"div"}
+              variant="h4"
+              style={theme.typography.wordEmphasisBlue}>
+              Tails Wag Dog Training, Inc.
               </c.Typography>{" "}
               has been family owned and operated since 1998, serving hundreds of
               satisfied clients. With experience training over 120 different
               breeds of dogs, I have the tools and experience to work with a
               variety of temperments and breed specific traits. I firmly believe
               that with the proper patience and understanding,{" "}
-              <c.Typography
-                component={"div"}
-                variant="h4"
-                style={theme.typography.wordEmphasisBlack}>
-                every dog
+            <c.Typography
+              component={"div"}
+              variant="h4"
+              style={theme.typography.wordEmphasisBlack}>
+              every dog
               </c.Typography>{" "}
               is capable of achieving a life of confidence and respect. I have
               the ability to work with difficult to read dogs, and have a
@@ -159,16 +181,17 @@ const About = () => {
               order to help pet owners in their quest for a happy, well trained
               dog, experience is invaluable and I have plenty of it...
             </c.Typography>
-            <Link
-              to={`/contact`}
-              style={{ color: "black", padding: theme.spacing(4) }}>
-              <JumpInText
-                textString="...so let's get started!"
-                typography="h4"
-                delay={3000}
-              />
-            </Link>
-          </c.Grid>
+          <Link
+            to={`/contact`}
+            id="getStarted">
+            <JumpInText
+              textString="...so let's get started!"
+              typography="h4"
+              delay={3000}
+            />
+          </Link>
+        </c.Grid>
+        <c.Grid item md={10} lg={5}>
           <FadeIn slide={50}>
             <PictureCard
               pic={Izzy}
@@ -177,34 +200,34 @@ const About = () => {
             />
           </FadeIn>
         </c.Grid>
-      </section>
-      <section className={classes.expertiseContainer}>
-        <c.Grid container>
-          <FadeIn slide={-50}>
-            <PictureCard
-              pic={Rocco}
-              title="Rocco- the German Shepherd"
-              caption="(award winning goodboy)"
-            />
-          </FadeIn>
-          <c.Grid container item xs id="expertiseText">
+      </c.Grid>
+      <c.Grid container className={classes.expertiseContainer}>     
+        <c.Grid item md={10} lg={5}>
+            <FadeIn slide={-50}>
+              <PictureCard
+                pic={Rocco}
+                title="Rocco- the German Shepherd"
+                caption="(award winning goodboy)"
+              />
+            </FadeIn>
+          </c.Grid>
+        <c.Grid item md={12} lg={6} container justify="center" alignContent="center" alignItems="center" id="expertiseText">
             <c.Typography variant="h3">Dedicated Expertise-</c.Typography>
             <c.Typography
               variant="h3"
-              style={{ paddingBottom: theme.spacing(4) }}>
+              id="provenResults">
               Proven Results.
             </c.Typography>
-            <c.Typography variant="h5" style={{ textAlign: "center" }}>
+            <c.Typography variant="h5" id="expertiseStatement">
               From winning medals to community involvement, Tails Wag is
               dedicated in strengthening the bond with our four-legged friends.
               Here are some my notable accomplishments.
             </c.Typography>
           </c.Grid>
         </c.Grid>
-      </section>
-      <section className={classes.accoladesContainer}>
+      <c.Grid container className={classes.accoladesContainer}>
         <StaggerContainer
-          delay={500}
+          delay={250}
           triggerPoint={0.25}
           styles={theme.mixins.formats.spaceAroundFlexRow}
           spacing={4}>
@@ -212,7 +235,7 @@ const About = () => {
             <AccoladeCard key={index} accolade={a} />
           ))}
         </StaggerContainer>
-      </section>
+      </c.Grid>
     </div>
   );
 };

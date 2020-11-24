@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     overflow: "visible",
     minHeight: "80px",
+    width: "100%",
     [theme.breakpoints.down("md")]: {
       padding: theme.spacing(2),
     },
@@ -60,7 +61,8 @@ const AccoladeCard = (props) => {
     <MotionGrid
       item
       lg={5}
-      md={10}
+      sm={10}
+      xs={12}
       style={{ opacity: 0 }}
       variants={loadingVariants}>
       <MotionCard

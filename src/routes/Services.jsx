@@ -12,7 +12,7 @@ import serviceData from "../utility/servicesData";
 const useStyles = makeStyles((theme) => ({
   page: {
     paddingTop: "10vh",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       paddingTop: "3vh",
     },
   },
@@ -21,18 +21,21 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "90%",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    margin: theme.spacing(24),
+    margin: theme.spacing(12),
     minHeight: "30vh",
     [theme.breakpoints.down("md")]: {
-      margin: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+      margin: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
       textAlign: "center",
     },
   },
   serviceLine: {
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(8),
-    [theme.breakpoints.down("md")]: {
-      padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+    paddingBottom: theme.spacing(8),
+    [theme.breakpoints.down("lg")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+      paddingBottom: theme.spacing(8),
     },
     "& #serviceLineName": {
       padding: theme.spacing(4),
@@ -61,7 +64,8 @@ const Services = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlue}>
+            style={theme.typography.wordEmphasisBlue}
+          >
             Tails Wag Dog Training
           </c.Typography>
           , we believe that proper training is crucial in building a strong and
@@ -70,7 +74,8 @@ const Services = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}>
+            style={theme.typography.wordEmphasisBlack}
+          >
             no dog is too old to learn new tricks.
           </c.Typography>{" "}
           By using motivational, positive reinforcement training techniques
@@ -83,14 +88,16 @@ const Services = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}>
+            style={theme.typography.wordEmphasisBlack}
+          >
             confidence
           </c.Typography>{" "}
           and{" "}
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}>
+            style={theme.typography.wordEmphasisBlack}
+          >
             obedience
           </c.Typography>
           , while strengthening the bond between you and your dog.
@@ -107,7 +114,8 @@ const Services = () => {
         container
         direction="column"
         className={classes.serviceLine}
-        id="serviceLineContainer">
+        id="serviceLineContainer"
+      >
         <c.Grid item>
           <c.Typography variant="h3" id="serviceLineName">
             {lineName}~
@@ -119,8 +127,8 @@ const Services = () => {
             item
             direction="row"
             justify="space-evenly"
-            style={{ minHeight: "50vh" }}
-            id="cardsContainer">
+            id="cardsContainer"
+          >
             {lineObj.map((obj) => (
               <ServiceCard lineObj={obj} key={obj.title} />
             ))}

@@ -3,9 +3,8 @@ import * as c from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  conatiner: {},
   card: {
-    width: "auto",
+    width: "100%",
     height: "80vh",
     background:
       "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 100%)",
@@ -14,9 +13,11 @@ const useStyles = makeStyles((theme) => ({
     borderTopRightRadius: theme.spacing(16),
     borderRadius: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
-      height: "50%",
       borderBottomLeftRadius: theme.spacing(8),
       borderTopRightRadius: theme.spacing(2),
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "60vh"
     },
   },
   media: {
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     alignItems: "flex-end",
     paddingRight: theme.spacing(4),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       paddingRight: theme.spacing(2),
       paddingTop: theme.spacing(0),
     },
@@ -47,7 +48,6 @@ const PictureCard = ({
   const classes = useStyles();
 
   return (
-    <c.Grid item xs container justify="center" alignItems="center">
       <c.Card className={classes.card}>
         <c.CardMedia
           className={classes.media}
@@ -60,7 +60,6 @@ const PictureCard = ({
           <c.Typography variant="h5">{caption}</c.Typography>
         </c.CardContent>
       </c.Card>
-    </c.Grid>
   );
 };
 

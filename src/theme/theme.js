@@ -122,6 +122,16 @@ let theme = createMuiTheme({
         justifyContent: "space-between",
       },
     },
+    // MuiChip: {
+    //   root: {
+    //     display: "flex",
+    //     flexDirection: "row-reverse"
+    //   },
+    //   icon: {
+    //     marginLeft: "0px",
+    //     marginRight: "4px"
+    //   },
+    // },
     MuiPaper: {
       elevation4: {
         boxShadow: `0px 0px`,

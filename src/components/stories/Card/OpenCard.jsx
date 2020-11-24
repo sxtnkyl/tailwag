@@ -15,7 +15,7 @@ import germanShep from "../../../images/croppedGerman.jpg";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
-    zIndex: 1,
+    zIndex: 3,
     position: "fixed",
     top: 0,
     left: 0,
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     right: 0,
     left: 0,
-    zIndex: 1,
+    zIndex: 4,
     width: "100%",
   },
   openCardContent: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     width: "50vw",
     maxWidth: "700px",
     backgroundColor: theme.palette.primary.light,
-    zIndex: 2,
+    zIndex: 5,
     background:
       "linear-gradient(130deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 0.75) 50%)",
     boxShadow: `2px 2px 4px ${useFade(theme.palette.primary.dark, 0.8)}`,
@@ -93,99 +93,106 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const OpenCard = memo(
-  ({ paramsId }) => {
-    const classes = useStyles();
-    const { id, dogName, ownerName, testimonial } = storiesData.find(
-      (item) => item.id === paramsId
-    );
+export const OpenCard = ({ paramsId }) => {
+  const classes = useStyles();
+  const { id, dogName, ownerName, testimonial } = storiesData.find(
+    (item) => item.id === paramsId
+  );
 
-    const MotionCard = motion.custom(c.Card);
-    const MotionTypography = motion.custom(c.Typography);
+  const MotionCard = motion.custom(c.Card);
+  const MotionTypography = motion.custom(c.Typography);
 
-    const history = useHistory();
-    const dismissDistance = 150;
+  const history = useHistory();
+  const dismissDistance = 100;
 
-    const y = useMotionValue(0);
-    const inverted = useInvertedBorderRadius(20);
-    const cardRef = useRef(null);
-    const constraints = useScrollConstraints(cardRef, true);
+  const y = useMotionValue(0);
+  const inverted = useInvertedBorderRadius(20);
+  const cardRef = useRef(null);
+  const constraints = useScrollConstraints(cardRef, true);
 
-    function checkSwipeToDismiss() {
-      y.get() > dismissDistance && history.push("/stories");
-    }
+  function checkSwipeToDismiss() {
+    Math.abs(y.get()) > dismissDistance && history.push("/stories");
+  }
 
-    const containerRef = useRef(null);
-    useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, true);
+  const containerRef = useRef(null);
+  useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, true);
 
-    const Image = () => {
-      const inverted = useInvertedScale();
-      const scaleTranslate = ({ x, y, scaleX, scaleY }) =>
-        `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;
-
-      return (
-        <motion.div
-          className={classes.cardImageContainer}
-          layoutId={`image-container-${id}`}
-          transformTemplate={scaleTranslate}
-          animate={{ height: "40%" }}
-          style={{ ...inverted }}>
-          <motion.img
-            className={classes.image}
-            layoutId={`image-${id}`}
-            src={germanShep}
-            alt="dog-photo"
-          />
-        </motion.div>
-      );
-    };
-
-    const Title = () => {
-      return (
-        <MotionTypography
-          className={classes.title}
-          key="title"
-          animate={{ x: 32, y }}>
-          ~ {ownerName}
-        </MotionTypography>
-      );
-    };
+  const Image = () => {
+    const inverted = useInvertedScale();
+    const scaleTranslate = ({ x, y, scaleX, scaleY }) =>
+      `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;
 
     return (
       <motion.div
-        ref={containerRef}
-        className={classes.backdrop}
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        style={{ pointerEvents: "auto" }}>
-        <MotionCard
-          ref={cardRef}
-          className={classes.openCardContent}
-          layoutId={`card-container-${id}`}
-          style={{ ...inverted, y }}
-          drag={"y"}
-          dragConstraints={constraints}
-          onDrag={checkSwipeToDismiss}>
-          <Image />
-          <MotionTypography
-            variant="subtitle1"
-            className={classes.contentContainer}
-            animate="true">
-            " {testimonial} "
-          </MotionTypography>
-          <c.Divider
-            variant="middle"
-            style={{
-              marginLeft: "64px",
-              marginRight: "64px",
-            }}
-          />
-          <Title />
-        </MotionCard>
-        <Link to="/stories" className={classes.backdropLink} />
+        className={classes.cardImageContainer}
+        layoutId={`image-container-${id}`}
+        transformTemplate={scaleTranslate}
+        animate={{ height: "40%" }}
+        style={{ ...inverted }}
+      >
+        <motion.img
+          className={classes.image}
+          layoutId={`image-${id}`}
+          src={germanShep}
+          alt="dog-photo"
+        />
       </motion.div>
     );
-  },
-  (prev, next) => prev.isSelected === next.isSelected
-);
+  };
+
+  const Title = () => {
+    return (
+      <MotionTypography
+        className={classes.title}
+        key="title"
+        animate={{ x: 32, y }}
+      >
+        ~ {ownerName}
+      </MotionTypography>
+    );
+  };
+
+  return (
+    <motion.div
+      ref={containerRef}
+      className={classes.backdrop}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      style={{ pointerEvents: "auto" }}
+    >
+      <MotionCard
+        ref={cardRef}
+        className={classes.openCardContent}
+        layoutId={`card-container-${id}`}
+        style={{ ...inverted, y }}
+        drag={"y"}
+        dragConstraints={constraints}
+        onDrag={checkSwipeToDismiss}
+      >
+        <Image />
+        <MotionTypography
+          variant="subtitle1"
+          className={classes.contentContainer}
+          animate="true"
+        >
+          " {testimonial} "
+        </MotionTypography>
+        <c.Divider
+          variant="middle"
+          style={{
+            marginLeft: "64px",
+            marginRight: "64px",
+          }}
+        />
+        <Title />
+      </MotionCard>
+      <Link
+        to="/stories"
+        className={classes.backdropLink}
+        aria-label="close current card"
+      />
+    </motion.div>
+  );
+};

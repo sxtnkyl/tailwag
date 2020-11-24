@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     height: "100%",
     width: "100%",
-    zIndex: 10,
     padding: `${theme.spacing(2)}px ${theme.spacing(8)}px`,
     [theme.breakpoints.down("md")]: {
       padding: `${theme.spacing(2)}px ${theme.spacing(2)}px`,
@@ -70,15 +69,18 @@ const Navbar = () => {
           whileHover={{
             y: -5,
             filter: theme.palette.shadows.raisedFilterShadow,
-          }}>
+          }}
+        >
           <Link
             to="/contact"
             alt="conatct-page link"
-            aria-label="contact-page link">
+            aria-label="contact-page link"
+          >
             <c.SvgIcon
               className={classes.svg}
               viewBox="0 0 44 44"
-              titleAccess="contact link">
+              titleAccess="contact link"
+            >
               {icons.email}
             </c.SvgIcon>
           </Link>
@@ -89,17 +91,20 @@ const Navbar = () => {
           whileHover={{
             y: -5,
             filter: theme.palette.shadows.raisedFilterShadow,
-          }}>
+          }}
+        >
           <c.Link
             href="tel:+1-404-272-0985"
             target="_blank"
             rel="noopener noreferrer"
             alt="link to phone call"
-            aria-label="phone link">
+            aria-label="phone link"
+          >
             <c.SvgIcon
               className={classes.svg}
               viewBox="0 0 44 44"
-              titleAccess="phone link">
+              titleAccess="phone link"
+            >
               {icons.phone}
             </c.SvgIcon>
           </c.Link>
@@ -119,17 +124,20 @@ const Navbar = () => {
           whileHover={{
             y: -5,
             filter: theme.palette.shadows.raisedFilterShadow,
-          }}>
+          }}
+        >
           <c.Link
             href="https://www.facebook.com/TailsWagDogTraining/"
             target="_blank"
             rel="noopener noreferrer"
             alt="facebook link"
-            aria-label="facebook link">
+            aria-label="facebook link"
+          >
             <c.SvgIcon
               className={classes.svg}
               viewBox="0 0 44 44"
-              titleAccess="facebook link">
+              titleAccess="facebook link"
+            >
               {icons.facebook}
             </c.SvgIcon>
           </c.Link>
@@ -140,17 +148,20 @@ const Navbar = () => {
           whileHover={{
             y: -5,
             filter: theme.palette.shadows.raisedFilterShadow,
-          }}>
+          }}
+        >
           <c.Link
             href="https://www.instagram.com/tailswagdogtraining/"
             target="_blank"
             rel="noopener noreferrer"
             alt="instagram link"
-            aria-label="instagram link">
+            aria-label="instagram link"
+          >
             <c.SvgIcon
               className={classes.svg}
               viewBox="0 0 44 44"
-              titleAccess="instagram link">
+              titleAccess="instagram link"
+            >
               {icons.instagram}
             </c.SvgIcon>
           </c.Link>
@@ -166,7 +177,8 @@ const Navbar = () => {
         className={classes.infoContainer}
         container
         direction="row"
-        justify="space-between">
+        justify="space-between"
+      >
         {contactUs}
         {followUs}
       </c.Grid>

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   page: {
     minHeight: "100vh",
     paddingTop: "10vh",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       paddingTop: "3vh",
     },
   },
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "90%",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    margin: theme.spacing(24),
+    margin: theme.spacing(12),
     marginBottom: 0,
     minHeight: "30vh",
     [theme.breakpoints.down("md")]: {
@@ -56,7 +56,8 @@ const Stories = ({ match, location, history }) => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlue}>
+            style={theme.typography.wordEmphasisBlue}
+          >
             Tails Wag Dog Training{" "}
           </c.Typography>
           has served hundreds of happy clients over the years and takes great
@@ -64,7 +65,8 @@ const Stories = ({ match, location, history }) => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}>
+            style={theme.typography.wordEmphasisBlack}
+          >
             positive, long term relationships.
           </c.Typography>{" "}
           By spending more time with you and your canine partner, we develop a

@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     borderBottomLeftRadius: "50% 20%",
     borderBottomRightRadius: "50% 20%",
     overflow: "hidden",
+    [theme.breakpoints.down("sm")]: {
+      height: "20vh",
+    },
   },
   image: {
     height: "100%",

@@ -22,17 +22,13 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "50%",
     },
     // "&:nth-child((NUMofCARDS)n + (cardPosition))
-    //30 30 40, 40 20 40, 40 30 30
+    //30 30 40, 30 40 30, 40 30 30
     [theme.breakpoints.up("lg")]: {
       flex: "0 0 40%",
       maxWidth: "40%",
-      "&:nth-child(9n + 1), &:nth-child(9n + 2), &:nth-child(9n + 8), &:nth-child(9n + 9)": {
+      "&:nth-child(9n + 1), &:nth-child(9n + 2), &:nth-child(9n + 4), &:nth-child(9n + 6), &:nth-child(9n + 8), &:nth-child(9n + 9)": {
         flex: "0 0 30%",
         maxWidth: "30%",
-      },
-      "&:nth-child(9n + 5)": {
-        flex: "0 0 20%",
-        maxWidth: "20%",
       },
     },
   },
@@ -85,7 +81,8 @@ export const ListCard = memo(
           layoutId={`image-container-${id}`}
           transformTemplate={scaleTranslate}
           animate={{ height: "75%" }}
-          style={{ ...inverted }}>
+          style={{ ...inverted }}
+        >
           <motion.img
             className={classes.image}
             layoutId={`image-${id}`}
@@ -106,18 +103,23 @@ export const ListCard = memo(
     };
 
     return (
-      <div className={classes.card}>
+      <motion.div className={classes.card}>
         <motion.div
           className={classes.cardContent}
           layoutId={`card-container-${id}`}
-          animate={{ y: 0, opacity: isSelected ? 0 : 1 }}>
+          animate={{ y: 0, opacity: isSelected ? 0 : 1 }}
+        >
           <Image />
           <Title />
         </motion.div>
         {!isSelected && (
-          <Link to={`/stories/${id}`} className={classes.cardOpenLink} />
+          <Link
+            to={`/stories/${id}`}
+            className={classes.cardOpenLink}
+            aria-label={`open ${ownerName}'s testimonial`}
+          />
         )}
-      </div>
+      </motion.div>
     );
   },
   (prev, next) => prev.isSelected === next.isSelected
