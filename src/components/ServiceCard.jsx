@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       alignItems: "flex-end",
     },
-    "& #chip": {
+    "& a": {
       margin: theme.spacing(1),
       [theme.breakpoints.down("md")]: {
         marginRight: "0px",
