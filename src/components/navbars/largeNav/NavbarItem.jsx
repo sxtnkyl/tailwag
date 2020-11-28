@@ -68,14 +68,15 @@ const NavbarItem = ({
   };
 
   return (
-    <GridItem item className={classes.navItem} style={{ transform }}>
+    <GridItem item xs className={classes.navItem} style={{ transform }}>
       <NavItemText
         className={classes.textdiv}
         variant="h3"
         variants={scaleHoverTap}
         animate="initial"
         whileHover="hover"
-        whileTap="tap">
+        whileTap="tap"
+      >
         {text.toUpperCase()}
       </NavItemText>
       {blob}

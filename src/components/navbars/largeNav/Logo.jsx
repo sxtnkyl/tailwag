@@ -4,63 +4,76 @@ import { makeStyles } from "@material-ui/core";
 import theme from "../../../theme/theme";
 import * as c from "@material-ui/core";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
-
+import { ReactComponent as LogoDog } from "../../../utility/icons/svgs/logoDog.svg";
 import { roundBlobs } from "../../../utility/blobPaths";
 import useBlob from "../../../utility/hooks/useBlob";
 
 const useStyles = makeStyles((theme) => ({
-  navItem: {
-    display: "grid",
+  container: {
+    // border: "3px solid white",
+    borderRadius: theme.spacing(1),
+    padding: theme.spacing(1),
   },
-  textdiv: {
-    zIndex: 15,
-    gridArea: "1/1",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  iconbg: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    height: "100%",
-    width: "100%",
-    background: theme.palette.secondary.main,
+  logoLeft: {
+    fontSize: "10rem",
+    border: "3px solid white",
     borderRadius: "50%",
+    backgroundColor: theme.palette.secondary.light,
   },
   topText: {
     [theme.breakpoints.down("lg")]: {
-      fontSize: "2.2rem",
+      // fontSize: "1.75rem",
     },
   },
   botText: {
     fontFamily: "Roboto",
+    fontSize: "2.7rem !important",
     [theme.breakpoints.down("lg")]: {
-      fontSize: "1.75rem",
+      // fontSize: "1.75rem",
     },
   },
 }));
 
-const Logo = ({ blobNum, themeColor = theme.palette.secondary.main }) => {
+const Logo = () => {
   const classes = useStyles();
   const GridItem = motion.custom(c.Grid);
-  let blob = useBlob(theme.palette.secondary.main, 1, roundBlobs[blobNum], 1.3);
+  // let blob = useBlob(themeColor, 1, roundBlobs[blobNum], 1.3);
 
-  const { scrollY } = useViewportScroll();
-  const transform = useTransform(scrollY, [0, 100], ["scale(1)", "scale(0.8)"]);
+  // const { scrollY } = useViewportScroll();
+  // const transform = useTransform(scrollY, [0, 100], ["scale(1)", "scale(0.8)"]);
+
+  const dogSvg = (
+    <c.SvgIcon className={classes.logoLeft}>
+      <LogoDog />
+    </c.SvgIcon>
+  );
 
   return (
-    <GridItem item className={classes.navItem} style={{ transform }}>
-      {blob}
-      <div className={classes.textdiv}>
-        <c.Typography variant="h2" className={classes.topText}>
+    <GridItem
+      item
+      xs={5}
+      container
+      className={classes.container}
+      justify="space-around"
+    >
+      <c.Grid item xs={4}>
+        {dogSvg}
+      </c.Grid>
+      <c.Grid
+        item
+        xs={7}
+        container
+        direction="column"
+        justify="center"
+        style={{ textAlign: "center" }}
+      >
+        <c.Typography variant="h1" className={classes.topText}>
           TAILS WAG
         </c.Typography>
-        <c.Typography variant="h4" className={classes.botText}>
+        <c.Typography variant="h1" className={classes.botText}>
           DOG TRAINING
         </c.Typography>
-      </div>
+      </c.Grid>
     </GridItem>
   );
 };

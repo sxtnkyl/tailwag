@@ -8,9 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const useStyles = makeStyles((theme) => ({
   container: {
     height: "30vh",
-    borderBottomLeftRadius: "50% 20%",
-    borderBottomRightRadius: "50% 20%",
+    borderTopLeftRadius: "50% 20%",
+    borderTopRightRadius: "50% 20%",
     overflow: "hidden",
+    boxShadow: theme.palette.shadows.topShadow,
     [theme.breakpoints.down("sm")]: {
       height: "20vh",
     },
@@ -19,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     objectFit: "cover",
-    borderBottomLeftRadius: "50% 20%",
-    borderBottomRightRadius: "50% 20%",
-    boxShadow: theme.palette.shadows.bottomShadow,
+    borderTopLeftRadius: "50% 20%",
+    borderTopRightRadius: "50% 20%",
+
     backgroundColor: theme.palette.primary.light,
   },
 }));
@@ -50,7 +51,8 @@ const Banner = ({ location }) => {
   return (
     <div
       className={classes.container}
-      style={{ ...theme.mixins.formats.centeredFlex }}>
+      style={{ ...theme.mixins.formats.centeredFlex }}
+    >
       <SnootBanner image={image} />
       <div className={classes.banner} />
     </div>

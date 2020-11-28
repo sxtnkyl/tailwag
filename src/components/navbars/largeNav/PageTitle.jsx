@@ -1,7 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
+import theme from "../../../theme/theme";
+import Logo from "./Logo";
 import { ReactComponent as Paw } from "../../../utility/icons/svgs/pawpaw.svg";
+import { ReactComponent as LogoDog } from "../../../utility/icons/svgs/logoDog.svg";
 import WaveTopper from "../../../components/WaveTopper";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     zIndex: 10,
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
     "& h1": {
       [theme.breakpoints.down("lg")]: {
@@ -31,11 +34,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  pawLeft: {
-    transform: "scale(0.5) rotate(-30deg)",
-    filter: theme.palette.shadows.pawShadow,
-    fontSize: "20rem",
-  },
+
   pawRight: {
     transform: "scale(0.5) rotate(30deg)",
     filter: theme.palette.shadows.pawShadow,
@@ -45,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PageTitle = ({ location }) => {
   const classes = useStyles();
+  const GridContainer = motion.custom(c.Grid);
 
   const currentPageTitle = location.pathname.includes("stories")
     ? "STORIES"
@@ -54,19 +54,18 @@ const PageTitle = ({ location }) => {
 
   const TitleSlide = ({ titleText }) => (
     <AnimatePresence>
-      <motion.div
+      <GridContainer
         className={classes.title}
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -200 }}>
-        <c.SvgIcon className={classes.pawLeft}>
-          <Paw />
-        </c.SvgIcon>
-        <c.Typography variant="h1">{titleText}</c.Typography>
-        <c.SvgIcon className={classes.pawRight}>
-          <Paw />
-        </c.SvgIcon>
-      </motion.div>
+        exit={{ opacity: 0, x: -200 }}
+        justify="space-around"
+      >
+        <Logo />
+        <GridContainer item xs={5} container justify="center">
+          <c.Typography variant="h1">{titleText}</c.Typography>
+        </GridContainer>
+      </GridContainer>
     </AnimatePresence>
   );
 

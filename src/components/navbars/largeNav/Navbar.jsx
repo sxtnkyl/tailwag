@@ -3,9 +3,8 @@ import React from "react";
 import { makeStyles, AppBar, Grid } from "@material-ui/core";
 import useFade from "../../../utility/hooks/useFade";
 import theme from "../../../theme/theme";
-
 import NavbarItem from "./NavbarItem";
-import Logo from "./Logo";
+
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 import { Link } from "react-router-dom";
@@ -50,14 +49,14 @@ const Navbar = () => {
     <NavGrid
       container
       justify="space-evenly"
-      style={{ height: "100%", flexWrap: "inherit" }}>
+      style={{ height: "100%", flexWrap: "inherit" }}
+    >
+      <Link to="/">
+        <NavbarItem blobNum={7} text="Home" />
+      </Link>
       <Link to="/services">
         <NavbarItem blobNum={0} text="Services" />
       </Link>
-      <Link to="/">
-        <NavbarItem blobNum={7} text="About" />
-      </Link>
-      <Logo blobNum={0} themeColor={theme.palette.primary.main} />
       <Link to="/stories">
         <NavbarItem blobNum={2} text="Stories" />
       </Link>
@@ -71,7 +70,8 @@ const Navbar = () => {
     <TopBar
       position="sticky"
       className={classes.atTop}
-      style={{ background, height, paddingTop, paddingBottom, boxShadow }}>
+      style={{ background, height, paddingTop, paddingBottom, boxShadow }}
+    >
       <NavItemList />
     </TopBar>
   );

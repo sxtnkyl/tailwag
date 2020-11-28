@@ -20,6 +20,7 @@ let theme = createMuiTheme({
       )})`,
       raisedFilterShadow: `drop-shadow(2px 2px 4px ${useFade(blue[600], 0.8)})`,
       bottomShadow: `0px 2px 4px 4px ${useFade(blue[700], 0.5)}`,
+      topShadow: `0px -2px 4px 4px ${useFade(blue[700], 0.5)}`,
       iconGradient:
         "linear-gradient(330deg, rgba(179, 229, 252, 1) 0%, rgba(33, 150, 243, 1) 100%)",
       pawShadow: `drop-shadow(2px 2px 4px ${useFade(blue[800], 0.8)})`,

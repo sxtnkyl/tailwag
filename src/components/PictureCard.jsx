@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
       borderTopRightRadius: theme.spacing(2),
     },
     [theme.breakpoints.down("sm")]: {
-      height: "60vh"
+      height: "60vh",
     },
   },
   media: {
@@ -48,18 +48,18 @@ const PictureCard = ({
   const classes = useStyles();
 
   return (
-      <c.Card className={classes.card}>
-        <c.CardMedia
-          className={classes.media}
-          component="img"
-          alt="picture-card"
-          image={pic}
-        />
-        <c.CardContent className={classes.content}>
-          <c.Typography variant="h4">{title}</c.Typography>
-          <c.Typography variant="h5">{caption}</c.Typography>
-        </c.CardContent>
-      </c.Card>
+    <c.Card className={classes.card}>
+      <c.CardMedia
+        className={classes.media}
+        component="img"
+        alt="picture-card"
+        image={pic}
+      />
+      <c.CardContent className={classes.content}>
+        <c.Typography variant="h4">{title}</c.Typography>
+        <c.Typography variant="h5">{caption}</c.Typography>
+      </c.CardContent>
+    </c.Card>
   );
 };
 

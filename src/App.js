@@ -13,7 +13,7 @@ import LargeNav from "./components/navbars/largeNav/index";
 import SmallNav from "./components/navbars/smallNav/index";
 
 import Services from "./routes/Services";
-import About from "./routes/About";
+import Home from "./routes/Home";
 import Stories from "./routes/Stories";
 import Contact from "./routes/Contact";
 
@@ -25,11 +25,11 @@ function App() {
 
   return (
     <c.ThemeProvider theme={theme}>
-      <c.Container maxWidth="xl" disableGutters>
+      <c.Container maxWidth="false" disableGutters>
         {navExpanded ? <LargeNav /> : <SmallNav />}
         <AnimatedRoutes exitBeforeEnter>
           <RouteTransition exact path="/" slide={30}>
-            <About />
+            <Home />
           </RouteTransition>
           <RouteTransition path="/services" slide={30}>
             <Services />

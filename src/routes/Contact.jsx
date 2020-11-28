@@ -436,7 +436,7 @@ const Contact = () => {
           <c.Typography
             component={"div"}
             variant="h3"
-            style={theme.typography.wordEmphasisBlue}
+            style={theme.typography.wordEmphasisBlack}
           >
             Click to give us a call!
           </c.Typography>

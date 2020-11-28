@@ -1,8 +1,22 @@
-revert React.StrictMode in index.js before prod
+//revert React.StrictMode in index.js before prod
 org association for about accolade 2018-2019
 
-update stories data with images/names
+//update stories data with images/names
 
-contact- submitted indicator/debounce disable submit
+//contact- submitted indicator/debounce disable submit
 
-overscroll-behavior > contain (prevent scroll chaining)
+//xl screen size > too much whitespace
+
+x//change "dog whisperer"
+
+x//zoom out margin responsiveness
+
+NAVBAR REORG-
+//incorp logo
+x//ABOUT > HOME
+
+//large-NAVBAR
+//
+
+//small-NAVBAR
+//

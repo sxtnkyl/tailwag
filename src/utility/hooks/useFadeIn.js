@@ -36,7 +36,8 @@ const FadeIn = ({
       animate={inView ? "show" : "hidden"}
       exit="hidden"
       transition={{ delay: delay }}
-      variants={variants}>
+      variants={variants}
+    >
       {children}
     </motion.div>
   );

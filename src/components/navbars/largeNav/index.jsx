@@ -10,9 +10,9 @@ const LargeNav = () => {
 
   return (
     <>
-      <Banner location={location} />
-      <Navbar />
       <PageTitle location={location} />
+      <Navbar />
+      <Banner location={location} />
     </>
   );
 };
