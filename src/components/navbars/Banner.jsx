@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import * as c from "@material-ui/core";
 import useBannerImage from "../../utility/hooks/useBannerImage";
 import theme from "../../theme/theme";
 
@@ -7,13 +8,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    height: "30vh",
+    height: "30%",
     borderTopLeftRadius: "50% 20%",
     borderTopRightRadius: "50% 20%",
     overflow: "hidden",
     boxShadow: theme.palette.shadows.topShadow,
     [theme.breakpoints.down("sm")]: {
-      height: "20vh",
+      height: "20%",
     },
   },
   image: {
@@ -22,15 +23,13 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "cover",
     borderTopLeftRadius: "50% 20%",
     borderTopRightRadius: "50% 20%",
-
     backgroundColor: theme.palette.primary.light,
   },
 }));
 
 const Banner = ({ location }) => {
   const classes = useStyles();
-  let currentRoute = location.pathname.substring(1, location.pathname.length);
-  if (currentRoute.includes("stories")) currentRoute = "stories";
+  let currentRoute = location.pathname;
 
   const image = useBannerImage(currentRoute);
 
@@ -49,13 +48,14 @@ const Banner = ({ location }) => {
   );
 
   return (
-    <div
+    <c.Grid
+      item
       className={classes.container}
       style={{ ...theme.mixins.formats.centeredFlex }}
     >
       <SnootBanner image={image} />
       <div className={classes.banner} />
-    </div>
+    </c.Grid>
   );
 };
 

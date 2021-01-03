@@ -16,7 +16,7 @@ const images = [
     description: "ollie_Sexton",
   },
   {
-    id: "stories",
+    id: "testimonials",
     src: StoriesPic,
     description: "black_and_brown_dog",
   },
@@ -33,9 +33,12 @@ const images = [
 ];
 
 const useBannerImage = (route) => {
+  let currentRoute = route.substring(1, route.length);
+  //remove card paths, if open
+  if (currentRoute.includes("testimonials")) currentRoute = "testimonials";
   //matches route(str) to image of images folder
   let image = images.find(({ id }) => {
-    return id === route;
+    return id === currentRoute;
   });
   return image;
 };

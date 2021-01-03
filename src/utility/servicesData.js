@@ -22,13 +22,22 @@ const serviceData = {
       interval: "hour",
       description:
         "Private coaching for people who have behavioral issues with their dog or need more specialized, personal training. Some behavioral issues we commonly address and resolve are jumping, biting, mouthing, housebreaking, anxiety, aggression, and more. Tails Wag offers private flexible scheduling in order to help you identify and treat the source of the behavioral issues, while enabling you with the knowldge to prevent future incidents.",
-      caption:
-        "Additional time billed in 15 minute increments at the same rate. Trip charges assessed for long distances.",
+      caption: "",
       chips: [
         {
           title: "free phone consultation",
           color: "blue",
           icon: icons.infoCircle,
+        },
+        {
+          title: "flexible meeting location",
+          color: "blue",
+          icon: icons.locationCircle,
+        },
+        {
+          title: "prorated 15 min rates",
+          color: "blue",
+          icon: icons.checkCircle,
         },
       ],
     },
@@ -59,20 +68,15 @@ const serviceData = {
       description:
         "Your dog will stay in my home, in a loving family environment, where someone is home the majority of the time and always at night. Reservations required.",
       caption: "Available to current and past training clients only.",
-      chips: [{ title: "not nightly", color: "red", icon: icons.xCircle }],
+      chips: [
+        { title: "not nightly", color: "red", icon: icons.xCircle },
+        {
+          title: "returning clients only",
+          color: "red",
+          icon: icons.boneCircle,
+        },
+      ],
     },
-    {
-      title: "Night Boarding",
-      icon: icons.moonAndStars,
-      rate: 60,
-      interval: "night",
-      description:
-        "Your dog will stay in my home, in a loving family environment, where someone is home the majority of the time and always at night. Reservations required.",
-      caption: "Available to current and past training clients only.",
-      chips: [{ title: "nightly", color: "blue", icon: icons.checkCircle }],
-    },
-  ],
-  returningClients: [
     {
       title: "Play Dates",
       icon: icons.tennisBall,
@@ -82,7 +86,11 @@ const serviceData = {
         "Your dog will come for a fun day of play! Play dates are held in our home between the hours of 8:30 am and 6:30 pm Monday through Friday. Guests will have plenty of space and friends to run and play with on our enclosed 1/2 acre grounds. Reservations required.",
       caption: "Available to current and past training clients only.",
       chips: [
-        { title: "returning pups", color: "blue", icon: icons.checkCircle },
+        {
+          title: "returning clients only",
+          color: "red",
+          icon: icons.boneCircle,
+        },
       ],
     },
     {
@@ -94,7 +102,11 @@ const serviceData = {
         "With hard work come hard play! Play and Train dates are held in our home between the hours of 8:30 am and 6:30 pm Monday through Friday. Guests will have plenty of space and friends to run and play with on our enclosed 1/2 acre grounds while receiving lessons throughout the day. Reservations required.",
       caption: "Available to current and past training clients only.",
       chips: [
-        { title: "returning pups", color: "blue", icon: icons.checkCircle },
+        {
+          title: "returning clients only",
+          color: "red",
+          icon: icons.boneCircle,
+        },
       ],
     },
   ],

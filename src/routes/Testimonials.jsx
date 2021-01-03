@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 0,
     minHeight: "30vh",
     [theme.breakpoints.down("md")]: {
-      margin: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+      margin: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
       textAlign: "center",
     },
   },
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Stories = ({ match, location, history }) => {
+const Testimonials = () => {
   const classes = useStyles();
 
   const statementText = (
@@ -79,7 +79,7 @@ const Stories = ({ match, location, history }) => {
 
   const List = ({ match }) => (
     <AnimateSharedLayout type="crossfade">
-      <div className={classes.listContainer}>
+      <section className={classes.listContainer}>
         {storiesData.map((card) => (
           <ListCard
             key={card.id}
@@ -88,7 +88,7 @@ const Stories = ({ match, location, history }) => {
             {...card}
           />
         ))}
-      </div>
+      </section>
       <AnimatePresence>
         {match.params.id && <OpenCard paramsId={match.params.id} />}
       </AnimatePresence>
@@ -96,13 +96,13 @@ const Stories = ({ match, location, history }) => {
   );
 
   return (
-    <div className={classes.page} id="Stories">
+    <div className={classes.page} id="Testimonials">
       {statementText}
       <Router>
-        <Route path={["/stories/:id", "/stories"]} component={List} />
+        <Route path={["/testimonials/:id", "/testimonials"]} component={List} />
       </Router>
     </div>
   );
 };
 
-export default Stories;
+export default Testimonials;

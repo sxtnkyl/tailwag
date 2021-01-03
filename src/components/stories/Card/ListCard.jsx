@@ -114,7 +114,7 @@ export const ListCard = memo(
         </motion.div>
         {!isSelected && (
           <Link
-            to={`/stories/${id}`}
+            to={`/testimonials/${id}`}
             className={classes.cardOpenLink}
             aria-label={`open ${ownerName}'s testimonial`}
           />

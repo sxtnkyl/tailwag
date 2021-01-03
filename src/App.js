@@ -14,34 +14,38 @@ import SmallNav from "./components/navbars/smallNav/index";
 
 import Services from "./routes/Services";
 import Home from "./routes/Home";
-import Stories from "./routes/Stories";
+import Testimonials from "./routes/Testimonials";
 import Contact from "./routes/Contact";
 
 import ContactFooter from "./components/ContactFooter";
+import { AnimateSharedLayout } from "framer-motion";
 
 function App() {
-  //screen width greater than 960 = true;
-  const navExpanded = useMediaQuery(theme.breakpoints.up("md"));
+  //screen width at about md(960px) = true;
+  // const navExpanded = useMediaQuery(theme.breakpoints.up('md'));
+  const navExpanded = useMediaQuery("@media (min-width:1091px)");
 
   return (
     <c.ThemeProvider theme={theme}>
-      <c.Container maxWidth="false" disableGutters>
-        {navExpanded ? <LargeNav /> : <SmallNav />}
-        <AnimatedRoutes exitBeforeEnter>
-          <RouteTransition exact path="/" slide={30}>
-            <Home />
-          </RouteTransition>
-          <RouteTransition path="/services" slide={30}>
-            <Services />
-          </RouteTransition>
-          <RouteTransition path="/stories" slide={30}>
-            <Stories />
-          </RouteTransition>
-          <RouteTransition path="/contact" slide={30}>
-            <Contact />
-          </RouteTransition>
-        </AnimatedRoutes>
-        <ContactFooter />
+      <c.Container maxWidth={false} disableGutters>
+        <AnimateSharedLayout>
+          {navExpanded ? <LargeNav /> : <SmallNav />}
+          <AnimatedRoutes exitBeforeEnter>
+            <RouteTransition exact path="/" slide={30}>
+              <Home />
+            </RouteTransition>
+            <RouteTransition path="/services" slide={30}>
+              <Services />
+            </RouteTransition>
+            <RouteTransition path="/testimonials" slide={30}>
+              <Testimonials />
+            </RouteTransition>
+            <RouteTransition path="/contact" slide={30}>
+              <Contact />
+            </RouteTransition>
+          </AnimatedRoutes>
+          <ContactFooter />
+        </AnimateSharedLayout>
       </c.Container>
     </c.ThemeProvider>
   );

@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   textdiv: {
+    color: theme.palette.primary.main,
     zIndex: 15,
     gridArea: "1/1",
     display: "grid",
@@ -32,7 +33,7 @@ const NavbarItem = ({
   const classes = useStyles();
   const NavItemText = motion.custom(Typography);
   const GridItem = motion.custom(Grid);
-  let blob = useBlob(theme.palette.primary.main, 1, itemBlobs[blobNum], 1.4);
+  let blob = useBlob("white", 1, itemBlobs[blobNum], 1.4);
 
   return (
     <GridItem item xs className={classes.navItem}>

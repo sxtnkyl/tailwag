@@ -24,15 +24,18 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(12),
     minHeight: "30vh",
     [theme.breakpoints.down("md")]: {
-      margin: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
+      margin: `${theme.spacing(8)}px ${theme.spacing(8)}px`,
       textAlign: "center",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: `${theme.spacing(8)}px ${theme.spacing(4)}px`,
     },
   },
   serviceLine: {
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(8),
     paddingBottom: theme.spacing(8),
-    [theme.breakpoints.down("lg")]: {
+    [theme.breakpoints.down("md")]: {
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
       paddingBottom: theme.spacing(8),
@@ -126,7 +129,9 @@ const Services = () => {
             container
             item
             direction="row"
+            spacing={4}
             justify="space-evenly"
+            alignItems="center"
             id="cardsContainer"
           >
             {lineObj.map((obj) => (
@@ -143,10 +148,6 @@ const Services = () => {
       {statementText}
       <ServiceLine lineName="Training" lineObj={serviceData.training} />
       <ServiceLine lineName="Boarding" lineObj={serviceData.boarding} />
-      <ServiceLine
-        lineName="Returning Clients"
-        lineObj={serviceData.returningClients}
-      />
     </div>
   );
 };

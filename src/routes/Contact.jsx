@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
+import JumpInText from "../components/JumpInText";
 import FadeIn from "../utility/hooks/useFadeIn";
 import useFade from "../utility/hooks/useFade";
 import icons from "../utility/icons/icons";
@@ -92,6 +93,20 @@ const useStyles = makeStyles((theme) => ({
       borderTopRightRadius: theme.spacing(2),
     },
   },
+  actionButtons: {
+    width: "50%",
+    marginTop: theme.spacing(2),
+    color: "black",
+    background: theme.palette.secondary.main,
+    filter: theme.palette.shadows.loweredFilterShadow,
+    padding: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      width: "30%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "50%",
+    },
+  },
 }));
 
 const defaultValues = {
@@ -111,16 +126,17 @@ const defaultValues = {
 
 const Contact = () => {
   const classes = useStyles();
+  const MotionButton = motion.custom(c.Button);
   const MotionSubmit = motion.custom(c.Button);
 
-  const { handleSubmit, control } = useForm({ defaultValues });
+  const { handleSubmit, control, errors } = useForm({ defaultValues });
   const [submitted, setSubmitted] = useState(true);
   const [sending, setSending] = useState(false);
   useEffect(() => {
     //signals successful submit for 30 seconds
     setTimeout(() => {
       setSubmitted(false);
-    }, 10000);
+    }, 5000);
   }, [submitted]);
 
   const submitActions = async (data) => {
@@ -138,7 +154,6 @@ const Contact = () => {
     //   .then((response) => response.json())
     //   .then((data) => {
     //     console.log("Success:", data);
-    //     setSending(false);
     //     setSubmitted(true);
     //   })
     //   .catch((error) => {
@@ -146,8 +161,17 @@ const Contact = () => {
     //   });
   };
 
+  const onError = (errors) => {
+    console.log(errors);
+    const phone = document.getElementById("formGroup-Client");
+    phone.scrollIntoView({ behavior: "smooth" });
+  };
+
   const form = (
-    <form onSubmit={handleSubmit(submitActions)} className={classes.form}>
+    <form
+      onSubmit={handleSubmit(submitActions, onError)}
+      className={classes.form}
+    >
       <c.Card className={classes.card}>
         <div className={classes.formSection}>
           <c.CardContent id="formGroup-Client">
@@ -186,6 +210,33 @@ const Contact = () => {
                 <Controller
                   as={
                     <c.TextField
+                      id="phoneNumber"
+                      label="Phone Number"
+                      variant="outlined"
+                      size="small"
+                    />
+                  }
+                  name="phone"
+                  control={control}
+                  rules={{
+                    required: true,
+                  }}
+                />
+                {errors.phone && (
+                  <c.Typography
+                    variant="button"
+                    component={"span"}
+                    style={{ color: theme.palette.secondary.main }}
+                  >
+                    *phone number is required
+                  </c.Typography>
+                )}
+              </c.Grid>
+
+              <c.Grid item xs={12} lg={6}>
+                <Controller
+                  as={
+                    <c.TextField
                       id="email"
                       label="Email"
                       variant="outlined"
@@ -196,25 +247,11 @@ const Contact = () => {
                   control={control}
                 />
               </c.Grid>
-              <c.Grid item xs={12} lg={6}>
-                <Controller
-                  as={
-                    <c.TextField
-                      id="phoneNumber"
-                      label="Phone Number"
-                      variant="outlined"
-                      size="small"
-                    />
-                  }
-                  name="phone"
-                  control={control}
-                />
-              </c.Grid>
             </c.Grid>
           </c.CardContent>
 
           <c.CardContent id="formGroup-Doggy">
-            <c.Typography variant="h4">Doggy Details</c.Typography>
+            <c.Typography variant="h4">Dog Info</c.Typography>
             <c.Grid container spacing={2}>
               <c.Grid item xs={12} lg={4}>
                 <Controller
@@ -374,7 +411,7 @@ const Contact = () => {
                   as={
                     <c.TextField
                       id="additionalInfo"
-                      label="Tell us about your dog, or how we can help!"
+                      label="Tell us about your dog!"
                       variant="outlined"
                       size="small"
                       multiline
@@ -436,26 +473,32 @@ const Contact = () => {
           <c.Typography
             component={"div"}
             variant="h3"
-            style={theme.typography.wordEmphasisBlack}
+            style={{
+              ...theme.typography.wordEmphasisBlack,
+              marginBottom: theme.spacing(2),
+              width: "100%",
+            }}
           >
             Click to give us a call!
           </c.Typography>
-          <FadeIn slide={50} delay={1.25}>
-            <c.Typography
-              component={"div"}
-              variant="h3"
-              style={theme.typography.wordEmphasisBlack}
+          <MotionButton
+            className={classes.actionButtons}
+            variant="outlined"
+            fullWidth
+            whileHover={{
+              y: -5,
+            }}
+          >
+            <c.Link
+              href="tel:+1-404-272-0985"
+              target="_blank"
+              rel="noopener noreferrer"
+              alt="link to phone call"
+              style={{ textDecoration: "none", color: "black" }}
             >
-              <c.Link
-                href="tel:+1-404-272-0985"
-                target="_blank"
-                rel="noopener noreferrer"
-                alt="link to phone call"
-              >
-                (404) 272-0985
-              </c.Link>
-            </c.Typography>
-          </FadeIn>
+              <c.Typography variant="h5">(404) 272-0985</c.Typography>
+            </c.Link>
+          </MotionButton>
         </c.Grid>
       </c.Grid>
     </div>

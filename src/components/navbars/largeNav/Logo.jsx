@@ -3,74 +3,90 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import theme from "../../../theme/theme";
 import * as c from "@material-ui/core";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+import { motion } from "framer-motion";
 import { ReactComponent as LogoDog } from "../../../utility/icons/svgs/logoDog.svg";
-import { roundBlobs } from "../../../utility/blobPaths";
-import useBlob from "../../../utility/hooks/useBlob";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    // border: "3px solid white",
-    borderRadius: theme.spacing(1),
     padding: theme.spacing(1),
   },
   logoLeft: {
-    fontSize: "10rem",
-    border: "3px solid white",
+    height: "100%",
+    width: "100%",
     borderRadius: "50%",
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.secondary.main,
   },
   topText: {
+    paddingLeft: "8px",
     [theme.breakpoints.down("lg")]: {
-      // fontSize: "1.75rem",
+      fontSize: "2.5rem",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2rem",
     },
   },
   botText: {
     fontFamily: "Roboto",
-    fontSize: "2.7rem !important",
+    paddingLeft: "8px",
     [theme.breakpoints.down("lg")]: {
-      // fontSize: "1.75rem",
+      fontSize: "1.6rem",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1.1rem",
     },
   },
 }));
 
-const Logo = () => {
+const Logo = ({
+  fontColor = "white",
+  logoBorder = "3px solid white",
+  justify = "space-evenly",
+}) => {
   const classes = useStyles();
   const GridItem = motion.custom(c.Grid);
-  // let blob = useBlob(themeColor, 1, roundBlobs[blobNum], 1.3);
-
-  // const { scrollY } = useViewportScroll();
-  // const transform = useTransform(scrollY, [0, 100], ["scale(1)", "scale(0.8)"]);
 
   const dogSvg = (
-    <c.SvgIcon className={classes.logoLeft}>
+    <c.SvgIcon className={classes.logoLeft} style={{ border: logoBorder }}>
       <LogoDog />
     </c.SvgIcon>
   );
 
+  const showLogo = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
-    <GridItem
-      item
-      xs={5}
-      container
-      className={classes.container}
-      justify="space-around"
-    >
-      <c.Grid item xs={4}>
-        {dogSvg}
-      </c.Grid>
+    <GridItem container justify={justify} className={classes.container}>
+      {showLogo && (
+        <c.Grid item md={3}>
+          {dogSvg}
+        </c.Grid>
+      )}
       <c.Grid
         item
-        xs={7}
+        xs={12}
+        md={7}
+        lg={9}
         container
         direction="column"
         justify="center"
-        style={{ textAlign: "center" }}
+        style={{
+          textAlign: !showLogo && "center",
+          paddingBottom: !showLogo && theme.spacing(2),
+        }}
       >
-        <c.Typography variant="h1" className={classes.topText}>
+        <c.Typography
+          variant="h1"
+          className={classes.topText}
+          style={{ color: fontColor }}
+        >
           TAILS WAG
         </c.Typography>
-        <c.Typography variant="h1" className={classes.botText}>
+        <c.Typography
+          variant="h1"
+          className={classes.botText}
+          style={{ color: fontColor }}
+        >
           DOG TRAINING
         </c.Typography>
       </c.Grid>

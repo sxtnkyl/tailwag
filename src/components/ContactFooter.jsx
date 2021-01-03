@@ -2,11 +2,17 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import useFade from "../utility/hooks/useFade";
 import * as c from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import theme from "../theme/theme";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import WaveTopper from "./WaveTopper";
-import icons from "../utility/icons/icons";
+import {
+  EmailButton,
+  PhoneButton,
+  FacebookButton,
+  InstaButton,
+} from "./ContactButtons";
+import Logo from "./navbars/largeNav/Logo";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -29,25 +35,10 @@ const useStyles = makeStyles((theme) => ({
       padding: `${theme.spacing(2)}px ${theme.spacing(2)}px`,
     },
   },
-  svgContainer: {
-    height: "44px",
-    width: "44px",
-    margin: "22px",
-    cursor: "pointer",
-    [theme.breakpoints.down("md")]: {
-      margin: "0px",
-    },
-  },
-  svg: {
-    height: "100%",
-    width: "100%",
-    background: theme.palette.primary.light,
-    filter: theme.palette.shadows.pawShadow,
-    borderRadius: theme.spacing(1),
-  },
   divider: {
-    height: "3px",
+    height: "1px",
     backgroundColor: "black",
+    marginBottom: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
       height: "0px",
     },
@@ -56,133 +47,41 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const classes = useStyles();
-  const MotionItem = motion.custom(c.Grid);
-
-  const contactUs = (
-    <c.Grid item style={{ textAlign: "center" }}>
-      <c.Typography variant="h4">CONTACT US</c.Typography>
-      <c.Divider className={classes.divider} />
-      <c.Grid container justify="space-around">
-        <MotionItem
-          item
-          className={classes.svgContainer}
-          whileHover={{
-            y: -5,
-            filter: theme.palette.shadows.raisedFilterShadow,
-          }}
-        >
-          <Link
-            to="/contact"
-            alt="conatct-page link"
-            aria-label="contact-page link"
-          >
-            <c.SvgIcon
-              className={classes.svg}
-              viewBox="0 0 44 44"
-              titleAccess="contact link"
-            >
-              {icons.email}
-            </c.SvgIcon>
-          </Link>
-        </MotionItem>
-        <MotionItem
-          item
-          className={classes.svgContainer}
-          whileHover={{
-            y: -5,
-            filter: theme.palette.shadows.raisedFilterShadow,
-          }}
-        >
-          <c.Link
-            href="tel:+1-404-272-0985"
-            target="_blank"
-            rel="noopener noreferrer"
-            alt="link to phone call"
-            aria-label="phone link"
-          >
-            <c.SvgIcon
-              className={classes.svg}
-              viewBox="0 0 44 44"
-              titleAccess="phone link"
-            >
-              {icons.phone}
-            </c.SvgIcon>
-          </c.Link>
-        </MotionItem>
-      </c.Grid>
-    </c.Grid>
-  );
-
-  const followUs = (
-    <c.Grid item style={{ textAlign: "center" }}>
-      <c.Typography variant="h4">FOLLOW US</c.Typography>
-      <c.Divider className={classes.divider} />
-      <c.Grid container justify="space-around">
-        <MotionItem
-          item
-          className={classes.svgContainer}
-          whileHover={{
-            y: -5,
-            filter: theme.palette.shadows.raisedFilterShadow,
-          }}
-        >
-          <c.Link
-            href="https://www.facebook.com/TailsWagDogTraining/"
-            target="_blank"
-            rel="noopener noreferrer"
-            alt="facebook link"
-            aria-label="facebook link"
-          >
-            <c.SvgIcon
-              className={classes.svg}
-              viewBox="0 0 44 44"
-              titleAccess="facebook link"
-            >
-              {icons.facebook}
-            </c.SvgIcon>
-          </c.Link>
-        </MotionItem>
-        <MotionItem
-          item
-          className={classes.svgContainer}
-          whileHover={{
-            y: -5,
-            filter: theme.palette.shadows.raisedFilterShadow,
-          }}
-        >
-          <c.Link
-            href="https://www.instagram.com/tailswagdogtraining/"
-            target="_blank"
-            rel="noopener noreferrer"
-            alt="instagram link"
-            aria-label="instagram link"
-          >
-            <c.SvgIcon
-              className={classes.svg}
-              viewBox="0 0 44 44"
-              titleAccess="instagram link"
-            >
-              {icons.instagram}
-            </c.SvgIcon>
-          </c.Link>
-        </MotionItem>
-      </c.Grid>
-    </c.Grid>
-  );
+  const md = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <div className={classes.footer}>
+    <motion.div className={classes.footer} layout>
       <WaveTopper position="absolute" />
       <c.Grid
         className={classes.infoContainer}
         container
         direction="row"
-        justify="space-between"
+        justify={!md ? "space-between" : "center"}
+        alignContent="flex-start"
       >
-        {contactUs}
-        {followUs}
+        <c.Grid item xs={8} md={4} lg={3}>
+          <Logo fontColor={"black"} logoBorder="3px solid black" />
+        </c.Grid>
+
+        <c.Grid
+          item
+          xs={10}
+          md={4}
+          lg={3}
+          container
+          justify="space-around"
+          alignContent="center"
+        >
+          <EmailButton stroke="black" background={theme.palette.primary.main} />
+          <PhoneButton stroke="black" background={theme.palette.primary.main} />
+          <FacebookButton
+            stroke="black"
+            background={theme.palette.primary.main}
+          />
+          <InstaButton stroke="black" background={theme.palette.primary.main} />
+        </c.Grid>
       </c.Grid>
-    </div>
+    </motion.div>
   );
 };
 

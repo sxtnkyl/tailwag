@@ -5,7 +5,7 @@ const storiesData = [
     ownerName: "Lindsay Kaufman",
     pointOfInterest: 80,
     backgroundColor: "#814A0E",
-    //backgroundImg
+    // backgroundImg
     testimonial:
       "Alexandra's way with dogs (and humans, for that matter) is unmatched! My family and I have been German Shepherd owners for years - 3 over the course of 20 years - and each one of them has been such a blessing, thanks very much in part to Alexandra! She has taught us how to employ the training habits we have learned in an effort to create environments where our dogs can succeed and thus become confident enough to interact with people and/or dogs in a healthy, social manner.  Our German Shepherd was attacked by a dog in a dog park and Alexandra was immediately there to help us `rehabilitate` him with healthy, positive interactions with other friendly dogs, so that our precious boy wasn't forever scarred by the experience.  She makes herself constantly available for guidance and encouragement, all the while being very honest about what needs to be done to create the type of obedient dog that every owner desires. Alex has a fantastic grasp on what dogs and their owners need from one another in order to foster a loving, trusting relationship.  At the TOP of our list of ways we rave about Alexandra is the way she has come to love our furbabies as her own. They LOVE spending time with Alex, because they TRUST her, which makes every aspect of the training experience that much more enjoyable.  Anyone who entrusts Alexandra with their dogs is making a wise decision that will not only lead to years of obedient behavior, but years of wonderful friendship, as well! ",
   },

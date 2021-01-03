@@ -78,7 +78,7 @@ const ServiceCard = ({ lineObj }) => {
   const MotionCard = motion.custom(c.Card);
 
   return (
-    <c.Grid item xs={12} lg={5}>
+    <c.Grid item xs={12} md={5} lg={6}>
       <MotionCard
         className={classes.card}
         whileHover={{

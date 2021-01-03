@@ -22,12 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   infoIcon: {
     position: "absolute",
-    bottom: -15,
-    right: -15,
+    bottom: 0,
+    right: 0,
     height: "44px",
     width: "44px",
     borderRadius: "50%",
-    background: theme.palette.shadows.iconGradient,
     padding: "0px",
     [theme.breakpoints.down("md")]: {
       right: "-5px",
@@ -38,10 +37,11 @@ const useStyles = makeStyles((theme) => ({
 //hover effect: skew opaque cards under card
 const AccoladeCard = (props) => {
   const classes = useStyles();
-  const { title, text, link } = props.accolade;
+  const { title, text, link, date } = props.accolade;
 
   const MotionGrid = motion.custom(c.Grid);
   const MotionCard = motion.custom(c.Card);
+  const MotionIcon = motion.custom(c.IconButton);
 
   const loadingVariants = {
     start: {
@@ -60,31 +60,46 @@ const AccoladeCard = (props) => {
   return (
     <MotionGrid
       item
-      lg={5}
+      lg={6}
       sm={10}
       xs={12}
       style={{ opacity: 0 }}
-      variants={loadingVariants}>
+      variants={loadingVariants}
+    >
       <MotionCard
         className={classes.card}
         whileHover={{
-          y: -10,
           filter: theme.palette.shadows.raisedFilterShadow,
-        }}>
+        }}
+      >
         <c.Typography variant="h5" style={theme.typography.wordEmphasisBlue}>
           {title}
         </c.Typography>
-        <c.Typography variant="body1" style={{ fontFamily: "Open Sans" }}>
+        <c.Typography
+          variant="body1"
+          style={{
+            fontFamily: "Open Sans",
+            fontWeight: 700,
+            paddingBottom: theme.spacing(1),
+          }}
+        >
           {text}
         </c.Typography>
-        <c.IconButton
+        <c.Typography variant="body1" style={{ fontFamily: "Open Sans" }}>
+          {date}
+        </c.Typography>
+        <MotionIcon
           aria-label={title}
           className={classes.infoIcon}
           href={link}
           target="_blank"
-          rel="noopener noreferrer">
-          {icons.checkCircle}
-        </c.IconButton>
+          rel="noopener noreferrer"
+          whileHover={{
+            y: -5,
+          }}
+        >
+          {icons.infoCircle}
+        </MotionIcon>
       </MotionCard>
     </MotionGrid>
   );

@@ -45,7 +45,8 @@ const StaggerContainer = ({
       style={styles}
       variants={loadingContainerVariants}
       initial="start"
-      animate={controls}>
+      animate={controls}
+    >
       {children}
     </MotionGrid>
   );

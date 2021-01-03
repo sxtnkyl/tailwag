@@ -1,4 +1,5 @@
 import React from "react";
+import theme from "../../theme/theme";
 //https://tablericons.com/
 import PlayDate from "./svgs/Play_Date.svg";
 import BoardingWithTraining from "./svgs/Boarding_with_Training.svg";
@@ -13,76 +14,65 @@ import AccoladesAbout from "./svgs/accoladesAbout.svg";
 import ServiceStatement from "./svgs/serviceStatement.svg";
 import ContactForm from "./svgs/contactForm.svg";
 
-const facebook = (
+const alertTriangle = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-brand-facebook"
+    className="icon icon-tabler icon-tabler-alert-triangle"
     width="44"
     height="44"
     viewBox="0 0 24 24"
     strokeWidth="1.5"
-    stroke="black"
+    stroke={theme.palette.secondary.main}
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" />
-    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-  </svg>
-);
-
-const instagram = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-brand-instagram"
-    width="44"
-    height="44"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="black"
-    fill="none"
-    strokeLinecap="round"
-    strokeLinejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" />
-    <rect x="4" y="4" width="16" height="16" rx="4" />
-    <circle cx="12" cy="12" r="3" />
-    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
-  </svg>
-);
-
-const phone = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-phone-call"
-    width="44"
-    height="44"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="black"
-    fill="none"
-    strokeLinecap="round"
-    strokeLinejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" />
-    <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-    <path d="M15 7a2 2 0 0 1 2 2" />
-    <path d="M15 3a6 6 0 0 1 6 6" />
-  </svg>
-);
-
-const email = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-mail"
-    width="44"
-    height="44"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="black"
-    fill="none"
-    strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <rect x="3" y="5" width="18" height="14" rx="2" />
-    <polyline points="3 7 12 13 21 7" />
+    <path d="M12 9v2m0 4v.01" />
+    <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+  </svg>
+);
+
+const boneCircle = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-bone"
+    width="44"
+    height="44"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="black"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    {/* <circle cx="12" cy="12" r="9" /> */}
+    <g transform="translate(6, 6) scale(0.5)">
+      <path d="M15 3a3 3 0 0 1 3 3a3 3 0 1 1 -2.12 5.122l-4.758 4.758a3 3 0 1 1 -5.117 2.297l-.005 -.177l-.176 -.005a3 3 0 1 1 2.298 -5.115l4.758 -4.758a3 3 0 0 1 2.12 -5.122z" />
+    </g>
+  </svg>
+);
+
+const locationCircle = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-live-view"
+    width="44"
+    height="44"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="black"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    {/* <circle cx="12" cy="12" r="9" /> */}
+    <line x1="12" y1="11" x2="12" y2="11.01" />
+    <g transform="translate(3, 3) scale(0.75)">
+      <path d="M12 18l-3.5 -5a4 4 0 1 1 7 0l-3.5 5" />
+    </g>
   </svg>
 );
 
@@ -97,9 +87,10 @@ const checkCircle = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <circle cx="12" cy="12" r="9" />
+    {/* <circle cx="12" cy="12" r="9" /> */}
     <path d="M9 12l2 2l4 -4" />
   </svg>
 );
@@ -115,9 +106,10 @@ const xCircle = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <circle cx="12" cy="12" r="9" />
+    {/* <circle cx="12" cy="12" r="9" /> */}
     <path d="M10 10l4 4m0 -4l-4 4" />
   </svg>
 );
@@ -133,9 +125,10 @@ const infoCircle = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <circle cx="12" cy="12" r="9" />
+    {/* <circle cx="12" cy="12" r="9" /> */}
     <line x1="12" y1="8" x2="12.01" y2="8" />
     <polyline points="11 12 12 12 12 16 13 16" />
   </svg>
@@ -152,7 +145,8 @@ const oneToOne = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="M8 10h1v4" />
@@ -173,7 +167,8 @@ const penAndRuler = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" />
     <path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" />
     <line x1="14.5" y1="5.5" x2="18.5" y2="9.5" />
@@ -195,7 +190,8 @@ const clipboardCheck = ( //private instruction
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
     <rect x="9" y="3" width="6" height="4" rx="2" />
@@ -214,7 +210,8 @@ const moonAndStars = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <path d="M12 3c0.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" />
@@ -233,7 +230,8 @@ const justSun = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <circle cx="12" cy="12" r="4" />
     <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
@@ -321,7 +319,8 @@ const tennisBall = (
     stroke="black"
     fill="none"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <circle cx="12" cy="12" r="9" />
     <path d="M6 5.3a9 9 0 0 1 0 13.4" />
@@ -330,10 +329,6 @@ const tennisBall = (
 );
 
 const icons = {
-  facebook,
-  instagram,
-  phone,
-  email,
   penAndRuler,
   PlayDate,
   BoardingWithTraining,
@@ -342,6 +337,9 @@ const icons = {
   PlayAndTrain,
   PrivateInstruction,
   Pawpaw,
+  alertTriangle,
+  boneCircle,
+  locationCircle,
   checkCircle,
   xCircle,
   infoCircle,

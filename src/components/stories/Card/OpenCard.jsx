@@ -111,7 +111,7 @@ export const OpenCard = ({ paramsId }) => {
   const constraints = useScrollConstraints(cardRef, true);
 
   function checkSwipeToDismiss() {
-    Math.abs(y.get()) > dismissDistance && history.push("/stories");
+    Math.abs(y.get()) > dismissDistance && history.push("/testimonials");
   }
 
   const containerRef = useRef(null);
@@ -189,7 +189,7 @@ export const OpenCard = ({ paramsId }) => {
         <Title />
       </MotionCard>
       <Link
-        to="/stories"
+        to="/testimonials"
         className={classes.backdropLink}
         aria-label="close current card"
       />

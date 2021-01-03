@@ -32,14 +32,15 @@ let theme = createMuiTheme({
       //banner
       fontSize: "8rem",
       fontWeight: 700,
-      textShadow: `2px 2px 1px ${useFade(blue[900], 0.5)}`,
+      // textShadow: `2px 2px 1px ${useFade(blue[900], 0.5)}`,
       color: "white",
     },
     h2: {
       //logo "tailwag"
+      color: "white",
       fontSize: "4.0rem",
       fontWeight: 800,
-      textShadow: `2px 2px 1px ${useFade(blue[700], 0.5)}`,
+      // textShadow: `2px 2px 1px ${useFade(blue[700], 0.5)}`,
     },
     h3: {
       //navbarItem, page section titles "Dedicated Expertise"

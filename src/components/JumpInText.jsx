@@ -16,11 +16,6 @@ const FadeIn = ({
   const containerRef = useRef();
   const inView = useInView(containerRef, triggerPoint);
 
-  const loadingContainer = {
-    display: "flex",
-    justifyContent: "space-around",
-  };
-
   const loadingContainerVariants = {
     start: {
       transition: {
@@ -36,11 +31,12 @@ const FadeIn = ({
 
   const loadingCircleVariants = {
     start: {
-      y: 0,
+      opacity: 0,
+      y: 40,
     },
     end: {
       opacity: 1,
-      y: 20,
+      y: 5,
       transition: {
         type: "spring",
         duration: 1,
@@ -59,16 +55,18 @@ const FadeIn = ({
   return (
     <motion.div
       ref={containerRef}
-      style={loadingContainer}
+      style={{ display: "flex", justifyContent: "space-around" }}
       variants={loadingContainerVariants}
       initial="start"
-      animate={controls}>
+      animate={controls}
+    >
       {stringArr.map((letter, index) => (
         <MotionLetter
           style={{ opacity: 0, paddingRight: "8px" }}
           variant={typography}
           variants={loadingCircleVariants}
-          key={index}>
+          key={index}
+        >
           {letter}
         </MotionLetter>
       ))}
