@@ -35,7 +35,7 @@ const StaggerContainer = ({
       setTimeout(() => {
         controls.start("end");
       }, delay);
-  }, [inView]);
+  }, [inView, controls, delay]);
 
   return (
     <MotionGrid

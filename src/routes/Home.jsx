@@ -172,7 +172,7 @@ const About = () => {
     toggleExpanded(!expanded);
     setTimeout(() => {
       const scroll = document.getElementById("accolades");
-      expanded == false && scroll.scrollIntoView({ behavior: "smooth" });
+      expanded === false && scroll.scrollIntoView({ behavior: "smooth" });
     }, 1000);
   };
 
@@ -238,7 +238,7 @@ const About = () => {
             </Link>
           </MotionButton>
         </c.Grid>
-        <c.Grid item md={10} lg={5}>
+        <c.Grid item xs={12} sm={8} md={6} lg={5}>
           <FadeIn slide={50}>
             <PictureCard
               pic={Rocco}
@@ -254,7 +254,7 @@ const About = () => {
         alignItems="center"
         justify="center"
       >
-        <c.Grid item md={10} lg={5}>
+        <c.Grid item xs={12} sm={8} md={6} lg={5}>
           <FadeIn slide={-50}>
             <PictureCard
               pic={Izzy}

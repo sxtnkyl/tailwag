@@ -1,4 +1,4 @@
-import React, { memo, useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useMotionValue, useInvertedScale } from "framer-motion";
 import { Link, useHistory } from "react-router-dom";
 
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const OpenCard = ({ paramsId }) => {
   const classes = useStyles();
-  const { id, dogName, ownerName, testimonial } = storiesData.find(
+  const { id, ownerName, testimonial } = storiesData.find(
     (item) => item.id === paramsId
   );
 

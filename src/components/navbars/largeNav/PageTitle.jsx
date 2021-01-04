@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
-import theme from "../../../theme/theme";
 
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -36,6 +35,7 @@ const PageTitle = ({ location }) => {
   return (
     <AnimatePresence>
       <MotionGrid
+        key="text"
         item
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -45,7 +45,7 @@ const PageTitle = ({ location }) => {
           {titleText}
         </c.Typography>
       </MotionGrid>
-      <MotionGrid container item justify="flex-end">
+      <MotionGrid key="icons" container item justify="flex-end">
         <EmailButton />
         <PhoneButton />
         <FacebookButton />

@@ -131,7 +131,6 @@ const Services = () => {
             direction="row"
             spacing={4}
             justify="space-evenly"
-            alignItems="center"
             id="cardsContainer"
           >
             {lineObj.map((obj) => (

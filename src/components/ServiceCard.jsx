@@ -1,13 +1,14 @@
 import React from "react";
 import * as c from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import theme from "../theme/theme";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    minHeight: "300px",
+    minHeight: "50vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -17,12 +18,11 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.spacing(2),
     overflow: "visible",
     padding: theme.spacing(4),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       minHeight: "150px",
       borderBottomLeftRadius: theme.spacing(8),
       borderTopRightRadius: theme.spacing(2),
-      margin: `${theme.spacing(4)}px ${theme.spacing(0)}px`,
-      padding: `${theme.spacing(4)}px ${theme.spacing(2)}px`,
+      padding: theme.spacing(2),
     },
     "& #titlePriceDescripContainer": {
       paddingRight: theme.spacing(2),
@@ -60,10 +60,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end",
     padding: "0px",
     paddingTop: theme.spacing(2),
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      alignItems: "flex-end",
-    },
     "& a": {
       margin: theme.spacing(1),
       [theme.breakpoints.down("md")]: {
@@ -76,9 +72,10 @@ const useStyles = makeStyles((theme) => ({
 const ServiceCard = ({ lineObj }) => {
   const classes = useStyles();
   const MotionCard = motion.custom(c.Card);
+  const chipRow = useMediaQuery("@media (min-width:700px)");
 
   return (
-    <c.Grid item xs={12} md={5} lg={6}>
+    <c.Grid item xs={12} lg={6}>
       <MotionCard
         className={classes.card}
         whileHover={{
@@ -118,7 +115,13 @@ const ServiceCard = ({ lineObj }) => {
           </c.Grid>
         </c.Grid>
 
-        <c.CardActions className={classes.chipsContainer}>
+        <c.CardActions
+          className={classes.chipsContainer}
+          style={{
+            flexDirection: !chipRow && "column",
+            alignItems: !chipRow && "flex-end",
+          }}
+        >
           {lineObj.chips.map((chip) => (
             <c.Chip
               id={`${lineObj.title}/${chip.title}`}

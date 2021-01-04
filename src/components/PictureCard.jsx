@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       borderBottomLeftRadius: theme.spacing(8),
       borderTopRightRadius: theme.spacing(2),
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       height: "60vh",
     },
   },

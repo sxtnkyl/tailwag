@@ -1,55 +1,41 @@
 import React from "react";
-
 import { makeStyles, Grid } from "@material-ui/core";
-
 import NavbarItem from "./NavbarItem";
 import { motion } from "framer-motion";
 
-import { Link } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   navGrid: {
     height: "80vh",
     paddingTop: "10vh",
   },
-  navItem: {
-    height: "25%",
-  },
-}));
+});
 
 const Navbar = ({ toggle }) => {
   const classes = useStyles();
-
   const NavGrid = motion.custom(Grid);
-  const MotionLink = motion.custom(Link);
 
-  const NavItemList = () => (
+  return (
     <NavGrid
       container
       direction="column"
-      justify="space-evenly"
+      justify="center"
+      alignItems="center"
       className={classes.navGrid}
     >
-      <MotionLink to="/" className={classes.navItem} onClick={toggle}>
-        <NavbarItem blobNum={3} text="Home" />
-      </MotionLink>
-      <MotionLink to="/services" className={classes.navItem} onClick={toggle}>
-        <NavbarItem blobNum={7} text="Services" />
-      </MotionLink>
-      <MotionLink
+      <NavbarItem blobNum={3} text="Home" to="/" toggle={toggle} />
+
+      <NavbarItem blobNum={7} text="Services" to="/services" toggle={toggle} />
+
+      <NavbarItem
+        blobNum={4}
+        text="Testimonials"
         to="/testimonials"
-        className={classes.navItem}
-        onClick={toggle}
-      >
-        <NavbarItem blobNum={4} text="Testimonials" />
-      </MotionLink>
-      <MotionLink to="/contact" className={classes.navItem} onClick={toggle}>
-        <NavbarItem blobNum={2} text="Contact" />
-      </MotionLink>
+        toggle={toggle}
+      />
+
+      <NavbarItem blobNum={2} text="Contact" to="/contact" toggle={toggle} />
     </NavGrid>
   );
-
-  return <NavItemList />;
 };
 
 export default Navbar;

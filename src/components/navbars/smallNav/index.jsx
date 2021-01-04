@@ -1,9 +1,7 @@
 import React from "react";
 import Banner from "../Banner";
 import Navbar from "./Navbar";
-import theme from "../../../theme/theme";
 import * as c from "@material-ui/core";
-import { ReactComponent as Paw } from "../../../utility/icons/svgs/pawpaw.svg";
 import { ReactComponent as LogoDog } from "../../../utility/icons/svgs/logoDog.svg";
 import { useLocation } from "react-router-dom";
 import { motion, useCycle } from "framer-motion";

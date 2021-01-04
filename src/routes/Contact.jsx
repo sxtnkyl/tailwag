@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
-import JumpInText from "../components/JumpInText";
 import FadeIn from "../utility/hooks/useFadeIn";
 import useFade from "../utility/hooks/useFade";
 import icons from "../utility/icons/icons";
@@ -140,7 +139,7 @@ const Contact = () => {
   }, [submitted]);
 
   const submitActions = async (data) => {
-    let url = "some aws sms endpoint";
+    // let url = "some aws sms endpoint";
     setSending(true);
     console.log(data);
     // fetch(url, {
@@ -479,7 +478,7 @@ const Contact = () => {
               width: "100%",
             }}
           >
-            Click to give us a call!
+            Get in touch quickly!
           </c.Typography>
           <MotionButton
             className={classes.actionButtons}
