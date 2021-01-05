@@ -1,19 +1,16 @@
-//masonry tiles > open to testimonials
 import React from "react";
-
 import * as c from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
-import { ListCard } from "../components/stories/Card/ListCard";
-import { OpenCard } from "../components/stories/Card/OpenCard";
-
+import theme from "../theme/theme";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import FadeIn from "../utility/hooks/useFadeIn";
 import storiesData from "../utility/storiesData";
-import theme from "../theme/theme";
 import icons from "../utility/icons/icons";
 
-const useStyles = makeStyles((theme) => ({
+import { ListCard } from "../components/stories/Card/ListCard";
+import { OpenCard } from "../components/stories/Card/OpenCard";
+
+const useStyles = c.makeStyles((theme) => ({
   page: {
     minHeight: "100vh",
     paddingTop: "10vh",
@@ -56,8 +53,7 @@ const Testimonials = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlue}
-          >
+            style={theme.typography.wordEmphasisBlue}>
             Tails Wag Dog Training{" "}
           </c.Typography>
           has served hundreds of happy clients over the years and takes great
@@ -65,8 +61,7 @@ const Testimonials = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}
-          >
+            style={theme.typography.wordEmphasisBlack}>
             positive, long term relationships.
           </c.Typography>{" "}
           By spending more time with you and your canine partner, we develop a

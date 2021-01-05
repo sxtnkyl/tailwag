@@ -29,18 +29,13 @@ let theme = createMuiTheme({
   typography: {
     fontFamily: ["Gochi Hand", "Verdana", "Roboto", "Open Sans"].join(","),
     h1: {
-      //banner
-      fontSize: "8rem",
       fontWeight: 700,
-      // textShadow: `2px 2px 1px ${useFade(blue[900], 0.5)}`,
       color: "white",
     },
     h2: {
-      //logo "tailwag"
       color: "white",
       fontSize: "4.0rem",
       fontWeight: 800,
-      // textShadow: `2px 2px 1px ${useFade(blue[700], 0.5)}`,
     },
     h3: {
       //navbarItem, page section titles "Dedicated Expertise"
@@ -124,16 +119,6 @@ let theme = createMuiTheme({
         justifyContent: "space-between",
       },
     },
-    // MuiChip: {
-    //   root: {
-    //     display: "flex",
-    //     flexDirection: "row-reverse"
-    //   },
-    //   icon: {
-    //     marginLeft: "0px",
-    //     marginRight: "4px"
-    //   },
-    // },
     MuiPaper: {
       elevation4: {
         boxShadow: `0px 0px`,

@@ -1,12 +1,10 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
-import useBannerImage from "../../utility/hooks/useBannerImage";
 import theme from "../../theme/theme";
-
 import { motion, AnimatePresence } from "framer-motion";
+import useBannerImage from "../../utility/hooks/useBannerImage";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   container: {
     height: "30%",
     borderTopLeftRadius: "50% 20%",
@@ -30,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 const Banner = ({ location }) => {
   const classes = useStyles();
   let currentRoute = location.pathname;
-
   const image = useBannerImage(currentRoute);
 
   const SnootBanner = ({ image }) => (
@@ -51,8 +48,7 @@ const Banner = ({ location }) => {
     <c.Grid
       item
       className={classes.container}
-      style={{ ...theme.mixins.formats.centeredFlex }}
-    >
+      style={{ ...theme.mixins.formats.centeredFlex }}>
       <SnootBanner image={image} />
       <div className={classes.banner} />
     </c.Grid>

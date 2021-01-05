@@ -1,15 +1,15 @@
 import React from "react";
+import * as c from "@material-ui/core";
+import theme from "../../../theme/theme";
+import { useLocation } from "react-router-dom";
+
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import PageTitle from "./PageTitle";
 import Banner from "../Banner";
 import WaveTopper from "../../../components/WaveTopper";
-import * as c from "@material-ui/core";
-import theme from "../../../theme/theme";
-import { makeStyles } from "@material-ui/core";
-import { useLocation } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   container: {
     height: "100vh",
     background: "white",
@@ -40,8 +40,7 @@ const LargeNav = () => {
         item
         container
         justify="space-between"
-        className={classes.navContainer}
-      >
+        className={classes.navContainer}>
         <c.Grid item md={3}>
           <Logo justify={"flex-start"} />
         </c.Grid>
@@ -56,8 +55,7 @@ const LargeNav = () => {
           container
           direction="column"
           alignItems="flex-end"
-          style={{ padding: theme.spacing(1) }}
-        >
+          style={{ padding: theme.spacing(1) }}>
           <PageTitle location={location} />
         </c.Grid>
       </c.Grid>
@@ -68,8 +66,7 @@ const LargeNav = () => {
         item
         className={classes.welcomeText}
         container
-        alignContent="center"
-      >
+        alignContent="center">
         <c.Typography variant="h3" style={theme.typography.wordEmphasisBlack}>
           Welcome to{" "}
           <span style={theme.typography.wordEmphasisBlue}>

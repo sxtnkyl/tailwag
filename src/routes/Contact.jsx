@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
-import { motion } from "framer-motion";
-import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
+import { useForm, Controller } from "react-hook-form";
+import { motion } from "framer-motion";
 import FadeIn from "../utility/hooks/useFadeIn";
 import useFade from "../utility/hooks/useFade";
+import useAsync from "../utility/hooks/useAsync";
 import icons from "../utility/icons/icons";
 import { ReactComponent as Pawpaw } from "../utility/icons/svgs/pawpaw.svg";
+import { ReactComponent as DogLogo } from "../utility/icons/svgs/logoDog.svg";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   page: {
     minHeight: "100vh",
     marginTop: "10vh",
     backgroundImage: `url(${icons.ContactForm})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+    textAlign: "center",
     [theme.breakpoints.down("lg")]: {
       marginTop: "3vh",
-      textAlign: "center",
+
       marginBottom: "10vh",
     },
     "& .MuiGrid-container": {
@@ -129,19 +131,43 @@ const Contact = () => {
   const MotionSubmit = motion.custom(c.Button);
 
   const { handleSubmit, control, errors } = useForm({ defaultValues });
-  const [submitted, setSubmitted] = useState(true);
-  const [sending, setSending] = useState(false);
-  useEffect(() => {
-    //signals successful submit for 30 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 5000);
-  }, [submitted]);
 
-  const submitActions = async (data) => {
+  const onError = (errors) => {
+    console.log(errors);
+    const phone = document.getElementById("formGroup-Client");
+    phone.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const testFunc = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log("running test func", status);
+        const rnd = Math.random() * 10;
+        rnd <= 5
+          ? resolve("Submitted successfully")
+          : reject("there was an error");
+      }, 2000);
+    });
+  };
+
+  const { execute, reset, status } = useAsync(testFunc, false);
+  useEffect(() => {
+    if (status === "error") {
+      console.log("trying to execute after error!", status);
+      execute();
+    }
+    if (status === "success") {
+      console.log("resetting after success!", status);
+      setTimeout(() => {
+        reset();
+      }, 8000);
+    }
+  }, [status, execute, reset]);
+
+  const onSubmit = async (data, e) => {
     // let url = "some aws sms endpoint";
-    setSending(true);
-    console.log(data);
+    console.log(data, e);
+    execute();
     // fetch(url, {
     //   method: "POST",
     //   headers: {
@@ -153,24 +179,14 @@ const Contact = () => {
     //   .then((response) => response.json())
     //   .then((data) => {
     //     console.log("Success:", data);
-    //     setSubmitted(true);
     //   })
     //   .catch((error) => {
     //     console.error("frontend Error:", error);
     //   });
   };
 
-  const onError = (errors) => {
-    console.log(errors);
-    const phone = document.getElementById("formGroup-Client");
-    phone.scrollIntoView({ behavior: "smooth" });
-  };
-
   const form = (
-    <form
-      onSubmit={handleSubmit(submitActions, onError)}
-      className={classes.form}
-    >
+    <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.form}>
       <c.Card className={classes.card}>
         <div className={classes.formSection}>
           <c.CardContent id="formGroup-Client">
@@ -225,8 +241,7 @@ const Contact = () => {
                   <c.Typography
                     variant="button"
                     component={"span"}
-                    style={{ color: theme.palette.secondary.main }}
-                  >
+                    style={{ color: theme.palette.secondary.main }}>
                     *phone number is required
                   </c.Typography>
                 )}
@@ -320,8 +335,7 @@ const Contact = () => {
                     as={
                       <c.Select
                         label="My Dog Is Spayed/Neutered..."
-                        name="spayedNeutered"
-                      >
+                        name="spayedNeutered">
                         <c.MenuItem value="yes">Yes</c.MenuItem>
                         <c.MenuItem value="no">No</c.MenuItem>
                       </c.Select>
@@ -341,9 +355,7 @@ const Contact = () => {
                     as={
                       <c.Select
                         label="I'm interested in these services..."
-                        multiple={true}
-                      >
-                        <c.MenuItem value={[]}></c.MenuItem>
+                        multiple={true}>
                         <c.MenuItem value="privateInstruction">
                           Private Instruction
                         </c.MenuItem>
@@ -376,9 +388,7 @@ const Contact = () => {
                     as={
                       <c.Select
                         label="My Dog Needs Help With..."
-                        multiple={true}
-                      >
-                        <c.MenuItem value={[]}></c.MenuItem>
+                        multiple={true}>
                         <c.MenuItem value="puppyTraining">
                           Puppy Training
                         </c.MenuItem>
@@ -427,16 +437,35 @@ const Contact = () => {
               whileHover={{ fontWeight: 700 }}
               type="submit"
               variant="outlined"
-              disabled={sending}
+              disabled={
+                status === "pending" ||
+                status === "error" ||
+                status === "success"
+              }
               style={{
                 alignSelf: "flex-end",
                 height: "50px",
                 width: "100px",
               }}
               endIcon={<Pawpaw />}
-              color="primary"
-            >
-              SUBMIT
+              startIcon={
+                status === "success" && (
+                  <DogLogo
+                    style={{
+                      background: theme.palette.secondary.main,
+                      height: "30px",
+                      width: "30px",
+                      borderRadius: "50%",
+                    }}
+                  />
+                )
+              }
+              color="primary">
+              {status === "idle"
+                ? "SUBMIT"
+                : status === "success"
+                ? "SENT!"
+                : "SENDING..."}
             </MotionSubmit>
           </c.CardContent>
         </div>
@@ -460,8 +489,7 @@ const Contact = () => {
           justify="center"
           alignContent="center"
           alignItems="center"
-          id="textArea"
-        >
+          id="textArea">
           <c.Typography variant="h5" id="textAreaContent">
             I find simple phone calls are the best path to productive
             connections with future clients, where we can discuss your dog and
@@ -476,8 +504,7 @@ const Contact = () => {
               ...theme.typography.wordEmphasisBlack,
               marginBottom: theme.spacing(2),
               width: "100%",
-            }}
-          >
+            }}>
             Get in touch quickly!
           </c.Typography>
           <MotionButton
@@ -486,15 +513,13 @@ const Contact = () => {
             fullWidth
             whileHover={{
               y: -5,
-            }}
-          >
+            }}>
             <c.Link
               href="tel:+1-404-272-0985"
               target="_blank"
               rel="noopener noreferrer"
               alt="link to phone call"
-              style={{ textDecoration: "none", color: "black" }}
-            >
+              style={{ textDecoration: "none", color: "black" }}>
               <c.Typography variant="h5">(404) 272-0985</c.Typography>
             </c.Link>
           </MotionButton>

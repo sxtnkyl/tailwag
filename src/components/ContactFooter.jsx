@@ -1,20 +1,21 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import useFade from "../utility/hooks/useFade";
 import * as c from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import theme from "../theme/theme";
-import WaveTopper from "./WaveTopper";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import {
   EmailButton,
   PhoneButton,
   FacebookButton,
   InstaButton,
 } from "./ContactButtons";
+import WaveTopper from "./WaveTopper";
 import Logo from "./navbars/largeNav/Logo";
-import { motion } from "framer-motion";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   footer: {
     height: "30vh",
     position: "relative",
@@ -57,10 +58,11 @@ const Navbar = () => {
         container
         direction="row"
         justify={!md ? "space-between" : "center"}
-        alignContent="flex-start"
-      >
+        alignContent="flex-start">
         <c.Grid item xs={8} md={4} lg={3}>
-          <Logo fontColor={"black"} logoBorder="3px solid black" />
+          <Link to="/">
+            <Logo fontColor={"black"} logoBorder="3px solid black" />
+          </Link>
         </c.Grid>
 
         <c.Grid
@@ -70,8 +72,7 @@ const Navbar = () => {
           lg={3}
           container
           justify="space-around"
-          alignContent="center"
-        >
+          alignContent="center">
           <EmailButton stroke="black" background={theme.palette.primary.main} />
           <PhoneButton stroke="black" background={theme.palette.primary.main} />
           <FacebookButton

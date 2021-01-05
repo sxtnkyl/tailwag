@@ -3,18 +3,18 @@ import icons from "../utility/icons/icons";
 import React, { useState } from "react";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
-import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import StaggerContainer from "../utility/hooks/useStaggerChildren";
 import FadeIn from "../utility/hooks/useFadeIn";
+
 import JumpInText from "../components/JumpInText";
 import PictureCard from "../components/PictureCard";
 import AccoladeCard from "../components/AccoladeCard";
 import Izzy from "../images/izzy.jpg";
 import Rocco from "../images/RoccoAward.jpg";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   page: {
     minHeight: "100vh",
     paddingTop: "10vh",
@@ -166,14 +166,14 @@ const About = () => {
   const classes = useStyles();
   const MotionButton = motion.custom(c.Button);
   const MotionGrid = motion.custom(c.Grid);
-  const [expanded, toggleExpanded] = useState(false);
 
+  const [expanded, toggleExpanded] = useState(false);
   const expandAccolades = () => {
     toggleExpanded(!expanded);
     setTimeout(() => {
       const scroll = document.getElementById("accolades");
       expanded === false && scroll.scrollIntoView({ behavior: "smooth" });
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -182,8 +182,7 @@ const About = () => {
         container
         className={classes.approachContainer}
         alignItems="center"
-        justify="center"
-      >
+        justify="center">
         <c.Grid
           item
           md={12}
@@ -192,22 +191,19 @@ const About = () => {
           justify="center"
           alignContent="center"
           alignItems="center"
-          id="historyText"
-        >
+          id="historyText">
           <c.Typography variant="h5" id="historyContent">
             <c.Typography
               component={"div"}
               variant="h4"
-              style={theme.typography.wordEmphasisBlue}
-            >
+              style={theme.typography.wordEmphasisBlue}>
               Tails Wag Dog Training, Inc.
             </c.Typography>{" "}
             has been family owned and operated since 1998,{" "}
             <c.Typography
               component={"div"}
               variant="h4"
-              style={theme.typography.wordEmphasisBlack}
-            >
+              style={theme.typography.wordEmphasisBlack}>
               offering professional, effective training services based on
               humane, motivational techniques.
             </c.Typography>{" "}
@@ -227,8 +223,7 @@ const About = () => {
             color="primary"
             whileHover={{
               y: -5,
-            }}
-          >
+            }}>
             <Link to={`/contact`}>
               <JumpInText
                 textString="...so let's get started!"
@@ -252,8 +247,7 @@ const About = () => {
         container
         className={classes.expertiseContainer}
         alignItems="center"
-        justify="center"
-      >
+        justify="center">
         <c.Grid item xs={12} sm={8} md={6} lg={5}>
           <FadeIn slide={-50}>
             <PictureCard
@@ -271,8 +265,7 @@ const About = () => {
           justify="center"
           alignContent="center"
           alignItems="center"
-          id="expertiseText"
-        >
+          id="expertiseText">
           <c.Typography variant="h3">Dedicated Expertise-</c.Typography>
           <c.Typography variant="h3" id="provenResults">
             Proven Results.
@@ -287,8 +280,7 @@ const About = () => {
             onClick={() => expandAccolades()}
             whileHover={{
               y: -5,
-            }}
-          >
+            }}>
             <c.Typography variant="h5">Expand Accomplishments</c.Typography>
           </MotionButton>
         </c.Grid>
@@ -302,14 +294,12 @@ const About = () => {
             justify="center"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-          >
+            exit={{ opacity: 0, x: -100 }}>
             <StaggerContainer
               delay={250}
               triggerPoint={0.25}
               styles={theme.mixins.formats.spaceAroundFlexRow}
-              spacing={4}
-            >
+              spacing={4}>
               {accolades.map((a, index) => (
                 <AccoladeCard key={index} accolade={a} />
               ))}

@@ -1,14 +1,12 @@
 import React, { memo } from "react";
 import { motion, useInvertedScale } from "framer-motion";
 import { Link } from "react-router-dom";
-
 import * as c from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 
 import useFade from "../../../utility/hooks/useFade";
 import germanShep from "../../../images/croppedGerman.jpg";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   card: {
     position: "relative",
     height: theme.spacing(50),
@@ -81,8 +79,7 @@ export const ListCard = memo(
           layoutId={`image-container-${id}`}
           transformTemplate={scaleTranslate}
           animate={{ height: "75%" }}
-          style={{ ...inverted }}
-        >
+          style={{ ...inverted }}>
           <motion.img
             className={classes.image}
             layoutId={`image-${id}`}
@@ -107,8 +104,7 @@ export const ListCard = memo(
         <motion.div
           className={classes.cardContent}
           layoutId={`card-container-${id}`}
-          animate={{ y: 0, opacity: isSelected ? 0 : 1 }}
-        >
+          animate={{ y: 0, opacity: isSelected ? 0 : 1 }}>
           <Image />
           <Title />
         </motion.div>

@@ -1,12 +1,11 @@
 import React from "react";
 import * as c from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import theme from "../theme/theme";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   card: {
     minHeight: "50vh",
     display: "flex",
@@ -81,8 +80,7 @@ const ServiceCard = ({ lineObj }) => {
         whileHover={{
           y: -10,
           filter: theme.palette.shadows.raisedFilterShadow,
-        }}
-      >
+        }}>
         <c.Grid container>
           <c.Grid
             item
@@ -90,8 +88,7 @@ const ServiceCard = ({ lineObj }) => {
             container
             direction="column"
             justify="flex-start"
-            id="titlePriceDescripContainer"
-          >
+            id="titlePriceDescripContainer">
             <c.Typography variant="h4" id="cardTitle">
               {lineObj.title}
             </c.Typography>
@@ -99,8 +96,7 @@ const ServiceCard = ({ lineObj }) => {
               variant="h5"
               style={{
                 color: theme.palette.primary.main,
-              }}
-            >
+              }}>
               {lineObj.rate} / {lineObj.interval}
             </c.Typography>
             <c.Typography variant="subtitle1" id="serviceDescrip">
@@ -120,8 +116,7 @@ const ServiceCard = ({ lineObj }) => {
           style={{
             flexDirection: !chipRow && "column",
             alignItems: !chipRow && "flex-end",
-          }}
-        >
+          }}>
           {lineObj.chips.map((chip) => (
             <c.Chip
               id={`${lineObj.title}/${chip.title}`}

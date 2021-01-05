@@ -1,19 +1,16 @@
 import React, { useRef } from "react";
 import { motion, useMotionValue, useInvertedScale } from "framer-motion";
 import { Link, useHistory } from "react-router-dom";
-
 import * as c from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 
 import { useScrollConstraints } from "../utils/useScrollConstraints";
 import { useWheelScroll } from "../utils/useWheelScroll";
 import { useInvertedBorderRadius } from "../utils/useInvertedBorderRadius";
-
-import storiesData from "../../../utility/storiesData";
 import useFade from "../../../utility/hooks/useFade";
+import storiesData from "../../../utility/storiesData";
 import germanShep from "../../../images/croppedGerman.jpg";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   backdrop: {
     zIndex: 3,
     position: "fixed",
@@ -95,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const OpenCard = ({ paramsId }) => {
   const classes = useStyles();
+  const history = useHistory();
   const { id, ownerName, testimonial } = storiesData.find(
     (item) => item.id === paramsId
   );
@@ -102,9 +100,7 @@ export const OpenCard = ({ paramsId }) => {
   const MotionCard = motion.custom(c.Card);
   const MotionTypography = motion.custom(c.Typography);
 
-  const history = useHistory();
   const dismissDistance = 100;
-
   const y = useMotionValue(0);
   const inverted = useInvertedBorderRadius(20);
   const cardRef = useRef(null);
@@ -128,8 +124,7 @@ export const OpenCard = ({ paramsId }) => {
         layoutId={`image-container-${id}`}
         transformTemplate={scaleTranslate}
         animate={{ height: "40%" }}
-        style={{ ...inverted }}
-      >
+        style={{ ...inverted }}>
         <motion.img
           className={classes.image}
           layoutId={`image-${id}`}
@@ -145,8 +140,7 @@ export const OpenCard = ({ paramsId }) => {
       <MotionTypography
         className={classes.title}
         key="title"
-        animate={{ x: 32, y }}
-      >
+        animate={{ x: 32, y }}>
         ~ {ownerName}
       </MotionTypography>
     );
@@ -160,8 +154,7 @@ export const OpenCard = ({ paramsId }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      style={{ pointerEvents: "auto" }}
-    >
+      style={{ pointerEvents: "auto" }}>
       <MotionCard
         ref={cardRef}
         className={classes.openCardContent}
@@ -169,14 +162,12 @@ export const OpenCard = ({ paramsId }) => {
         style={{ ...inverted, y }}
         drag={"y"}
         dragConstraints={constraints}
-        onDrag={checkSwipeToDismiss}
-      >
+        onDrag={checkSwipeToDismiss}>
         <Image />
         <MotionTypography
           variant="subtitle1"
           className={classes.contentContainer}
-          animate="true"
-        >
+          animate="true">
           " {testimonial} "
         </MotionTypography>
         <c.Divider

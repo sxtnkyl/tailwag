@@ -1,15 +1,15 @@
 //service cards > inquiry(link to contact)
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
 import { motion } from "framer-motion";
 import FadeIn from "../utility/hooks/useFadeIn";
 import icons from "../utility/icons/icons";
-import ServiceCard from "../components/ServiceCard";
 import serviceData from "../utility/servicesData";
 
-const useStyles = makeStyles((theme) => ({
+import ServiceCard from "../components/ServiceCard";
+
+const useStyles = c.makeStyles((theme) => ({
   page: {
     paddingTop: "10vh",
     [theme.breakpoints.down("lg")]: {
@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Services = () => {
   const classes = useStyles();
+  const MotionGrid = motion.custom(c.Grid);
 
   const statementText = (
     <section className={classes.statementText}>
@@ -67,8 +68,7 @@ const Services = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlue}
-          >
+            style={theme.typography.wordEmphasisBlue}>
             Tails Wag Dog Training
           </c.Typography>
           , we believe that proper training is crucial in building a strong and
@@ -77,8 +77,7 @@ const Services = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}
-          >
+            style={theme.typography.wordEmphasisBlack}>
             no dog is too old to learn new tricks.
           </c.Typography>{" "}
           By using motivational, positive reinforcement training techniques
@@ -91,16 +90,14 @@ const Services = () => {
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}
-          >
+            style={theme.typography.wordEmphasisBlack}>
             confidence
           </c.Typography>{" "}
           and{" "}
           <c.Typography
             component={"div"}
             variant="h4"
-            style={theme.typography.wordEmphasisBlack}
-          >
+            style={theme.typography.wordEmphasisBlack}>
             obedience
           </c.Typography>
           , while strengthening the bond between you and your dog.
@@ -109,16 +106,13 @@ const Services = () => {
     </section>
   );
 
-  const MotionGrid = motion.custom(c.Grid);
-  //give service array, map cards
   const ServiceLine = ({ lineName, lineObj }) => {
     return (
       <c.Grid
         container
         direction="column"
         className={classes.serviceLine}
-        id="serviceLineContainer"
-      >
+        id="serviceLineContainer">
         <c.Grid item>
           <c.Typography variant="h3" id="serviceLineName">
             {lineName}~
@@ -131,8 +125,7 @@ const Services = () => {
             direction="row"
             spacing={4}
             justify="space-evenly"
-            id="cardsContainer"
-          >
+            id="cardsContainer">
             {lineObj.map((obj) => (
               <ServiceCard lineObj={obj} key={obj.title} />
             ))}

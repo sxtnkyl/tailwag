@@ -1,13 +1,10 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-//stroke, background, hover bool
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   svgContainer: {
     height: "5vh",
     width: "5vh",
@@ -39,19 +36,16 @@ export const EmailButton = ({
           y: -5,
           filter: theme.palette.shadows.raisedFilterShadow,
         }
-      }
-    >
+      }>
       <Link
         to="/contact"
         alt="conatct-page link"
-        aria-label="contact-page link"
-      >
+        aria-label="contact-page link">
         <c.SvgIcon
           className={classes.svg}
           style={{ background: background }}
           component={"div"}
-          titleAccess="contact link"
-        >
+          titleAccess="contact link">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-mail"
@@ -62,8 +56,7 @@ export const EmailButton = ({
             stroke={stroke}
             fill="none"
             strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+            strokeLinejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <rect x="3" y="5" width="18" height="14" rx="2" />
             <polyline points="3 7 12 13 21 7" />
@@ -90,21 +83,18 @@ export const PhoneButton = ({
           y: -5,
           filter: theme.palette.shadows.raisedFilterShadow,
         }
-      }
-    >
+      }>
       <c.Link
         href="tel:+1-404-272-0985"
         target="_blank"
         rel="noopener noreferrer"
         alt="link to phone call"
-        aria-label="phone link"
-      >
+        aria-label="phone link">
         <c.SvgIcon
           className={classes.svg}
           style={{ background: background }}
           component={"div"}
-          titleAccess="phone link"
-        >
+          titleAccess="phone link">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-phone-call"
@@ -115,8 +105,7 @@ export const PhoneButton = ({
             stroke={stroke}
             fill="none"
             strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+            strokeLinejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
             <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
             <path d="M15 7a2 2 0 0 1 2 2" />
@@ -144,21 +133,18 @@ export const FacebookButton = ({
           y: -5,
           filter: theme.palette.shadows.raisedFilterShadow,
         }
-      }
-    >
+      }>
       <c.Link
         href="https://www.facebook.com/TailsWagDogTraining/"
         target="_blank"
         rel="noopener noreferrer"
         alt="facebook link"
-        aria-label="facebook link"
-      >
+        aria-label="facebook link">
         <c.SvgIcon
           className={classes.svg}
           style={{ background: background }}
           component={"div"}
-          titleAccess="facebook link"
-        >
+          titleAccess="facebook link">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-brand-facebook"
@@ -169,8 +155,7 @@ export const FacebookButton = ({
             stroke={stroke}
             fill="none"
             strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+            strokeLinejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
             <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
           </svg>
@@ -196,21 +181,18 @@ export const InstaButton = ({
           y: -5,
           filter: theme.palette.shadows.raisedFilterShadow,
         }
-      }
-    >
+      }>
       <c.Link
         href="https://www.instagram.com/tailswagdogtraining/"
         target="_blank"
         rel="noopener noreferrer"
         alt="instagram link"
-        aria-label="instagram link"
-      >
+        aria-label="instagram link">
         <c.SvgIcon
           className={classes.svg}
           style={{ background: background }}
           component={"div"}
-          titleAccess="instagram link"
-        >
+          titleAccess="instagram link">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-brand-instagram"
@@ -221,8 +203,7 @@ export const InstaButton = ({
             stroke={stroke}
             fill="none"
             strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+            strokeLinejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
             <rect x="4" y="4" width="16" height="16" rx="4" />
             <circle cx="12" cy="12" r="3" />

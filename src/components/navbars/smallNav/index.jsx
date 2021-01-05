@@ -1,11 +1,12 @@
 import React from "react";
-import Banner from "../Banner";
-import Navbar from "./Navbar";
 import * as c from "@material-ui/core";
-import { ReactComponent as LogoDog } from "../../../utility/icons/svgs/logoDog.svg";
 import { useLocation } from "react-router-dom";
 import { motion, useCycle } from "framer-motion";
 import useFade from "../../../utility/hooks/useFade";
+
+import Banner from "../Banner";
+import Navbar from "./Navbar";
+import { ReactComponent as LogoDog } from "../../../utility/icons/svgs/logoDog.svg";
 
 const useStyles = c.makeStyles((theme) => ({
   topBar: {
@@ -100,19 +101,16 @@ const SmallNav = () => {
     <motion.nav
       className={classes.topBar}
       position="sticky"
-      animate={isOpen ? "open" : "closed"}
-    >
+      animate={isOpen ? "open" : "closed"}>
       <motion.div
         onClick={() => toggleOpen()}
         className={classes.pawLeft}
-        variants={logo}
-      >
+        variants={logo}>
         <LogoDog />
       </motion.div>
       <c.Typography
         style={{ letterSpacing: "1px", fontWeight: 500 }}
-        variant="h3"
-      >
+        variant="h3">
         ~ {titleText}
       </c.Typography>
       <motion.div className={classes.background} variants={bar}>

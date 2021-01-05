@@ -1,8 +1,7 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import * as c from "@material-ui/core";
-
 import { motion, AnimatePresence } from "framer-motion";
+
 import {
   EmailButton,
   PhoneButton,
@@ -10,8 +9,11 @@ import {
   InstaButton,
 } from "../../ContactButtons";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   topText: {
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "2.7rem",
+    },
     [theme.breakpoints.down("lg")]: {
       fontSize: "2.6rem",
     },
@@ -39,8 +41,7 @@ const PageTitle = ({ location }) => {
         item
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -200 }}
-      >
+        exit={{ opacity: 0, x: -200 }}>
         <c.Typography variant="h1" className={classes.topText}>
           {titleText}
         </c.Typography>

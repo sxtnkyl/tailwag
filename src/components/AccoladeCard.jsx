@@ -1,11 +1,10 @@
 import React from "react";
 import * as c from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 import theme from "../theme/theme";
 import icons from "../utility/icons/icons";
 import { motion } from "framer-motion";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = c.makeStyles((theme) => ({
   card: {
     filter: theme.palette.shadows.loweredFilterShadow,
     padding: theme.spacing(4),
@@ -34,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//hover effect: skew opaque cards under card
 const AccoladeCard = (props) => {
   const classes = useStyles();
   const { title, text, link, date } = props.accolade;
@@ -64,14 +62,12 @@ const AccoladeCard = (props) => {
       sm={10}
       xs={12}
       style={{ opacity: 0 }}
-      variants={loadingVariants}
-    >
+      variants={loadingVariants}>
       <MotionCard
         className={classes.card}
         whileHover={{
           filter: theme.palette.shadows.raisedFilterShadow,
-        }}
-      >
+        }}>
         <c.Typography variant="h5" style={theme.typography.wordEmphasisBlue}>
           {title}
         </c.Typography>
@@ -81,8 +77,7 @@ const AccoladeCard = (props) => {
             fontFamily: "Open Sans",
             fontWeight: 700,
             paddingBottom: theme.spacing(1),
-          }}
-        >
+          }}>
           {text}
         </c.Typography>
         <c.Typography variant="body1" style={{ fontFamily: "Open Sans" }}>
@@ -96,8 +91,7 @@ const AccoladeCard = (props) => {
           rel="noopener noreferrer"
           whileHover={{
             y: -5,
-          }}
-        >
+          }}>
           {icons.infoCircle}
         </MotionIcon>
       </MotionCard>

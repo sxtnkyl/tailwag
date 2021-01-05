@@ -1,12 +1,9 @@
 import React from "react";
-
-import { makeStyles } from "@material-ui/core";
-import theme from "../../../theme/theme";
-import { Typography, Grid } from "@material-ui/core";
-
+import { Typography, Grid, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import theme from "../../../theme/theme";
 import { itemBlobs } from "../../../utility/blobPaths";
 import useBlob from "../../../utility/hooks/useBlob";
 import useFade from "../../../utility/hooks/useFade";
@@ -25,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     placeItems: "center",
     cursor: "pointer",
+    [theme.breakpoints.down("xl")]: {
+      fontSize: "1.7rem",
+    },
     [theme.breakpoints.down("lg")]: {
       fontSize: "1.2rem",
     },
@@ -32,16 +32,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 //https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 
-const NavbarItem = ({
-  blobNum,
-  text,
-  to,
-  themeColor = theme.palette.secondary.main,
-}) => {
+const NavbarItem = ({ blobNum, text, to, themeColor = "white" }) => {
   const classes = useStyles();
   const NavItemText = motion.custom(Typography);
   const GridItem = motion.custom(Grid);
-  let blob = useBlob("white", 1, itemBlobs[blobNum], 1.45);
+  let blob = useBlob(themeColor, 1, itemBlobs[blobNum], 1.45);
 
   const scaleHoverTap = {
     initial: {
@@ -70,8 +65,7 @@ const NavbarItem = ({
           variants={scaleHoverTap}
           animate="initial"
           whileHover="hover"
-          whileTap="tap"
-        >
+          whileTap="tap">
           {text.toUpperCase()}
         </NavItemText>
         {blob}

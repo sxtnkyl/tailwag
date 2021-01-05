@@ -12,8 +12,8 @@ const FadeIn = ({
 }) => {
   const stringArr = textString.split(/(\s+)/);
   const MotionLetter = motion.custom(c.Typography);
-  //ref onto container
-  const containerRef = useRef();
+
+  const containerRef = useRef(); //ref onto container
   const inView = useInView(containerRef, triggerPoint);
 
   const loadingContainerVariants = {
@@ -58,15 +58,13 @@ const FadeIn = ({
       style={{ display: "flex", justifyContent: "space-around" }}
       variants={loadingContainerVariants}
       initial="start"
-      animate={controls}
-    >
+      animate={controls}>
       {stringArr.map((letter, index) => (
         <MotionLetter
           style={{ opacity: 0, paddingRight: "8px" }}
           variant={typography}
           variants={loadingCircleVariants}
-          key={index}
-        >
+          key={index}>
           {letter}
         </MotionLetter>
       ))}
