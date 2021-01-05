@@ -164,6 +164,13 @@ const Contact = () => {
     }
   }, [status, execute, reset]);
 
+  const submitButtonText =
+    status === "idle"
+      ? "SUBMIT"
+      : status === "success"
+      ? "SENT!"
+      : "SENDING...";
+
   const onSubmit = async (data, e) => {
     // let url = "some aws sms endpoint";
     console.log(data, e);
@@ -442,6 +449,7 @@ const Contact = () => {
                 status === "error" ||
                 status === "success"
               }
+              value={submitButtonText}
               style={{
                 alignSelf: "flex-end",
                 height: "50px",
@@ -461,11 +469,7 @@ const Contact = () => {
                 )
               }
               color="primary">
-              {status === "idle"
-                ? "SUBMIT"
-                : status === "success"
-                ? "SENT!"
-                : "SENDING..."}
+              {submitButtonText}
             </MotionSubmit>
           </c.CardContent>
         </div>

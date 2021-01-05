@@ -16,6 +16,7 @@ const useStyles = c.makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     color: "white",
     height: "8vh",
+    minWidth: "-webkit-fill-available",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",

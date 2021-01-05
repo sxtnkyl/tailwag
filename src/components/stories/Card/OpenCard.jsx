@@ -69,7 +69,7 @@ const useStyles = c.makeStyles((theme) => ({
     maxHeight: "50%",
     padding: "32px 64px",
     maxWidth: "700px",
-    overflow: "auto",
+    overflowY: "scroll",
     margin: "auto",
     marginRight: theme.spacing(1),
     [theme.breakpoints.down("md")]: {
@@ -77,7 +77,7 @@ const useStyles = c.makeStyles((theme) => ({
     },
     "&::-webkit-scrollbar": {
       width: theme.spacing(1),
-      opacity: "0.5",
+      opacity: "0.3",
     },
     "&::-webkit-scrollbar-track": {
       width: theme.spacing(2),
