@@ -112,6 +112,11 @@ let theme = createMuiTheme({
         zIndex: 1,
       },
     },
+    MuiButton: {
+      endIcon: {
+        display: "flex",
+      },
+    },
     MuiCardContent: {
       root: {
         display: "flex",
