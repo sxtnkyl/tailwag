@@ -2,7 +2,6 @@ import ServicePic from "../../images/beagle.jpg";
 import HomePic from "../../images/ollieSnoot.jpg";
 import StoriesPic from "../../images/croppedCollie.jpg";
 import ContactPic from "../../images/chanceSnoot.jpg";
-import ErrorPic from "../../images/croppedGerman.jpg";
 
 const images = [
   {
@@ -24,11 +23,6 @@ const images = [
     id: "contact",
     src: ContactPic,
     description: "chance_Thomas",
-  },
-  {
-    id: "404",
-    src: ErrorPic,
-    description: "white_lab",
   },
 ];
 

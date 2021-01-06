@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import * as c from "@material-ui/core";
 
 import useFade from "../../../utility/hooks/useFade";
-import germanShep from "../../../images/croppedGerman.jpg";
 
 const useStyles = c.makeStyles((theme) => ({
   card: {
@@ -63,7 +62,7 @@ const useStyles = c.makeStyles((theme) => ({
 }));
 
 export const ListCard = memo(
-  ({ id, dogName, ownerName, isSelected }) => {
+  ({ id, dogName, ownerName, backgroundImg, isSelected }) => {
     const classes = useStyles();
 
     const MotionTitle = motion.custom(c.Typography);
@@ -83,7 +82,7 @@ export const ListCard = memo(
           <motion.img
             className={classes.image}
             layoutId={`image-${id}`}
-            src={germanShep}
+            src={backgroundImg}
             alt="dog-photo"
             loading="lazy"
           />

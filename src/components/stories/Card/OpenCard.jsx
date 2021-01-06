@@ -8,7 +8,6 @@ import { useWheelScroll } from "../utils/useWheelScroll";
 import { useInvertedBorderRadius } from "../utils/useInvertedBorderRadius";
 import useFade from "../../../utility/hooks/useFade";
 import storiesData from "../../../utility/storiesData";
-import germanShep from "../../../images/croppedGerman.jpg";
 
 const useStyles = c.makeStyles((theme) => ({
   backdrop: {
@@ -82,10 +81,15 @@ const useStyles = c.makeStyles((theme) => ({
     "&::-webkit-scrollbar-track": {
       width: theme.spacing(2),
       backgroundColor: theme.palette.primary.main,
+      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
+      borderRadius: theme.shape.borderRadius,
+      webkitBorderRadius: theme.spacing(1),
     },
     "&::-webkit-scrollbar-thumb": {
       backgroundColor: theme.palette.primary.dark,
       borderRadius: theme.shape.borderRadius,
+      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
+      webkitBorderRadius: theme.spacing(1),
     },
   },
 }));
@@ -93,7 +97,7 @@ const useStyles = c.makeStyles((theme) => ({
 export const OpenCard = ({ paramsId }) => {
   const classes = useStyles();
   const history = useHistory();
-  const { id, ownerName, testimonial } = storiesData.find(
+  const { id, ownerName, backgroundImg, testimonial } = storiesData.find(
     (item) => item.id === paramsId
   );
 
@@ -128,7 +132,7 @@ export const OpenCard = ({ paramsId }) => {
         <motion.img
           className={classes.image}
           layoutId={`image-${id}`}
-          src={germanShep}
+          src={backgroundImg}
           alt="dog-photo"
         />
       </motion.div>
