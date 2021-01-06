@@ -77,6 +77,7 @@ const useStyles = c.makeStyles((theme) => ({
     "&::-webkit-scrollbar": {
       width: theme.spacing(1),
       opacity: "0.3",
+      webkitAppearance: "none",
     },
     "&::-webkit-scrollbar-track": {
       width: theme.spacing(2),
@@ -88,6 +89,7 @@ const useStyles = c.makeStyles((theme) => ({
     "&::-webkit-scrollbar-thumb": {
       backgroundColor: theme.palette.primary.dark,
       borderRadius: theme.shape.borderRadius,
+      boxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
       webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
       webkitBorderRadius: theme.spacing(1),
     },

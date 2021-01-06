@@ -455,8 +455,10 @@ const Contact = () => {
                 alignSelf: "flex-end",
                 height: "50px",
                 width: "100px",
+                display: "flex",
               }}
               endIcon={<Pawpaw />}
+              //mui-endicon, display needs to not be inherit
               startIcon={
                 status === "success" && (
                   <DogLogo
