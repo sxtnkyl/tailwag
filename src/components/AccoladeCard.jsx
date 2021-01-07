@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 const useStyles = c.makeStyles((theme) => ({
   card: {
+    position: "relative",
     filter: theme.palette.shadows.loweredFilterShadow,
     padding: theme.spacing(4),
     borderTopRightRadius: theme.spacing(6),

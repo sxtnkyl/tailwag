@@ -451,7 +451,7 @@ const Contact = () => {
               }
               value={submitButtonText}
               style={{
-                webkitAppearance: "none",
+                WebkitAppearance: "none",
                 alignSelf: "flex-end",
                 height: "50px",
                 width: "100px",

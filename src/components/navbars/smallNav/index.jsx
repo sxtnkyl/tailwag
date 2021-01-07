@@ -92,11 +92,12 @@ const SmallNav = () => {
   const location = useLocation();
   const [isOpen, toggleOpen] = useCycle(false, true);
 
-  const currentPageTitle = location.pathname.includes("stories")
-    ? "STORIES"
+  //currentPageTitle handles extra path if testimonials has a card open
+  const currentPageTitle = location.pathname.includes("testimonials")
+    ? "TESTIMONIALS"
     : location.pathname.substring(1, location.pathname.length).toUpperCase();
 
-  const titleText = currentPageTitle.length > 0 ? currentPageTitle : "Welcome!";
+  const titleText = currentPageTitle.length > 0 ? currentPageTitle : "WELCOME";
 
   return (
     <motion.nav

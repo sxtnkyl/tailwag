@@ -52,6 +52,7 @@ const useStyles = c.makeStyles((theme) => ({
     borderRadius: theme.spacing(2),
     borderBottomLeftRadius: theme.spacing(12),
     overflow: "hidden",
+    WebkitMaskImage: "-webkit-radial-gradient(white, black)",
   },
   image: {
     objectFit: "cover",

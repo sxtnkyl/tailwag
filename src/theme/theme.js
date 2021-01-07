@@ -114,7 +114,7 @@ let theme = createMuiTheme({
     },
     MuiButton: {
       endIcon: {
-        display: "flex",
+        display: "inline",
       },
     },
     MuiCardContent: {

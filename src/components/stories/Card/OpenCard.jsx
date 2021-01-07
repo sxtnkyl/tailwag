@@ -2,7 +2,9 @@ import React, { useRef } from "react";
 import { motion, useMotionValue, useInvertedScale } from "framer-motion";
 import { Link, useHistory } from "react-router-dom";
 import * as c from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+import theme from "../../../theme/theme";
 import { useScrollConstraints } from "../utils/useScrollConstraints";
 import { useWheelScroll } from "../utils/useWheelScroll";
 import { useInvertedBorderRadius } from "../utils/useInvertedBorderRadius";
@@ -52,6 +54,7 @@ const useStyles = c.makeStyles((theme) => ({
     borderRadius: theme.spacing(2),
     borderBottomLeftRadius: theme.spacing(16),
     overflow: "hidden",
+    WebkitMaskImage: "-webkit-radial-gradient(white, black)",
     [theme.breakpoints.down("md")]: {
       borderBottomLeftRadius: theme.spacing(8),
     },
@@ -68,8 +71,9 @@ const useStyles = c.makeStyles((theme) => ({
     maxHeight: "50%",
     padding: "32px 64px",
     maxWidth: "700px",
-    overflowY: "scroll",
+    overflowY: "auto",
     margin: "auto",
+    WebkitAppearance: "none",
     marginRight: theme.spacing(1),
     [theme.breakpoints.down("md")]: {
       padding: "32px",
@@ -77,27 +81,28 @@ const useStyles = c.makeStyles((theme) => ({
     "&::-webkit-scrollbar": {
       width: theme.spacing(1),
       opacity: "0.3",
-      webkitAppearance: "none",
+      WebkitAppearance: "none",
     },
     "&::-webkit-scrollbar-track": {
       width: theme.spacing(2),
       backgroundColor: theme.palette.primary.main,
-      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
+      WebkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
       borderRadius: theme.shape.borderRadius,
-      webkitBorderRadius: theme.spacing(1),
+      WebkitBorderRadius: theme.spacing(1),
     },
     "&::-webkit-scrollbar-thumb": {
       backgroundColor: theme.palette.primary.dark,
       borderRadius: theme.shape.borderRadius,
       boxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
-      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
-      webkitBorderRadius: theme.spacing(1),
+      WebkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.4)",
+      WebkitBorderRadius: theme.spacing(1),
     },
   },
 }));
 
 export const OpenCard = ({ paramsId }) => {
   const classes = useStyles();
+  const scrollSuspend = useMediaQuery(theme.breakpoints.down("sm"));
   const history = useHistory();
   const { id, ownerName, backgroundImg, testimonial } = storiesData.find(
     (item) => item.id === paramsId
@@ -117,7 +122,13 @@ export const OpenCard = ({ paramsId }) => {
   }
 
   const containerRef = useRef(null);
-  useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, true);
+  useWheelScroll(
+    containerRef,
+    y,
+    constraints,
+    checkSwipeToDismiss,
+    !scrollSuspend
+  );
 
   const Image = () => {
     const inverted = useInvertedScale();
@@ -166,7 +177,7 @@ export const OpenCard = ({ paramsId }) => {
         className={classes.openCardContent}
         layoutId={`card-container-${id}`}
         style={{ ...inverted, y }}
-        drag={"y"}
+        drag={!scrollSuspend && "y"}
         dragConstraints={constraints}
         onDrag={checkSwipeToDismiss}>
         <Image />
