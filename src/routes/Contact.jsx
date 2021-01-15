@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import * as c from "@material-ui/core";
 import theme from "../theme/theme";
 import { useForm, Controller } from "react-hook-form";
 import { motion } from "framer-motion";
 import FadeIn from "../utility/hooks/useFadeIn";
 import useFade from "../utility/hooks/useFade";
-import useAsync from "../utility/hooks/useAsync";
 import icons from "../utility/icons/icons";
 import { ReactComponent as Pawpaw } from "../utility/icons/svgs/pawpaw.svg";
 import { ReactComponent as DogLogo } from "../utility/icons/svgs/logoDog.svg";
@@ -132,65 +132,51 @@ const Contact = () => {
 
   const { handleSubmit, control, errors } = useForm({ defaultValues });
 
+  const [status, setStatus] = useState("idle");
+
   const onError = (errors) => {
+    //form error
     console.log(errors);
     const phone = document.getElementById("formGroup-Client");
     phone.scrollIntoView({ behavior: "smooth" });
   };
 
-  const testFunc = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log("running test func", status);
-        const rnd = Math.random() * 10;
-        rnd <= 5
-          ? resolve("Submitted successfully")
-          : reject("there was an error");
-      }, 2000);
-    });
+  const onSubmit = async (data) => {
+    setStatus("pending");
+    console.log(data);
+    try {
+      await Axios({
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        url: "https://tailswagatlanta.com/api/send",
+        data: data,
+      }).then((res) => {
+        setStatus("success");
+      });
+    } catch (error) {
+      console.log(error);
+      setStatus("error");
+    }
   };
 
-  const { execute, reset, status } = useAsync(testFunc, false);
   useEffect(() => {
-    if (status === "error") {
-      console.log("trying to execute after error!", status);
-      execute();
-    }
-    if (status === "success") {
-      console.log("resetting after success!", status);
+    console.log(status);
+    if (status === "error" || status === "success") {
+      console.log("all done!", status);
       setTimeout(() => {
-        reset();
-      }, 8000);
+        setStatus("idle");
+      }, 5000);
     }
-  }, [status, execute, reset]);
+  }, [status]);
 
   const submitButtonText =
     status === "idle"
       ? "SUBMIT"
+      : status === "error"
+      ? "error..."
       : status === "success"
       ? "SENT!"
       : "SENDING...";
-
-  const onSubmit = async (data, e) => {
-    // let url = "some aws sms endpoint";
-    console.log(data, e);
-    execute();
-    // fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Origin: "some future domain",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("frontend Error:", error);
-    //   });
-  };
 
   const form = (
     <form onSubmit={handleSubmit(onSubmit, onError)} className={classes.form}>
