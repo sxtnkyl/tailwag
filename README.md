@@ -14,5 +14,5 @@ Built with:
 
 Applied Concepts:
 
-###### `Cloud Architecture` `Cloud Security Practices` `DNS Management` 
+###### `Cloud Architecture` `Cloud Security Practices` `DNS Management` `HTML Accessability`
 ###### `Git Version Control` `Google Lighthouse Metrics` `User Retention/Engagement`
