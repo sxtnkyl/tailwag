@@ -14,4 +14,4 @@ Built with:
 
 Applied Concepts:
 
-###### `Reactjs` `Cloud Architecture` `Git Version Control` `Google Lighthouse Metrics` `User Retention/Engagement`
+###### `Cloud Architecture` `Cloud Security Practices` `DNS Management` `Git Version Control` `Google Lighthouse Metrics` `User Retention/Engagement`
