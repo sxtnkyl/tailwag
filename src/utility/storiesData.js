@@ -82,8 +82,7 @@ const storiesData = [
     ownerName: "Sjboyden",
     pointOfInterest: 80,
     backgroundColor: "#814D98",
-    backgroundImg:
-      "https://images.unsplash.com/photo-1552248239-37121e7bd7ca?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nzl8fGRvZ3xlbnwwfDB8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    backgroundImg: "https://tailswagphotos.s3.amazonaws.com/Gumbo.jpg",
     testimonial:
       "Alexandra is a very positive person who demonstrates results in her own dog and her customer’s dogs. My GSD has benefited from her kind attitude and words of wisdom. We are about to graduate from Intermediate obedience, and I hope to continue-the difference in my dog is amazing!",
   },
@@ -139,28 +138,6 @@ const storiesData = [
     backgroundColor: "#324A98",
     backgroundImg:
       "https://images.unsplash.com/photo-1570382385555-5373c93a90dc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTE1fHxkb2d8ZW58MHwwfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    testimonial:
-      "Alexandra is an excellent trainer who has a great deal of expertise and her energy & enthusiasm makes class fun.  In our intermediate class, each owner had different challenges in working with their dog and Alexandra knew how to instruct each individual to get the same great results for everyone.",
-  },
-  {
-    id: "n",
-    dogName: "Pizza",
-    ownerName: "Joyce Hansen",
-    pointOfInterest: 80,
-    backgroundColor: "#324A98",
-    backgroundImg:
-      "https://images.unsplash.com/photo-1483392707171-cb3e4b1cb8b0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTUwfHxkb2d8ZW58MHwwfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    testimonial:
-      "Alexandra is an excellent trainer who has a great deal of expertise and her energy & enthusiasm makes class fun.  In our intermediate class, each owner had different challenges in working with their dog and Alexandra knew how to instruct each individual to get the same great results for everyone.",
-  },
-  {
-    id: "o",
-    dogName: "Pizza",
-    ownerName: "Joyce Hansen",
-    pointOfInterest: 80,
-    backgroundColor: "#324A98",
-    backgroundImg:
-      "https://images.unsplash.com/photo-1455103493930-a116f655b6c5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTUxfHxkb2d8ZW58MHwwfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     testimonial:
       "Alexandra is an excellent trainer who has a great deal of expertise and her energy & enthusiasm makes class fun.  In our intermediate class, each owner had different challenges in working with their dog and Alexandra knew how to instruct each individual to get the same great results for everyone.",
   },
