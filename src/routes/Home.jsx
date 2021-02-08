@@ -11,7 +11,7 @@ import FadeIn from "../utility/hooks/useFadeIn";
 import JumpInText from "../components/JumpInText";
 import PictureCard from "../components/PictureCard";
 import AccoladeCard from "../components/AccoladeCard";
-import Izzy from "../images/izzy.jpg";
+import AlexHug from "../images/AlexHug.jpg";
 import Rocco from "../images/RoccoAward.jpg";
 
 const useStyles = c.makeStyles((theme) => ({
@@ -208,7 +208,7 @@ const About = () => {
               humane, motivational techniques.
             </c.Typography>{" "}
             Having experience training over 160 different breeds of dogs, I have
-            the tools and experience for working with a variety of temperments
+            the tools and experience for working with a variety of temperaments
             and breed specific traits. I firmly believe that with the proper
             patience and understanding, every household is capable of achieving
             positive and mutual relationships with their dog. I have the ability
@@ -238,7 +238,7 @@ const About = () => {
             <PictureCard
               pic={Rocco}
               title="Alexandra Wright"
-              caption="Canine Behavioral Specialist"
+              caption="Owner of Tails Wag Dog Training"
             />
           </FadeIn>
         </c.Grid>
@@ -251,9 +251,9 @@ const About = () => {
         <c.Grid item xs={12} sm={8} md={6} lg={5}>
           <FadeIn slide={-50}>
             <PictureCard
-              pic={Izzy}
+              pic={AlexHug}
               title="German Shepherd Enthusiast"
-              caption="With Extensive Breed Expertise"
+              caption="Expert Canine Behavioral Specialist"
             />
           </FadeIn>
         </c.Grid>

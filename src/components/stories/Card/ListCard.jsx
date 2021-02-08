@@ -8,7 +8,8 @@ import useFade from "../../../utility/hooks/useFade";
 const useStyles = c.makeStyles((theme) => ({
   card: {
     position: "relative",
-    height: theme.spacing(50),
+    // height: theme.spacing(50),
+    height: "50vh",
     padding: "20px",
     [theme.breakpoints.down("md")]: {
       flex: "0 0 100%",

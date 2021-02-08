@@ -147,8 +147,10 @@ const Contact = () => {
     try {
       await Axios({
         method: "post",
-        headers: { "Content-Type": "application/json" },
-        url: "https://tailswagatlanta.com/api/send",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        url: "https://www.tailswagatlanta.com/api/send",
         data: data,
       }).then((res) => {
         setStatus("success");
