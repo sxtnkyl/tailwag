@@ -150,7 +150,7 @@ const Contact = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        url: "https://www.tailswagatlanta.com/api/send",
+        url: "/api/send",
         data: data,
       }).then((res) => {
         setStatus("success");
